@@ -1,0 +1,46 @@
+\chapter{Introducción}
+
+Estas notas son del curso de álgebra II impartido por el Dr. Hugo Méndez Delgadillo en la licenciatura en física y matemáticas en la Escuela Superior de Física y Matemáticas del Instituto Politécnico Nacional. El curso del Dr. Hugo fue en base a \cite{hoffman} para la mayoría del curso y \cite{biberstein} para la sección de permutaciones. De mi parte extendí los temas a lo que el profesor tuvo planeado ver en el curso. Aún así, estas notas no sustituyen ningún material original y sólo deben utilizarse como apoyo para el curso de álgebra II.
+
+Para todos los interesados en varios temas que podrían causar algo de confusión en una primera exposición, me tomé la libertad de dejar varios libros en la bibliografía para resolver algunas dudas que pudieran tener sobre lógica, conjuntos y espacios vectoriales de dimensión infinita, así como generalizaciones de los temas vistos en el curso.
+
+Las primeras secciones tratan los famosos preliminares del profesor Hugo, en algunas cursos con más preliminares que en otros. En este caso el profesor Hugo da una noción de la teoría de conjuntos para establecer formalmente varios objetos de estudio, como lo son los sistemas de ecuaciones lineales y matrices, así como las bases de espacios vectoriales en general. De mi parte, el sistema axiomático se introduce por medio de un lenguaje formal como es expuesto en \cite{tecoloteII}. Es suficiente con tener una idea de lógica de primer orden, que puede verse en varios libros de la bibliografía o en los apuntes que proporcione el profesor Hugo. Para un estudio formal desde la matemática es recomendado leer \cite{setlogicivorra} junto con \cite{logicivorra}, \cite{tecoloteI} y \cite{mathlogicmonk}.
+En el primer capítulo se tratan los sistemas de ecuaciones formales y su relación con las matrices, haciendo uso a veces del llamado razonamiento inductivo con el cual abusamos pero evitamos ahogarnos en la notación, como lo dice el profesor Hugo.
+En el segundo capítulo se estudian algunos resultados sobre espacios vectoriales, usualmente enfocándonos en espacios vectoriales de dimensión finita, pero presentando demostraciones que son válidas para el caso infinito. Junto con esto se introducen las coordenadas de manera formal y algunos ejercicios divertidos.
+Para el tercer capítulo se estudia el tema principal del álgebra lineal, las transformaciones lineales. En el curso impartido en el semestre 2025-1 sólo se llegó a funcionales lineales, así que la parte correspondiente al doble dual confía fuertemente en \cite{hoffman}.
+En el cuarto capítulo se tratan las determinantes y su relación con las permutaciones. La exposición que se tuvo en el semestre fue pequeña por lo tanto las secciones también son algo rápidas.
+Para los apéndices, el primero trata el muy recurrente tema en los cursos del profesor Hugo de clases de equivalencia módulo $n$. Este tema es interesante y personalmente recomendaría leer sobre teoría de números y criptografía para ver la teoría y aplicaciones correspondientes. De momento, una corta exposición a este tema está en \cite{gruposI}. El segundo apéndice trata brevemente los conceptos necesarios para un solo teorema, el de la invarianza en la cardinalidad de bases de espacios vectoriales para el caso infinito. Un desarrollo más amplio de la teoría que trata estos espacios vectoriales se encuentra en \cite{algebrajacobson}, pero personalmente recomendaría buscar otras fuentes como \cite{algebraivorra}.
+
+Sobre notaciones, se denota a la delta de Kronecker por $\delta_{ij}$ y una de las más utilizadas es la del conjunto $\inte{a}{b}$ que denota el intervalo de números enteros entre $a$ y $b$. Otra de ellas es la de una función dada como $\fdefc{f}{A}{B}{x}{f(x)}$, la cual se utiliza para distinguir las funciones de su gráfica pues queremos dejar claro que es importante el dominio, el contradominio y la regla de correspondencia (relación). Aunque, entrando en la tipografía y el aspecto técnico del documento, las notaciones no son consistentes para preservar cierto orden en el texto, hablando de la definición como macros en el archivo.
+
+Los ejercicios son en su mayoría teoremas que pudo dejar o no el profesor de ejercicio. En cualquier caso no son demasiado complejos de resolver, pero se tiene que tener en mente que algunos necesitan de pensar cuidadosamente y entender bien los conceptos, incluso aquellos en los preliminares o en los apéndices. Aún con estos ejercicios es recomendable estudiar completamente las listas que proporcione el profesor antes de cada examen. Estas son de mucha utilidad para resolverlo.
+
+Finalmente, estas notas no tienen ningún tipo de conexión oficial al Instituto Politécnico Nacional mas que ser escritas por uno de los alumnos inscritos en el periodo 2026-1 así como tampoco buscan suplir la labor del profesor ni el material oficial que se encuentre en la bibliografía del plan de estudios del curso.
+\vspace{2cm}
+
+\begin{figure}[h]
+	\centering
+	\fbox{
+		\begin{tikzpicture}
+			\node[anchor=south west, inner sep=0, scale=0.8] (imagen) at (10,0) {
+				\includegraphics[width=10cm, height=8cm]{img/miku2.jpeg}
+			};
+			
+			\node[white, scale=0.8] at (17.5,3.5) {
+				\rotatebox{-90}{\sffamily\addCJKfontfeatures{RawFeature={vertical}} 
+					\textcite{shimeji}}
+				\hspace{0.025cm}
+				\rotatebox{-90}{\sffamily\addCJKfontfeatures{RawFeature={vertical}} 
+					同じなのよ 私たちも本の中にいるの」}
+			}; 
+		\end{tikzpicture}
+	}
+\caption{Miku en el cerro.}
+\end{figure}
+
+\iffalse
+\begin{flushright}
+	\rotatebox{-90}{\addCJKfontfeatures{RawFeature={vertical}} シメジシミュレーションから読み皮といった}
+	\rotatebox{-90}{\addCJKfontfeatures{RawFeature={vertical}}「同じなのよ 私たちも本の中にいるの」}
+\end{flushright}
+\fi

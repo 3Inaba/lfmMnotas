@@ -1,0 +1,349 @@
+\chapter{Determinantes}
+
+Esta sección es, en su gran mayoría, un transcrito de lo expuesto en \cite{biberstein}.
+
+\section{Permutaciones}
+Una permutación es una biyección sobre el conjunto $\inte{1}{n}$. Al conjunto de permutaciones en $\inte{1}{n}$ se le denota $S_n$ y los elementos de $\inte{1}{n}$ se les llamará $n$-ígitos.
+
+El conjunto $S_n$ junto a la operación $\fdefc{\circ}{S_n \times S_n}{S_n}{(\sigma, \tau)}{\sigma \circ \tau}$ forma un grupo $(S_n, \circ)$ al cual llamamos grupo simétrico. Convenimos que si $\sigma, \tau \in S_n$ entonces denotamos $\sigma \circ \tau$ como simplemente $\sigma \tau$.
+
+\begin{teo}
+	Si $X,Y$ son conjuntos de cardinalidad $n \in \nat$ entonces el número de biyecciones de $X$ a $Y$ es $n!$.
+	
+	\begin{proof}
+		Procedemos por inducción sobre $n$. Supongamos $n \geq 2$ y el teorema probado para $n-1$. Sean $X = \{x_1, \ldots, x_n\}$ e $Y = \{y_1, \ldots, y_n\}$ conjuntos de cardinalidad $n$. $\forall k \in \inte{1}{n}$ sea $A_k$ el conjunto de las biyecciones $f$ de $X$ sobre $Y$ tales que $f(x_n) = y_k$. La cardinalidad de $A_k$ es igual a aquella del conjuntos de todas las biyecciones del conjunto $\{x_1, \ldots, x_{n-1}\}$ sobre el conjunto $Y \setminus \{y_k\}$. Por hipótesis de inducción esta cardinalidad es $(n-1)!$. El conjunto de todas las biyecciones de $X$ sobre $Y$ es la reunión de los $n$ conjuntos $A_k$, ajenos a pares, cada uno de cardinalidad $(n-1)!$, luego tiene cardinalidad $(n-1)!n = n!$.
+	\end{proof}
+\end{teo}
+
+\begin{dfn}[Ciclo]
+	Sea $n\geq2$. Si $x_1, \ldots, x_r$ son $n$-ígitos distintos, se llama \textbf{ciclo} $(x_1, \ldots, x_n)$ a la permutación $\gamma \in S_n$ tal que
+	$$\left\{\begin{array}{ccc}
+		\gamma(x_k) 	&=& x_{k+1} \; \forall k \in \inte{1}{r-1} \\
+		\gamma(x_r) 	&=& x_1 \\
+		\gamma(x) 		&=& x \; \text{si } x \not\in\{x_1, \ldots, x_n\}
+	\end{array}\right.$$
+\end{dfn}
+
+\begin{dfn}[Conjunto de elementos de un ciclo]
+	Si $\gamma$ es el ciclo $(x_1, \ldots, x_n)$ designaremos por $\{\gamma\}$ el conjunto de elementos $\{x_1, \ldots, x_n\}$.
+\end{dfn}
+
+\begin{dfn}[Familia de ciclos ajena]
+	Una familia finita $(\gamma_1, \ldots, \gamma_n)$ de ciclos se dice \textbf{ajena} si los correspondientes subconjuntos $\{\gamma_1\}, \ldots, \{\gamma_n\}$ son ajenos a pares.
+\end{dfn}
+
+\begin{lema} \label{lema:CiclosAjenosConmutan}
+	Ciclos ajenos conmutan.
+	
+	\begin{proof}
+		Basta probar que si $\gamma_1, \gamma_2$ son dos ciclos ajenos vale:
+		$$\gamma_1 \gamma_2 = \gamma_2 \gamma_1.$$
+		Si $x \not\in \{\gamma_1\}$ y $x \not\in \{\gamma_2\}$ vale
+		$$\gamma_1 \gamma_2(x) = \gamma_2 \gamma_1 (x) = x.$$
+		Supongamos ahora $x \in \{\gamma_1\}$. Entonces $\gamma_1 x \not= x$, luego $\gamma_2 x = x$ y en consecuencia $\gamma_1 \gamma_2 (x) = \gamma_1 (x)$. Pero siendo $\gamma_1(x) \in \{\gamma_1\}$ vale también $\gamma_2 \gamma_1(x) = \gamma_1(x)$. Luego entonces
+		$$\gamma_1 \gamma_2 (x) = \gamma_1 \gamma_2 (x).$$
+		Análogamente se observa que esto vale también si $x \in \{\gamma_2\}$.
+	\end{proof}
+\end{lema}
+
+\begin{teo}
+	Toda permutación $\sigma \in S_n$, $\sigma \not= \iota$ ($\fdefc{\iota}{S_n}{S_n}{x}{x}$) puede representarse como producto (conmutativo) de una familia finita de ciclos ajenos. Tal representación es única a menos del orden de los factores.
+	
+	\begin{proof} \label{teo:DescomposiciónEnCiclos}
+		Sea $\sigma \in S_n, \sigma \not= \iota$.
+		\begin{enumerate}[label=\roman*), leftmargin=2em]
+			\item En el conjunto $\inte{1}{N}$ introduzcamos la relación $\sim$ por el convenio
+			$$y \sim x \bicond \exists m \in \mathbb{Z} \text{ tal que } y = \sigma^{m}x$$
+			Rigen las reglas:
+			\begin{enumerate}[label=\alph*), leftmargin=2em]
+				\item $x \sim x$ $\forall x \in \inte{1}{N}$ pues $x = \sigma^{0}x$.
+				\item $y \sim x \implies x \sim y$ pues $y = \sigma^{m}$ implica $x = \sigma^{-m}y$.
+				\item Las relaciones $y \sim x$ y $z \sim y$ implican $z \sim x$, pues $y = \sigma^{p}x$ y $z = \sigma^{q}y$ implican $z = \sigma^{p+q}x$.
+			\end{enumerate}
+			De ahí se sigue que $\sim$ es una relación de equivalencia en $\inte{1}{N}$. Las correspondientes clases de equivalencia se llaman las \textbf{órbitas} de la permutación $\sigma$.
+			
+			La órbita de un n-ígito $x \in \inte{1}{N}$ se reduce a $\{x\}$ si y sólo si $\sigma x = x$ o como se dice, $x$ es invariante bajo $\sigma$.
+			
+			Una órbita de $\sigma$ reducida a un sólo punto la llamaremos \textbf{órbita trivial}. Puesto que $\sigma \not= \iota$, $\sigma$ posee por lo menos una órbita no trivial.
+			
+			\item Sea $B$ una órbita no trivial de $\sigma$. Fijemos arbitrariamente $x \in B$. $\exists m \in \mathbb{N}$ tal que $\sigma^{m}x = x$, pues, de lo contrario si $p,q \in \mathbb{N}$ y $p \not= q$ sería $\sigma^{p}x \not= \sigma^{q}x$, lo que es imposible por ser $\inte{1}{N}$ un conjunto finito.
+			
+			Sea $r:= \min\{m \in \mathbb{N} \mid \sigma^{m}x = x\}$. $r$ es un entero $\geq 2$. $\forall m \in \mathbb{Z}$ obtenemos por el algoritmo de la división enteros $q$ y $t$ tales que $m = rq + t$ y $0 \leq t \leq r-1$, de donde:
+			$$ \sigma^{m}x = \sigma^{t}\sigma^{rq}x = \sigma^{t}x $$
+			luego $B$ contiene solamente los elementos $x, \sigma x, \sigma^{2}x, \ldots, \sigma^{r-1}x$ y, por minimalidad de $r$, estos son distintos a pares.
+			
+			El entero $r$ depende solamente de $B$, pues es la cardinalidad de $B$. También el ciclo $\gamma := (x, \sigma x, \ldots, \sigma^{r-1}x)$ depende solamente de $B$ pues $\gamma$ es al restricción de $\sigma$ a $B$: $\sigma|_{B}$. A su vez $B = \{\gamma\}$.
+			
+			\item Sea $(B_1, \ldots, B_N)$ la familia de todas la órbitas no triviales de $\sigma$. $\forall k \in \inte{1}{N}$ sea $\gamma_k$ el ciclo definido por $B_k$ como en ii) o sea $\gamma_k = \sigma|_{B_k}$. Puesto que $\{\gamma_k\} = B_k$ los ciclos $\gamma_1, \ldots, \gamma_N$ son ajenos. Afirmamos que
+			$$\sigma = \gamma_1 \cdots \gamma_N.$$
+			En efecto:
+			\begin{enumerate}[label=\alph*), leftmargin=2em]
+				\item Si $x \not\in B_k$ $\forall k \in \inte{1}{N}$ vale $\sigma x = x$ y también $(\gamma_1 \cdots \gamma_N)(x) = x$, pues $\gamma_k(x) = x$ $\forall k \in \inte{1}{N}$.
+				\item Supongamos que $x \in B_k$ para algún $k \in \inte{1}{N}$. (Este $k$ es único). Entonces $\gamma_k (x) = \sigma x$ y $\gamma_i(x) = x$ si $i \not= k$. Aplicando, por ejemplo, el Lema \ref{lema:CiclosAjenosConmutan} obtenemos:
+				$$(\gamma_1 \cdots \gamma_N)(x) = \gamma_k(\gamma_1 \cdots \gamma_{k-1} \gamma_{k+1} \cdots \gamma_N)(x) = \gamma_k(x) = \sigma x.$$
+			\end{enumerate}
+			De a) y b) se ve que $\sigma = \gamma_1 \cdots \gamma_N$.
+			\item Para probar la unicidad de la representación $\sigma = \gamma_1 \cdots \gamma_N$ (la cual, por cierto, no será usada más adelante) supongamos una relación
+			$$\sigma = \gamma_1' \cdots \gamma_{N'}'.$$
+			donde $\gamma_1' \cdots \gamma_{N'}'$ son ciclos ajenos.
+			
+			Si $x \not\in \{\gamma_k'\}$ $\forall k \in \inte{1}{N}$ se verifica:
+			$$ \sigma x = x.$$
+			Supongamos que para algún $k \in \inte{1}{n'}$ se cumple $x \in \{\gamma_k'\}$. Entonces, por ejemplo, por el Lema \ref{lema:CiclosAjenosConmutan}:
+			$$\sigma x = \gamma_k'(\gamma_1' \cdots \hat{\gamma_k'} \cdots \gamma_{N'}')(x) = \gamma_k' \in \{\gamma_k'\}$$
+			de donde inmediatamente por inducción:
+			$$\sigma^{m}x = (\sigma_k')^{m}(x) \in \{\gamma_k'\} \; \forall m \in \mathbb{N}$$.
+			
+			Esto prueba que $\{\gamma_k'\}$ es una órbita no trivial de $\sigma$ y $\gamma_k' = \sigma|_{\{\gamma_k'\}}$. Finalmente sea $B$ una órbita no trivial de $\sigma$. Si $x \in B$, vale $x \not= \sigma x$, luego $\exists k \in \inte{1}{n'}$ tal que $x \in \{\gamma_k'\}$. De ahí $B = \{\gamma_k'\}$ o sea $B$ figura entre las órbitas no triviales $\{\gamma_1'\}, \ldots, \{\gamma_{N'}'\}$. Se ve pues que la representación $\sigma = \gamma_1' \cdots \gamma_{N'}'$ es la misma que $\sigma = \gamma_1 \cdots \gamma_N$.
+		\end{enumerate}
+	\end{proof}
+\end{teo}
+
+\begin{dfn}[Trasposición]
+	Un ciclo $\gamma$ tal que $\{\gamma\}$ es de cardinalidad $2$ se llama \textbf{trasposición}. En otras palabras, si $i,j$ son $n$-ígitos distintos, la trasposición $\tau = (i,j)$ es la permutación que satisface
+	\begin{align*}
+		\tau(i) &= j , \tau(j)=i, \text{ y} \\
+		\tau(k) &= k \; \forall k \in \inte{1}{n} \text{ tal que } k \not= i \text{ y } k \not= j.
+	\end{align*}
+\end{dfn}
+
+\begin{teo} \label{teo:DescomposiciónTrasposiciones}
+	Si $n \geq 2$, toda permutación de grado $n$ puede representarse como producto de una familia finita de trasposiciones.
+	
+	\begin{proof}
+		Vale $\iota = (1,2)^{2}$. Podemos pues suponer ahora $\sigma \not= \iota$. En virtud del Teorema \ref{teo:DescomposiciónEnCiclos} basta probar que todo ciclo puede representarse como producto de una familia finita de trasposiciones. Esto se sigue de que $r \geq 2$ y si $x_1, \ldots, x_r$ son $n$-ígitos distintos a pares, rige la fórmula:
+		$$(x_1, x_2, x_3, \ldots, x_r) = (x_1, x_r)(x_1, x_{r-1}) \cdots(x_1, x_3)(x_1, x_2).$$
+	\end{proof}
+\end{teo}
+
+Note que la representación de una permutación como producto de trasposiciones está lejos de ser única.
+
+\begin{ejem}
+	Si $n \geq 3$ tenemos:
+	$$\iota = (1,2)^{2} = (1,3)^{2} = (1,2)^2(1,3)^2 = (1,2)^{2}(1,3)^{2}(2,3)^2.$$
+\end{ejem}
+
+\begin{dfn}[Trasposición de n-ígitos consecutivos]
+	Una permutación de grado $n$ se dice \textbf{trasposición de n-ígitos consecutivos} si es de la forma $(k, k+1)$ con $k \in \inte{1}{n-1}$.
+\end{dfn}
+
+\begin{teo}
+	Si $n \geq 2$ toda permutación puede representarse como producto de una familia finita de trasposiciones de n-ígitos consecutivos.
+	
+	\begin{proof}
+		En virtud del Teorema \ref{teo:DescomposiciónTrasposiciones} basta probar que toda trasposición puede expresarse como producto de trasposiciones de $n$-ígitos consecutivos. Consideremos dos $n$-ígitos: $a$ y $a+r$ con $r \in \mathbb{N}$. Observemos que la permutación
+		$$\sigma := (a + r - 1, a + r)(a + r - 2, a + r - 1) \cdots (a + 1, a + 2)(a, a + 1)$$
+		transforma $a$ en $a + r$ y los $n$-ígitos $a + 1, a + 2, \ldots, a + r - 1; a + r$ respectivamente en $a, a + 1, \ldots, a + r - 2; a + r - 1$. A su vez la permutación
+		$$\tau := (a, a + 1)(a + 1, a + 2) \cdots (a + r - 3, a + r - 2)(a + r - 2, a + r - 1)$$
+		transforma los $n$-ígitos $a, a + 1, \ldots, a + r - 2 ; a + r - 1$ respectivamente en $a + 1, a + 2, \ldots, a + r - 1; a$ y no desplaza a $a + r$. Luego la permutación $\tau \sigma$ intercambia $a + r$ con $a$ y no desplaza ningún otro $n$-ígito, o sea:
+		$$(a, a + r) = \tau\sigma.$$
+		Pero $\tau\sigma$ es patentemente un producto de trasposiciones de dígitos consecutivos.\\
+	\end{proof}
+\end{teo}
+
+En este contexto un homomorfismo es una función $f$ tal que $f(\sigma \tau) = f(\sigma)f(\tau)$ para cualesquiera permutaciones en $S_n$. En general, un homomorfismo es una función que preserva operaciones.
+
+\begin{teo}
+	Existe un único homomorfismo $\epsilon$ del grupo simétrico $S_n$ en el grupo $\{-1, 1\}$ que satisface
+	$$\epsilon(\sigma) = -1$$
+	para toda trasposición $\sigma$.\\
+	
+	$\forall \sigma \in S_n$ vale:
+	$$\epsilon(\sigma) = (-1)^{\nu(\sigma)}$$
+	donde $\nu(\sigma)$ es el número de pares $(i,j)$ de elementos de $\inte{1}{n}$ tales que $i < j$ para $\sigma(i) > \sigma(j)$. Tales pares se llaman las \textbf{inversiones de la permutación} $\sigma$, $\epsilon(\sigma)$ se llama el \textbf{signo de la permutación} $\sigma$ (y se designa por $\mathrm{sgn}$).
+	
+	\begin{proof}
+		Si existe un homomorfismo deseado $\epsilon$, es necesariamente único. En efecto, en virtud del Teorema \ref{teo:DescomposiciónTrasposiciones} toda permutación $\sigma \in S_n$ puede representarse en la forma $\sigma = \tau_1 \cdots \tau_m$, donde $\tau_1, \ldots, \tau_m$ son trasposiciones. Por ser $\epsilon$ un homomorfismo vale $\epsilon(\sigma) = \epsilon(\tau_1)\cdots\epsilon(\tau_m)$. Además, puesto que $\epsilon$ toma el valor $-1$ sobre toda la trasposición, se sigue de ahí $\epsilon(\sigma) = (-1)^{m}$. Por tanto se conoce el valor de $\epsilon$ sobre toda permutación, elemento de $S_n$.
+		
+		Probemos la existencia del homomorfismo $\epsilon$. Pongamos:
+		\begin{align*}
+			P &:= \prod\limits_{\underset{i < j}{i,j\in\inte{1}{n}}} (j - i) \text{ y } \\
+			\sigma P &:= \prod\limits_{i < j} (\sigma(j) - \sigma(i))
+		\end{align*}
+		Los factores de $P$ son, a menos del orden y del signo, los mismo que los de la derecha de $\sigma P$. Más precisamente, el factor $\sigma(j) - \sigma(i)$ es negativo si y sólo si $(i,j)$ es una inversión de $\sigma$. Tenemos pues:
+		$$\sigma P = \epsilon(\sigma) P$$
+		donde $\epsilon(\sigma):=(-1)^{\nu(\sigma)}$ y $\nu(\sigma)$ es el número de inversiones de la permutación $\sigma$. Más generalmente si $f$ es cualquier aplicación de $\inte{1}{n}$ en $\inte{1}{n}$ se verifica:
+		$$\prod\limits_{i<j} (f(\sigma(j)) - f(\sigma(i))) = \epsilon(\sigma) \prod\limits_{i<j} (f(j) - f(i)).$$
+		En efecto, como antes, los factores a la izquierda de esta última igualdad son los mismos, a menos del orden y el signo, que los a la derecha y el número de cambios de signo es siempre $\nu(\sigma)$.
+		
+		Sean $\sigma, \tau$ permutaciones arbitrarias, elementos de $S_n$. Al escribir la última igualdad con $f = \tau$ obtenemos mediante las últimas cuatro igualdades
+		\begin{align*}
+			\epsilon(\tau \sigma)P &= (\tau \sigma) P = \prod\limits_{i<j} (\tau \sigma(j) - \tau\sigma(i)) \\
+			&= \epsilon(\sigma) \prod\limits_{i<j} (\tau(j) - \tau(i)) \\
+			&= \epsilon(\sigma)\epsilon(\tau) P
+		\end{align*}
+		De ahí:
+		$$\epsilon(\tau\sigma) = \epsilon(\tau) \cdot \epsilon(\sigma).$$
+		Esta relación prueba que $\epsilon$ es un homomorfismo del grupo $S_n$ sobre el grupo $\{-1, 1\}$.
+		
+		Queda por probar que $\epsilon$ toma valor $-1$ sobre toda trasposición. Sea $\sigma = (a,b)$ una trasposición arbitraria. Aquí $a,b$ son elementos distintos de $\inte{1}{n}$. Cabe suponer $a < b$ y escribir $b = a + r$ con $r \in \mathbb{N}$.
+		
+		Las inversiones de $\sigma = (a, a + r)$ son:
+		\begin{align*}
+			(a; a + 1), (a; a + 2), \ldots, (a ; a + r - 1), \\
+			(a + 1; a + r), (a + 2; a + r), \ldots, (a + r - 1; a + r), \\
+			\text{y } (a ; a + r).
+		\end{align*}
+		El número de dichas inversiones es $2r - 1$, luego: 
+		$$\epsilon (\sigma) = (-1)^{2r - 1} = -1.$$
+	\end{proof}
+\end{teo}
+
+\begin{dfn}
+	Sea $\sigma \in S_n$. $\sigma$ se dice \textbf{permutación par} si $\sgn{\sigma} = 1$. $\sigma$ se dice \textbf{permutación impar} si $\sgn{\sigma} = -1$. Si representamos $\sigma$ como producto de trasposiciones, $\sigma$ será una permutación par o impar según el número de dichas trasposiciones sea par o impar.
+\end{dfn}
+
+De ahí se sigue:
+{\itshape Si representamos una misma permutación de diferentes maneras como producto de trasposiciones, la paridad del número de factores es siempre la misma o sea depende solamente de $\sigma$.}
+
+\begin{teo} \label{teo:sigmatauParSSITienenLaMismaParidad}
+	Sean $\sigma, \tau \in S_n$. El producto $\sigma \tau$ es una permutación par si y sólo si ambas $\sigma$ y $\tau$ son permutaciones pares o ambas son impares.
+	
+	$\sigma \tau$ es una permutación impar si una de las permutaciones $\sigma, \tau$ es par y la otra es impar.
+	
+	\begin{proof}
+		Ejercicio.
+	\end{proof}
+\end{teo}
+
+Se designa por $A_n$ al conjunto de todas las permutaciones pares de grado $n$.
+
+\begin{teo} \label{teo:A_nEsSubgrupoDeS_n}
+	$A_n$ es un subgrupo de $S_n$. $A_n$ se llama el \textbf{grupo alternado de grado $n$}.
+	
+	\begin{proof}
+		Ejercicio.
+	\end{proof}
+\end{teo}
+
+\begin{teo}
+	Si $n \geq 2$ el número de permutaciones pares de grado $n$ es igual al número de permutaciones impares de grado $n$, luego ambos son $\frac{n!}{2}$. Por tanto
+	$$\circ(A_n) = \frac{n!}{2}.$$
+	
+	\begin{proof}
+		Sea $\alpha$ una permutación impar fija de grado $n$. La aplicación $\sigma \to \alpha\sigma$ es una biyección de $S_n$ sobre sí mismo. Intercambia $A_n$ con su complemento. De ahí la conclusión.
+	\end{proof}
+\end{teo}
+
+\section{Funciones determinantes}
+\begin{dfn}[Función $n$-lineal]
+	Sea $R$ un anillo conmutativo con identidad. Si
+	$$ \fdefc{D}{\Mnc{n}{R}}{R}{A}{D(A)} $$
+	y $\alpha_1, \ldots, \alpha_n$ representan las filas de la matriz $A$, se dice que $\fdefc{D}{\Mnc{n}{R}}{R}{A}{D(A)}$ es $n$-lineal si $\forall i \in \inte{1}{n}$ D es función lineal en la $i$-ésima fila cuando las demás filas quedan fijas, es decir
+	
+	$$D(\alpha_1, \ldots, c\alpha_i + \alpha_i', \ldots, \alpha_n) = cD(\alpha_1, \ldots, \alpha_i, \ldots, \alpha_n) + D(\alpha_1, \ldots, \alpha_i', \ldots, \alpha_n)$$
+	
+	donde $(\alpha_1, \ldots, c\alpha_i + \alpha_i', \ldots, \alpha_n)$ es la representación en filas de la matriz $A$.
+\end{dfn}
+
+\begin{lema} \label{lema:CLDeFuncionesNLinealesAlternantesSonCerradas}
+	Combinaciones lineales de funciones $n$-lineales son $n$-lineales.
+	
+	\begin{proof}
+		Ejercicio.
+	\end{proof}
+\end{lema}
+
+\begin{dfn}[Función $n$-lineal alternada]
+	Sea $R$ un anillo conmutativo con identidad. Si $\fdefc{D}{\Mnc{n}{R}}{R}{A}{D(R)}$ es una función $n$-lineal, esta se dice alternada si $D(A) = 0$ cuando dos filas son iguales.
+\end{dfn}
+
+\begin{lema}
+	Sea $\fdefc{D}{\Mnc{n}{R}}{R}{A}{D(R)}$ una función $n$-lineal alternada. Entonces, si $A'$ es una matriz obtenida al intercambiar dos renglones de la matriz $A$, entonces $D(A) = -D(A')$.
+	
+	\begin{proof}
+		Sean $\alpha_1, \ldots, \alpha_n$ las filas de $A$. Como $D$ es $n$-lineal
+		\begin{align*}
+			D(\alpha_1, \ldots, \alpha_i + \alpha_j, \ldots, \alpha_i + \alpha_j, \ldots, \alpha_n) &= D(\alpha_1, \ldots, \alpha_i, \ldots, \alpha_i, \ldots, \alpha_n)\\ &+ D(\alpha_1, \ldots, \alpha_i, \ldots, \alpha_j,  \ldots, \alpha_n)\\ &+ D(\alpha_1, \ldots, \alpha_j, \ldots, \alpha_i, \ldots, \alpha_n)\\ &+ D(\alpha_1, \ldots, \alpha_j, \ldots, \alpha_j, \ldots, \alpha_n)
+		\end{align*} de donde, como $D$ es alternante
+		\begin{align*}
+			D(\alpha_1, \ldots, \alpha_i + \alpha_j, \ldots, \alpha_i + \alpha_j, \ldots, \alpha_n) &= D(\alpha_1, \ldots, \alpha_i, \ldots, \alpha_j,  \ldots, \alpha_n) \\
+			&+ D(\alpha_1, \ldots, \alpha_j, \ldots, \alpha_i, \ldots, \alpha_n) \\
+			&= D(A) + D(A') \\
+			&= 0.
+		\end{align*} luego entonces $D(A) = -D(A')$.
+	\end{proof}
+\end{lema}
+
+\begin{dfn}[Función determinante]
+	Sea $R$ un anillo conmutativo con identidad y sea $\fdefc{D}{\Mnc{n}{R}}{R}{A}{D(R)}$. Decimos que $D$ es una función determinante si $D$ es $n$-lineal alternante y $D(I) = 1$.
+\end{dfn}
+
+\begin{teo}[Unicidad de la función determinante en $\Mnc{n}{R}$]
+	Sea $R$ un anillo conmutativo con identidad. Entonces existe una y sólo una función determinante $$\fdefc{\det}{\Mnc{n}{R}}{R}{A}{\det(A)}$$ definida por 
+	$$\det(A) = \sum\limits_{\sigma \in S_n}\sgn{\sigma}\prod\limits_{i=1}^{n} A((i, \sigma(i))).$$
+	Si $\fdefc{D}{\Mnc{n}{R}}{R}{A}{D(A)}$ es cualquier función $n$-lineal alternante entonces
+	$$D(A) = \det(A)D(I).$$
+	
+	\begin{proof}
+		Sean $\alpha_1, \ldots, \alpha_n$ las filas de $A$ y sean $\epsilon_1, \ldots, \epsilon_n$ las filas de la matriz identidad $I$. Entonces se tiene que $A = AI$, o bien
+		$$[AI]((i,j)) = \sum\limits_{k=1}^{n} A((i,k))I((k,j))$$
+		entonces $\alpha_1 = \sum\limits_{k_1=1}^{n}A((1,k_1))\epsilon_{k_1}$. Luego
+		\begin{align*}
+			D(A) &= D(\alpha_1, \ldots, \alpha_n) \\
+			&= D\left(\sum\limits_{k_1=1}^{n}A((1,k_1))\epsilon_{k_1}, \ldots, \alpha_n\right) \\
+			&= \sum\limits_{k_1=1}^{n}A(1,k_1) D(\epsilon_{k_1}, \ldots, \alpha_n).
+		\end{align*}
+		
+		Análogamente tenemos $\alpha_2 = \sum\limits_{k_2=1}^{n}A((2,k_2))\epsilon_{k_2}$, de donde
+		\begin{align*}
+			D(A) &= \sum\limits_{k_1=1}^{n}A(1,k_1) \sum\limits_{k_2=1}^{n}A(2,k_2)  D(\epsilon_{k_1}, \epsilon_{k_2} , \ldots, \alpha_n)\\
+			&= \sum\limits_{k_1=1}^{n} \sum\limits_{k_2=1}^{n} A(1,k_1) A(2,k_2)  D(\epsilon_{k_1}, \epsilon_{k_2} , \ldots, \alpha_n).
+		\end{align*}
+		y de manera similar obtenemos al final
+		\begin{align*}
+			D(A) = \sum\limits_{k_1=1}^{n} \cdots \sum\limits_{k_n=1}^{n} \prod\limits_{i=1}^{n} A((i, k_i)) D(\epsilon_{k_1}, \ldots, \epsilon_{k_n}),
+		\end{align*}
+		de donde, como $D$ es $n$-lineal alternada se tiene que para todo $k_i, k_j \in \inte{1}{n}$ tal que $i = j$ $D(\epsilon_{k_1}, \ldots, \epsilon_{k_n}) = 0$, por lo que tenemos que
+		$$D(A) = \sum\limits_{\sigma \in S_n} \prod\limits_{i=1}^{n} A((i, \sigma(i))) D(\epsilon_{\sigma(1)}, \ldots, \epsilon_{\sigma(n)}).$$
+		Realizando una cantidad finita $l$ de intercambios de renglón obtenemos que
+		$$D(A) = \sum\limits_{\sigma \in S_n} \prod\limits_{i=1}^{n} A((i, \sigma(i))) (-1)^l D(I)$$
+		de donde $D(\epsilon_{\sigma(1)}, \ldots, \epsilon_{\sigma(n)}) = (-1)^l D(I)$, y en particular, si $D$ es una función determinante, entonces
+		$$D(\epsilon_{\sigma(1)}, \ldots, \epsilon_{\sigma(n)}) = (-1)^l.$$
+		Luego, el intercambio de filas equivale a descomponer la permutación en transposiciones, esto es, que $(-1)^l = \sgn{\sigma}$. Luego entonces, para $\det$ función determinante
+		$$\det(A) = \sum\limits_{\sigma \in S_n} \sgn{\sigma} \prod\limits_{i=1}^{n} A((i, \sigma(i))).$$
+		
+		Luego, si $D$ es una función $n$-lineal alternante, entonces
+		\begin{align*}
+			D(A) &= \sum\limits_{\sigma \in S_n} \sgn{\sigma} \prod\limits_{i=1}^{n} A((i, \sigma(i))) D(I) \\
+			&= \det(A) D(I).
+		\end{align*}
+	\end{proof}
+\end{teo}
+
+\begin{teo} \label{teo:DetAB=DetADetB}
+	Sea $R$ un anillo conmutativo con identidad, y sean $A,B \in \Mnc{n}{R}$. Entonces 
+	$$\det(AB) = \det(A) \det(B)$$
+	
+	\begin{proof}
+		Ejercicio.
+	\end{proof}
+\end{teo}
+
+\section{Ejercicios}
+\begin{enumerate}[label=\arabic*.]
+	\item Demostrar el Teorema \ref{teo:sigmatauParSSITienenLaMismaParidad}.
+	\item Demostrar el Teorema \ref{teo:A_nEsSubgrupoDeS_n}.
+	\item Demostrar el Lema \ref{lema:CLDeFuncionesNLinealesAlternantesSonCerradas}
+	\item Demostrar el Teorema \ref{teo:DetAB=DetADetB}.
+	\item Demostrar que toda permutación en $S_n$, $n \geq 3$ se puede descomponer en $3$-ciclos de la forma $(1,2,3), (1,2,4), \ldots, (1,2,n)$.
+	\item Sea $R$ una anillo conmutativo con identidad y $A \in \Mnc{3}{R}$ con
+	$$A = \begin{bmatrix}
+		0 & a & b \\
+		-a & 0 & c \\
+		-b & -c & 0
+	\end{bmatrix}$$
+	\item Sea $F$ un campo y $A \in \Mnc{n}{F}$. Si $A$ es invertible demuestre que $\det(A) \not= 0$.
+	\item Una matriz $A \in \Mnc{n}{R}$, $R$ un anillo conmutativo con identidad, se dice triangular si $A_{ij} = 0$ para $i,j \in \inte{1}{n}$ con $i > j$ o si $A_{ij} = 0$ para $i < j$. Demuestra que si $A$ es una matriz triangular entonces
+	$$ \det(A) = \prod_{i=1}^{n} A_{ii} $$
+	\item Sea $\sigma \in S_n$ y $A \in \Mnc{n}{F}$, con $F$ un campo. Sean $\alpha_1, \ldots, \alpha_n$ los vectores fila de $A$. Definimos
+	$$\sigma(A) = [\alpha_{\sigma(1)}, \cdots, \alpha_{\sigma(n)}].$$
+	\begin{enumerate}[label=\alph*.]
+		\item Sea $B \in \Mnc{n}{F}$. Demuestre que $\sigma(AB) = \sigma(A)B$, y en particular que $\sigma(A) = \sigma(I)A$.
+		\item Sea $\fdefc{T}{F^n}{F^n}{(x_1, \ldots, x_n)}{x_{\sigma(1)}, \ldots, x_{\sigma(n)}}$. Probar que $T$ es un operador lineal invertible.
+		\item Probar que $[T]_{\mathscr{C}} = \sigma(I)$.
+		\item ¿Es $\sigma^{-1}(I)$ la matriz inversa de $\sigma(I)$?
+		\item ¿Es $\sigma(A)$ similar a $A$?
+	\end{enumerate}
+	\item Juegue determinética.
+\end{enumerate}
