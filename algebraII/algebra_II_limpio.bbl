@@ -1,0 +1,564 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{anyt/global//global/global}
+    \entry{gruposI}{book}{}
+      \name{author}{4}{}{%
+        {{hash=5d8f9b75a0a1a306f424d60130d62c01}{%
+           family={Avella},
+           familyi={A\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=b3063a9ddb055fb687ca91015c89026a}{%
+           family={Mendoza},
+           familyi={M\bibinitperiod},
+           given={O.},
+           giveni={O\bibinitperiod}}}%
+        {{hash=5b419cdf568f8998d6385499cc204b75}{%
+           family={Sánchez},
+           familyi={S\bibinitperiod},
+           given={E.\bibnamedelimi C.},
+           giveni={E\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=067ff1567f4805f9cf0ac45c6faa8781}{%
+           family={Souto},
+           familyi={S\bibinitperiod},
+           given={M.\bibnamedelimi J.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Instituto de Matemáticas}%
+      }
+      \strng{namehash}{7dd46895ea27ca175f1a8017efee4424}
+      \strng{fullhash}{54c92f5d81c0d91961000574e2e1d371}
+      \strng{bibnamehash}{54c92f5d81c0d91961000574e2e1d371}
+      \strng{authorbibnamehash}{54c92f5d81c0d91961000574e2e1d371}
+      \strng{authornamehash}{7dd46895ea27ca175f1a8017efee4424}
+      \strng{authorfullhash}{54c92f5d81c0d91961000574e2e1d371}
+      \field{labelalpha}{Ave+17}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{3}
+      \field{isbn}{9786070294358}
+      \field{title}{Grupos I}
+      \field{year}{2017}
+    \endentry
+    \entry{alfredologica}{book}{}
+      \name{author}{1}{}{%
+        {{hash=eaf0b94dec68c6915c140ab37ca407db}{%
+           family={Deaño},
+           familyi={D\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Editorial Alianza}%
+      }
+      \strng{namehash}{eaf0b94dec68c6915c140ab37ca407db}
+      \strng{fullhash}{eaf0b94dec68c6915c140ab37ca407db}
+      \strng{bibnamehash}{eaf0b94dec68c6915c140ab37ca407db}
+      \strng{authorbibnamehash}{eaf0b94dec68c6915c140ab37ca407db}
+      \strng{authornamehash}{eaf0b94dec68c6915c140ab37ca407db}
+      \strng{authorfullhash}{eaf0b94dec68c6915c140ab37ca407db}
+      \field{labelalpha}{Dea99}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1}
+      \field{isbn}{9788420686813}
+      \field{title}{Introducción a la lógica formal}
+      \field{year}{1999}
+    \endentry
+    \entry{tecoloteI}{book}{}
+      \name{author}{2}{}{%
+        {{hash=ae167a01d9c8785a3acc43e37579d8eb}{%
+           family={Fernández},
+           familyi={F\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=06cdc11dee68e37fceaa63d1e1ef39c0}{%
+           family={Villegas},
+           familyi={V\bibinitperiod},
+           given={L.\bibnamedelimi M.},
+           giveni={L\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Universidad Autónoma Metropolitana}%
+      }
+      \strng{namehash}{421604a23a95061e21a2cbadca9646fa}
+      \strng{fullhash}{421604a23a95061e21a2cbadca9646fa}
+      \strng{bibnamehash}{421604a23a95061e21a2cbadca9646fa}
+      \strng{authorbibnamehash}{421604a23a95061e21a2cbadca9646fa}
+      \strng{authornamehash}{421604a23a95061e21a2cbadca9646fa}
+      \strng{authorfullhash}{421604a23a95061e21a2cbadca9646fa}
+      \field{extraname}{1}
+      \field{labelalpha}{FV13}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1}
+      \field{isbn}{9786074779752}
+      \field{title}{Teoría de conjuntos, lógica y temas afines I}
+      \field{year}{2013}
+    \endentry
+    \entry{tecoloteII}{book}{}
+      \name{author}{2}{}{%
+        {{hash=ae167a01d9c8785a3acc43e37579d8eb}{%
+           family={Fernández},
+           familyi={F\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=06cdc11dee68e37fceaa63d1e1ef39c0}{%
+           family={Villegas},
+           familyi={V\bibinitperiod},
+           given={L.\bibnamedelimi M.},
+           giveni={L\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Universidad Autónoma Metropolitana}%
+      }
+      \strng{namehash}{421604a23a95061e21a2cbadca9646fa}
+      \strng{fullhash}{421604a23a95061e21a2cbadca9646fa}
+      \strng{bibnamehash}{421604a23a95061e21a2cbadca9646fa}
+      \strng{authorbibnamehash}{421604a23a95061e21a2cbadca9646fa}
+      \strng{authornamehash}{421604a23a95061e21a2cbadca9646fa}
+      \strng{authorfullhash}{421604a23a95061e21a2cbadca9646fa}
+      \field{extraname}{2}
+      \field{labelalpha}{FV17}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1}
+      \field{isbn}{9786072812109}
+      \field{title}{Teoría de conjuntos, lógica y temas afines II}
+      \field{year}{2017}
+    \endentry
+    \entry{settheoryhernandez}{book}{}
+      \name{author}{1}{}{%
+        {{hash=90695875308e089467219f65af0d2dcf}{%
+           family={Hernández},
+           familyi={H\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Aportaciones matemáticas}%
+      }
+      \strng{namehash}{90695875308e089467219f65af0d2dcf}
+      \strng{fullhash}{90695875308e089467219f65af0d2dcf}
+      \strng{bibnamehash}{90695875308e089467219f65af0d2dcf}
+      \strng{authorbibnamehash}{90695875308e089467219f65af0d2dcf}
+      \strng{authornamehash}{90695875308e089467219f65af0d2dcf}
+      \strng{authorfullhash}{90695875308e089467219f65af0d2dcf}
+      \field{labelalpha}{Her17}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{isbn}{9786073022378}
+      \field{title}{Teoría de conjuntos una introducción}
+      \field{year}{2017}
+    \endentry
+    \entry{hoffman}{book}{}
+      \name{author}{2}{}{%
+        {{hash=47bd51b15d49e93725a8663a48d6c49d}{%
+           family={Hoffman},
+           familyi={H\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+        {{hash=8194e9d486fb3f05105a9ed09948ff15}{%
+           family={Kunze},
+           familyi={K\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Pearson}%
+      }
+      \strng{namehash}{be5515575d84c7b59fc2cd69315d52f3}
+      \strng{fullhash}{be5515575d84c7b59fc2cd69315d52f3}
+      \strng{bibnamehash}{be5515575d84c7b59fc2cd69315d52f3}
+      \strng{authorbibnamehash}{be5515575d84c7b59fc2cd69315d52f3}
+      \strng{authornamehash}{be5515575d84c7b59fc2cd69315d52f3}
+      \strng{authorfullhash}{be5515575d84c7b59fc2cd69315d52f3}
+      \field{labelalpha}{HK71}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{isbn}{978-0135367971}
+      \field{title}{Linear Algebra}
+      \field{year}{1971}
+    \endentry
+    \entry{algebraivorra}{book}{}
+      \name{author}{1}{}{%
+        {{hash=d08d5f379565f376e5d11a37a8836da4}{%
+           family={Ivorra},
+           familyi={I\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Carlos Ivorra Castillo}%
+      }
+      \strng{namehash}{d08d5f379565f376e5d11a37a8836da4}
+      \strng{fullhash}{d08d5f379565f376e5d11a37a8836da4}
+      \strng{bibnamehash}{d08d5f379565f376e5d11a37a8836da4}
+      \strng{authorbibnamehash}{d08d5f379565f376e5d11a37a8836da4}
+      \strng{authornamehash}{d08d5f379565f376e5d11a37a8836da4}
+      \strng{authorfullhash}{d08d5f379565f376e5d11a37a8836da4}
+      \field{extraname}{1}
+      \field{labelalpha}{Ivo25}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extraalpha}{1}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Álgebra}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.uv.es/ivorra/Libros/Al.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.uv.es/ivorra/Libros/Al.pdf
+      \endverb
+    \endentry
+    \entry{logicivorra}{book}{}
+      \name{author}{1}{}{%
+        {{hash=d08d5f379565f376e5d11a37a8836da4}{%
+           family={Ivorra},
+           familyi={I\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Carlos Ivorra Castillo}%
+      }
+      \strng{namehash}{d08d5f379565f376e5d11a37a8836da4}
+      \strng{fullhash}{d08d5f379565f376e5d11a37a8836da4}
+      \strng{bibnamehash}{d08d5f379565f376e5d11a37a8836da4}
+      \strng{authorbibnamehash}{d08d5f379565f376e5d11a37a8836da4}
+      \strng{authornamehash}{d08d5f379565f376e5d11a37a8836da4}
+      \strng{authorfullhash}{d08d5f379565f376e5d11a37a8836da4}
+      \field{extraname}{2}
+      \field{labelalpha}{Ivo25}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extraalpha}{2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Lógica Matemática}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.uv.es/ivorra/Libros/LM.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.uv.es/ivorra/Libros/LM.pdf
+      \endverb
+    \endentry
+    \entry{setlogicivorra}{book}{}
+      \name{author}{1}{}{%
+        {{hash=d08d5f379565f376e5d11a37a8836da4}{%
+           family={Ivorra},
+           familyi={I\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Carlos Ivorra Castillo}%
+      }
+      \strng{namehash}{d08d5f379565f376e5d11a37a8836da4}
+      \strng{fullhash}{d08d5f379565f376e5d11a37a8836da4}
+      \strng{bibnamehash}{d08d5f379565f376e5d11a37a8836da4}
+      \strng{authorbibnamehash}{d08d5f379565f376e5d11a37a8836da4}
+      \strng{authornamehash}{d08d5f379565f376e5d11a37a8836da4}
+      \strng{authorfullhash}{d08d5f379565f376e5d11a37a8836da4}
+      \field{extraname}{3}
+      \field{labelalpha}{Ivo25}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extraalpha}{3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Lógica y Teoría de Conjuntos}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.uv.es/ivorra/Libros/Logica.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.uv.es/ivorra/Libros/Logica.pdf
+      \endverb
+    \endentry
+    \entry{algebrajacobson}{book}{}
+      \name{author}{1}{}{%
+        {{hash=11d3b5361f90e784b46b309965b8c1a9}{%
+           family={Jacobson},
+           familyi={J\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer New York}%
+      }
+      \strng{namehash}{11d3b5361f90e784b46b309965b8c1a9}
+      \strng{fullhash}{11d3b5361f90e784b46b309965b8c1a9}
+      \strng{bibnamehash}{11d3b5361f90e784b46b309965b8c1a9}
+      \strng{authorbibnamehash}{11d3b5361f90e784b46b309965b8c1a9}
+      \strng{authornamehash}{11d3b5361f90e784b46b309965b8c1a9}
+      \strng{authorfullhash}{11d3b5361f90e784b46b309965b8c1a9}
+      \field{labelalpha}{Jac53}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9781468470550}
+      \field{title}{Lectures in Abstract Algebra: II. Linear Algebra}
+      \field{year}{1953}
+    \endentry
+    \entry{kolmogorov}{book}{}
+      \name{author}{2}{}{%
+        {{hash=aadf44e45ed3eaf797179742cb37adb1}{%
+           family={Kolmogorov},
+           familyi={K\bibinitperiod},
+           given={A.\bibnamedelimi N.},
+           giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=a4d13bf79b7442dea1802d42a9703fab}{%
+           family={Fomin},
+           familyi={F\bibinitperiod},
+           given={S.V.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Dover Publications}%
+      }
+      \strng{namehash}{3b1cfe04b9d7524890e818965cbb9fc7}
+      \strng{fullhash}{3b1cfe04b9d7524890e818965cbb9fc7}
+      \strng{bibnamehash}{3b1cfe04b9d7524890e818965cbb9fc7}
+      \strng{authorbibnamehash}{3b1cfe04b9d7524890e818965cbb9fc7}
+      \strng{authornamehash}{3b1cfe04b9d7524890e818965cbb9fc7}
+      \strng{authorfullhash}{3b1cfe04b9d7524890e818965cbb9fc7}
+      \field{labelalpha}{KF70}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780486612263}
+      \field{title}{Introductory Real Analysis}
+      \field{year}{1970}
+    \endentry
+    \entry{metamathematics}{book}{}
+      \name{author}{1}{}{%
+        {{hash=a8ca9bca77a4b96b2595d31020d200bc}{%
+           family={Kleene},
+           familyi={K\bibinitperiod},
+           given={S.C.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {North-Holland Publishing Co.}%
+      }
+      \strng{namehash}{a8ca9bca77a4b96b2595d31020d200bc}
+      \strng{fullhash}{a8ca9bca77a4b96b2595d31020d200bc}
+      \strng{bibnamehash}{a8ca9bca77a4b96b2595d31020d200bc}
+      \strng{authorbibnamehash}{a8ca9bca77a4b96b2595d31020d200bc}
+      \strng{authornamehash}{a8ca9bca77a4b96b2595d31020d200bc}
+      \strng{authorfullhash}{a8ca9bca77a4b96b2595d31020d200bc}
+      \field{labelalpha}{Kle52}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780720421033}
+      \field{title}{Introduction to Metamathematics}
+      \field{year}{1952}
+    \endentry
+    \entry{kitakawa}{book}{}
+      \name{author}{1}{}{%
+        {{hash=0729f1a84cd3b5f91a5cc10310ac2ae0}{%
+           family={(manio)},
+           familyi={(\bibinitperiod},
+           given={まにお},
+           giveni={ま\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {一迅社}%
+      }
+      \strng{namehash}{0729f1a84cd3b5f91a5cc10310ac2ae0}
+      \strng{fullhash}{0729f1a84cd3b5f91a5cc10310ac2ae0}
+      \strng{bibnamehash}{0729f1a84cd3b5f91a5cc10310ac2ae0}
+      \strng{authorbibnamehash}{0729f1a84cd3b5f91a5cc10310ac2ae0}
+      \strng{authornamehash}{0729f1a84cd3b5f91a5cc10310ac2ae0}
+      \strng{authorfullhash}{0729f1a84cd3b5f91a5cc10310ac2ae0}
+      \field{labelalpha}{man22}
+      \field{sortinit}{m}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9784758023955}
+      \field{title}{きたない君がいちばんかわいい(5)}
+      \field{year}{2022}
+    \endentry
+    \entry{mathlogicmonk}{book}{}
+      \name{author}{1}{}{%
+        {{hash=77e0b364348688aec6aab54187f86d19}{%
+           family={Monk},
+           familyi={M\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer New York}%
+      }
+      \strng{namehash}{77e0b364348688aec6aab54187f86d19}
+      \strng{fullhash}{77e0b364348688aec6aab54187f86d19}
+      \strng{bibnamehash}{77e0b364348688aec6aab54187f86d19}
+      \strng{authorbibnamehash}{77e0b364348688aec6aab54187f86d19}
+      \strng{authornamehash}{77e0b364348688aec6aab54187f86d19}
+      \strng{authorfullhash}{77e0b364348688aec6aab54187f86d19}
+      \field{labelalpha}{Mon76}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780387901701}
+      \field{title}{Mathematical Logic}
+      \field{year}{1976}
+    \endentry
+    \entry{biberstein}{book}{}
+      \name{author}{1}{}{%
+        {{hash=434a3cc4a9777ffb8d779c419ac37cb3}{%
+           family={Morales},
+           familyi={M\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Instituto Politécnico Nacional}%
+      }
+      \strng{namehash}{434a3cc4a9777ffb8d779c419ac37cb3}
+      \strng{fullhash}{434a3cc4a9777ffb8d779c419ac37cb3}
+      \strng{bibnamehash}{434a3cc4a9777ffb8d779c419ac37cb3}
+      \strng{authorbibnamehash}{434a3cc4a9777ffb8d779c419ac37cb3}
+      \strng{authornamehash}{434a3cc4a9777ffb8d779c419ac37cb3}
+      \strng{authorfullhash}{434a3cc4a9777ffb8d779c419ac37cb3}
+      \field{labelalpha}{Mor14}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1}
+      \field{isbn}{9786074144208}
+      \field{title}{Variedades diferenciables: un enfoque debido a O. A. Biberstein. Elementos de álgebra exterior, Volumen 1}
+      \field{year}{2014}
+    \endentry
+    \entry{quine}{book}{}
+      \name{author}{1}{}{%
+        {{hash=2738c1131ffac79d3ec42817748e1478}{%
+           family={Quine},
+           familyi={Q\bibinitperiod},
+           given={W.\bibnamedelimi Van\bibnamedelima O.},
+           giveni={W\bibinitperiod\bibinitdelim V\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Belknap Press of Harvard University Press}%
+      }
+      \strng{namehash}{2738c1131ffac79d3ec42817748e1478}
+      \strng{fullhash}{2738c1131ffac79d3ec42817748e1478}
+      \strng{bibnamehash}{2738c1131ffac79d3ec42817748e1478}
+      \strng{authorbibnamehash}{2738c1131ffac79d3ec42817748e1478}
+      \strng{authornamehash}{2738c1131ffac79d3ec42817748e1478}
+      \strng{authorfullhash}{2738c1131ffac79d3ec42817748e1478}
+      \field{labelalpha}{Qui69}
+      \field{sortinit}{Q}
+      \field{sortinithash}{ce69a400a872ddd02ee7fdb3b38c6abd}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Revised edition}
+      \field{isbn}{0674802071}
+      \field{title}{Set Theory and Its Logic}
+      \field{year}{1969}
+    \endentry
+    \entry{settheoryraymond}{book}{}
+      \name{author}{2}{}{%
+        {{hash=1ec2605277eca200eeefb1cf051d634f}{%
+           family={Smullyan},
+           familyi={S\bibinitperiod},
+           given={R.\bibnamedelimi M.},
+           giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=a3cfb3cec2071ecf3f5ac7d3168998bd}{%
+           family={Fitting},
+           familyi={F\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Dover Publications}%
+      }
+      \strng{namehash}{f7c2b1dbec6ce110c2da51adabb3960c}
+      \strng{fullhash}{f7c2b1dbec6ce110c2da51adabb3960c}
+      \strng{bibnamehash}{f7c2b1dbec6ce110c2da51adabb3960c}
+      \strng{authorbibnamehash}{f7c2b1dbec6ce110c2da51adabb3960c}
+      \strng{authornamehash}{f7c2b1dbec6ce110c2da51adabb3960c}
+      \strng{authorfullhash}{f7c2b1dbec6ce110c2da51adabb3960c}
+      \field{labelalpha}{SF96}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780486474847}
+      \field{title}{Set Theory and the Continuum Problem}
+      \field{year}{1996}
+    \endentry
+    \entry{shimeji}{book}{}
+      \name{author}{1}{}{%
+        {{hash=0e5da3194b009ccd34620db02daa5a92}{%
+           family={(tkmiz)},
+           familyi={(\bibinitperiod},
+           given={つくみず},
+           giveni={つ\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {KADOKAWA}%
+      }
+      \strng{namehash}{0e5da3194b009ccd34620db02daa5a92}
+      \strng{fullhash}{0e5da3194b009ccd34620db02daa5a92}
+      \strng{bibnamehash}{0e5da3194b009ccd34620db02daa5a92}
+      \strng{authorbibnamehash}{0e5da3194b009ccd34620db02daa5a92}
+      \strng{authornamehash}{0e5da3194b009ccd34620db02daa5a92}
+      \strng{authorfullhash}{0e5da3194b009ccd34620db02daa5a92}
+      \field{labelalpha}{tkm24}
+      \field{sortinit}{t}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9784046832092}
+      \field{title}{シメジシミュレーション 05}
+      \field{year}{2024}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
