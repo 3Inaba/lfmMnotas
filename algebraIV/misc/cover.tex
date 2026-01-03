@@ -1,0 +1,107 @@
+\pdfbookmark[0]{Cover}{cover}
+\backgroundsetup{
+	scale=1,
+	angle=0,
+	opacity=1,
+	contents=
+	{
+	\begin{tikzpicture}[remember picture,overlay]
+		\path[
+			left color = mazul,
+			middle color = mazul,
+			right color = sazul
+		]
+		(current page.south west)
+		rectangle
+		(current page.north east);
+	\end{tikzpicture}
+	}
+}
+
+\begin{titlepage}
+	\thispagestyle{empty}
+	\newgeometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+	\begin{tikzpicture}[overlay]
+		\fill[mazul] (-1.5, -37) rectangle (0.5, 4);
+		\fill[sazul] (-2.5, -37) rectangle (-1.5, 4);
+		\fill[gwhite] (-0.5, -19.5) rectangle (0, 4);
+		\fill[hazul] (-2, -20.5) rectangle (-1.5, 4);
+		\fill[gwhite] (-2.5, -19) rectangle (0, -19.5);
+		\fill[hazul] (-2, -20) rectangle (0.5, -20.5);
+		
+		\fill[mazul] (0.5, -5.5) rectangle (19, 0.5);
+
+        \node[anchor=north east] at (19, -6.5) {
+			{
+				\fontsize{450}{0}
+				\selectfont
+				\bfseries
+				\color{sazul}
+				$\uclass$
+			}
+		};
+		\node[anchor=north east] at (8, -6) {
+			{
+				\fontsize{180}{0}
+				\selectfont
+				\bfseries
+				\color{mazul}
+				$\varnothing$
+			}
+		};
+		\node[anchor=north east] at (9, -10.5) {
+			{
+				\fontsize{150}{0}
+				\selectfont
+				\bfseries
+				\color{hazul}
+				$\nat$
+			}
+		};
+		\node[anchor=north east] at (10.5, -15) {
+			{
+				\fontsize{150}{0}
+				\selectfont
+				\bfseries
+				\color{mazul}
+				$\intg$
+			}
+		};
+		\node[anchor=north east] at (13.5, -7.5) {
+			{
+				\fontsize{150}{0}
+				\selectfont
+				\bfseries
+				\color{mazul}
+				$\rat$
+			}
+		};
+		\node[anchor=north east] at (15.5, -13) {
+			{
+				\fontsize{150}{0}
+				\selectfont
+				\bfseries
+				\color{hazul}
+				$\real$
+			}
+		};
+	\end{tikzpicture}
+	
+	\begin{spacing}{1.0}
+		{
+			\huge \color{gwhite} \scshape \noindent \RaggedRight
+			{\hspace{0.5cm} \fontsize{45}{10} \selectfont A fourth course}
+			\\[0.25cm]
+			{\hspace{0.5cm} \fontsize{45}{10} \color{hazul} \selectfont on ALGEBRA:}
+			\\[0.30cm]
+			{\hspace{0.5cm} \fontsize{45}{10} \selectfont SET THEORY}
+			\\[0.5cm]
+		}
+	\end{spacing}
+	\vfill
+	\begin{flushleft}
+		\hspace{1cm}\LARGE\color{gwhite}
+		Adiel González
+	\end{flushleft}
+\end{titlepage}
+\thispagestyle{empty}

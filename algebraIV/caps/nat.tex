@@ -1,0 +1,623 @@
+\chapter{Natural numbers}
+
+To begin the construction of natural numbers we want them to satisfy their usual properties.
+For starters, we want to define every natural number in a way that lets us obtain the following one. We also want to derive its order properties, like the tricotomy property. We want them to satisfy Peano axioms, one property in particular is to have a succesor function that is injective and for them to be inductive. We'll explore what all this means by shortly exploring Zermelo's construction and then Von Neumann's. Other constructions along with a full Zermelo's construction is found in \cite{settheorywillard}.
+
+\section{Notions and constructions}
+
+\subsection{Zermelo's construction}
+
+
+\subsection{Von Neumann's construction}
+The principal idea of this construction is to have a natural defined by its precedent numbers. This representation is actually pretty intuitive since here any natural number $n$ has exactly $n$ elements. But we do not use this property to define them since it is circular. But we can formally identify any set resembling this idea of having $n$ elements so it's clear that we can choose a representative for these sets.
+
+\begin{dfn}[Cardinality]
+    Let $X,Y$ be classes, we say that $X$ has the same cardinality as $Y$ or that $X$ is equipotent to $Y$ if there is a bijective function $\fdefc{f}{X}{Y}{x}{f(x)}$.
+\end{dfn}
+
+Notice that we can define equipotent in terms of a function that instead is defined from $Y$ to $X$.
+
+\begin{prop}
+    Let $X,Y \in \uclass$. Define $X \equip Y \bicond X$ is equipotent to $Y$.
+    Then $\equip$ is an equivalence relation in $\uclass$.
+\end{prop}
+\begin{proof}
+    The identity function $\idfunc{X}{x}$ is bijective.
+
+    If $X \equip Y$ then there is a bijective function $\fdefc{f}{X}{Y}{x}{f(x)}$, that is, it's inverse $\fdefc{f^{-1}}{Y}{X}{y}{f^{-1}(y)}$ also is bijective.
+
+    Finally, if $X \equip Y$ and $Y \equip Z$ then there are bijective functions $\fdefc{f}{X}{Y}{x}{f(x)}$ and $\fdefc{g}{Y}{Z}{y}{f(y)}$. Its composition $\fdefc{g\circ f}{X}{Z}{x}{(g \circ f) (x)}$ is bijective.
+\end{proof}
+
+So now we can choose a convenient representative for the sets that have $n$ elements. And we did not use that notion to define the concept, so there should be no contradictions. 
+
+\begin{dfn}[Natural number]
+    A set $n$ is a natural number if it satisfies:
+    \begin{enumerate}[label=\roman*)]
+        \item $n$ is transitive.
+        \item $\in_{n}$ is an strict linear ordering in $n$.
+        \item $\forall m \subset n$, $m$ has a minimum and a maximum under $\in_{n}$.
+    \end{enumerate}
+\end{dfn}
+
+Let $\nat$ denote the class of natural numbers. We now have a way to find natural numbers. For instance, $\varnothing$ is a natural number. Then, we can find the following as $1:=\{ \varnothing \}$. And now we can find $2:=\{ \varnothing, \{\varnothing\} \}$. These sets satisfy the definition (prove it), and inspire the next definition and results.
+
+\begin{dfn}[Succesor of a set]
+    If $x \in \uclass$ the succesor of $x$ is defined to be the set $x \cup \{x\}$ and is denoted $\suc{x}$.
+\end{dfn}
+
+From here on, we begin to develope our theory using these definitions.
+
+\subsection{Properties}
+\begin{prop}
+    If $n \in \nat$ and $y \in n$ then $y \in \nat$.
+\end{prop}
+\begin{proof}
+    Let $x \in n$, $y \in x$ and $z \in y$. Since $n$ is transitive, $y,z,w \in n$. Because $\in_n$ is a total order in $n$ we have that $z \in_n y \cond z \in_n x$ so $y \subset x$.
+
+    Let $u,v \in x$. Then, since $\in_n$ is a total ordering in $n$, $u,v \in n$ are $\in_n$-comparable. In particular, $v,u \in x$, are such that $v \in u$ or $u \in v$, that is $(v,u)$ or $(u,v) \in $ are in $\in_x$, so $v,u \in x$ are $\in_x$-comparable.
+
+    Let $w \subset x$. Since $w,x \in n$, $w$ has a minimum and a maximum under $\in_n$. Since in particular $t \in w \cond t \in x$ then $w$ has a minium and a maximum under $\in_x$.
+\end{proof}
+
+\begin{lema}\label{lema:NnotInN}
+    $\forall n \in \nat$, $n$ is ordinary, in other words, $n \not\in n$.
+\end{lema}
+\begin{proof}
+    If $n \in n$ then there is an element in $n$ such that $n \in_n n$ which contradicts that $\in_n$ is a strict linear ordering.
+\end{proof}
+
+\begin{prop} \label{prop:NotBothNinMandMinN}
+	$\forall n,m \in \nat$, it cannot be that both $n \in m$ and $m \in n$.
+\end{prop}
+\begin{proof}
+    If $n \in m$ and $m \in n$ then by transitivity $m \subset n$, therefore $n \in n$ which contradicts the preceeding Lema \ref{lema:NnotInN}
+\end{proof}
+
+\begin{prop}
+    If $n \in \nat$ then $\suc{n} \in \nat$.
+\end{prop}
+\begin{proof}
+    Let $x \in \suc{n}$ and $y \in x$. Then $x \in n$ or $x \in \{n\}$. If $x \in n$ then $x \in \nat$, so $y \in n$ and therefore $y \in \suc{n}$. If $x = n$ then $x \subset n$. So $\suc{n}$ is transitive.
+
+    If $u,v \in \suc{n}$ then $u,v \in n$, $u \in n \land v \in \{x\}$, $v \in n \land u \in \{n\}$ or $u,v \in \{n\}$. If $u,v \in n$ then trivially $u,v \in \suc{n}$ so $u,v$ are $\in_{\suc{n}}$-comparable. If $u \in n \land v \in \suc{n}$ then $v = n$ so $u \in v$ so $u,v \in \suc{n}$ are $\in_{\suc{n}}$-comparable. The same results of $v \in n \land u \in \suc{n}$. If $u,v \in \{n\}$ then $u = v$. So by Lema \ref{lema:NnotInN}, we have that $\in_{\suc{n}}$ is an estrict linear ordering in $\suc{n}$.
+
+    Let $w \subset \suc{n}$. If $n \not\in w$ then $w \subset n$ has a minimum and a maximum under $\in_n$, in particular $t \in w \cond t \in \suc{n}$ so $w$ has a minimum and a maximum under $\in_{\suc{n}}$. If $n \in w$ then for any $x \in w \setminus \{n\}$,  $x \in n$ so $n$ is the maximum of $w$ under $\in_{\suc{n}}$, and if $w =\{n\}$ then $n$ is both minimum and maximum, otherwise the minimum of $w \setminus \{n\}$ under $\in_n$ is also the minimum of $w$ under $\in_{\suc{n}}$.
+\end{proof}
+
+Let us state an axiom from which will be derived the known Axiom of Infinity.\\
+
+\begin{axiom}[Alternative Axiom of Infinity]\label{axiom:infinityalt}
+    Not every set is a natural number.\\
+\end{axiom}
+
+\begin{dfn}[Inductive class]
+    A class $A$ is said to be inductive if
+    \begin{enumerate}[label=\roman*)]
+        \item $\varnothing \in A$.
+        \item If $x \in A$  then $\suc{x} \in A$.
+    \end{enumerate}
+\end{dfn}
+
+Then we can derive the following theorem, also stated in some books as an axiom.
+
+\begin{thm}
+    There is an inductive set.
+\end{thm}
+\begin{proof}
+    Assume that no set in $\uclass$ is inductive. If there was an $x \in \uclass$ that was not a natural number then there would be an inductive set $A$ such that $x \not\in A$, thus, every $x \in \uclass$ is a natural number. This contradicts Axiom \ref{axiom:infinityalt}, thus there is an inductive set.
+\end{proof}
+
+\begin{thm}\label{th:NatInEveryInductiveSet}
+    If $n \in \nat$, $n$ is in every inductive set.
+\end{thm}
+\begin{proof}
+    Let $A$ be an inductive set. Assume that there is $n \in \nat$ such that $n \not\in A$. Then, $n \in \suc{n} \setminus A$, and $\suc{n} \in \nat$ so we can define $x := \min \suc{n} \setminus A$ under $\in_{\suc{n}}$. Now $x \in \nat$ and $x \subset \suc{n}$. Moreover, because of the election of $x$, if $t \in x$ then $t \in A$, so $x \subset A$. $x \not= \varnothing$ since $\varnothing \in A$, so let be $y:=\max x$ under $\in_{x}$. Now, $y \in A$ so $\suc{y} \in A$ and $\suc{y} \subset x$. If there was a $t \in x \setminus \suc{y}$ then $t \not\in y$ and $t \not= y$ so, since $\in_x$ is a total strict ordering, $y \in_x t$ so $y$ is not maximum. So $x \setminus \suc{y} = \varnothing$, therefore $x \subset \suc{y}$ and then $x = \suc{y}$ so $x \in A$. Thus $n \in A$.
+\end{proof}
+
+From this, we can prove the usually accepted axiom (now theorem):
+
+\begin{thm}[Theorem of infinity]\label{th:Infinity}
+    $\nat \in \uclass$.
+\end{thm}
+\begin{proof}
+    Let $A$ be an inductive set. Then by Theorem \ref{th:NatInEveryInductiveSet} and Axiom \ref{axiom:specification} $$\nat = \{n \in A \mid n \text{ is a natural number}\} \subset A$$ so $\nat \in \uclass$.
+\end{proof}
+
+Having established that $\nat$ is a set, now we can treat our construction of its properties and operations as in ZF.\\
+
+From Theorem \ref{th:Infinity} follows the known principle of induction.
+
+\begin{thm}[Induction Principle]\label{th:induction}
+    Let $\mathrm{P(x)}$ be a property of $x$. If
+    \begin{enumerate}[label=\roman*)]
+        \item $\pPs(0)$,
+        \item $\forall k \in \nat$, $\pPs(k) \implies \pPs(\suc{k})$,
+    \end{enumerate}
+    then $\pPs(n)$ $\forall n \in \nat$.
+\end{thm}
+\begin{proof}
+    Let $W := \{k \in \nat \mid \pPs(x)\}$. Then $W$ is inductive, thus $\nat \subset W$.\\
+\end{proof}
+
+\begin{dfn}[Order relation in $\nat$]
+    $\forall m,n \in \nat$, $m \leq n \bicond m \in n \lor m = n$.
+\end{dfn}
+
+\begin{thm}\label{th:nat_wellorder}
+    $(\nat, \leq)$ is a well ordered set.
+\end{thm}
+\begin{proof}
+    Let $l,m,n \in \nat$. Clearly $n \leq n$.
+
+    If $m \leq n$ and $n \leq m$ then $m \in n \lor m = n$, and $n \in m \lor m = n$. By Theorems \ref{lema:NnotInN}, \ref{prop:NotBothNinMandMinN} the only possible case is $m = n$.
+
+    If $l \leq m$ and $m \leq n$ then $l \in m \lor l = m$, and $m \in n \lor m = n$. If $l = m \land m = n$ then $l \leq m$. If $l \in m \land m = n$ then $l \leq m$ and similarly for $l = m \land m \in n$. Now, if $l \in m \land m \in n$, since $\in_n$ is an strict total ordering, $l \leq n$.
+
+    Now let, $n \in \nat$ and $W = \{k \in \nat \mid n \leq k \lor k \leq n\}$. If $n = 0$ then $0$ and $n$ are obviously $\leq$-comparable. If $n \not= 0$ then $0 \subset n$ and since $n \in \nat$, $0 \in \nat$ so $0$ and $n$ are $\leq$-comparable. Thus $0 \in W$.
+
+    Assume that $k \in W$, then $k$ and $n$ are $\leq$-comparable. Then $\suc{k}$ is such that $k \in \suc{k}$, so $k \leq \suc{k}$ and either $n \leq k$ or $k \leq n$. If $n \leq k$ then by transitivity $n \leq \suc{k}$. If $k \leq n$ then $k \in n$ or $k = n$, if $k = n$ then $n \in \suc{k}$ so $n \leq k$, and if $k \in n$ then, since $n \in \nat$, $n$ is transitive, so $k \subset n$ and $k \in n$ that is $k \cup \{k\} \in n$, so $\suc{k} \in n$, so $\suc{k} \in W$. So $\leq$ is a total ordering in $\nat$.
+
+    Finally, let $U$ be a non-empty set of $\nat$ and $l \in U$. Then $\suc{l} \cap U \not= \varnothing$ and $\suc{l} \cap U \subset \suc{l}$, so $\suc{l} \cap U$ has a minimum under $\in_{\suc{l}}$. Define $x := \min \suc{l} \cap U$. Assume that there is $y \in U$ such that $y \leq x$ and $y \not= x$. Then $y \in x$, that is $y \in \suc{l}$. Therefore $y \in \suc{l} \cap U$ which contradicts the fact that $x$ is minimum under $\in_{\suc{l}}$. Thus $x$ is the minimum of $U$ under $\leq$.
+\end{proof}
+
+\begin{prop}\label{prop:exists_k_st_suck=n}
+    $\forall n \in \nat \setminus \{0\}$ there exists $r \in \nat$ such that $\suc{r} = n$
+\end{prop}
+\begin{proof}
+    Let $W:=\{ x \in \nat \mid x < n \}$. Obviously $0 \in W$. By Theorem \ref{th:nat_wellorder}, we can define $r := \max W$. Then $\suc{r} \leq n$. Assume that $\suc{r} < n$, then $\suc{r} \in W$ and clearly $r < \suc{r}$, a contradiction. Thus $\suc{r} = n$.
+\end{proof}
+\newpage
+
+\section{Peano systems}
+\subsection{Algebraic structures and $g$-induction}
+
+For the remaining Peano postulates, we instead define a structure called a Peano system. And in the way, give important definitions that will be used to explore the various structures that we will discover throughout the next sections and chapters.
+
+\begin{dfn}[$n$-ary operation]
+    Let $A$ be a non-empty class, $n \in \nat \setminus \{0\}$. Let
+    $$\fdefc{F}{A^n}{A}{(a_1, \ldots, a_n)}{F((a_1, \ldots, a_n))}$$
+    be a function. Then we shall say that $F$ is  an $n$-ary operation. If $B \subset A$ with $A \not= \varnothing$ and $F(B^n) \subset B$ then we say that $B$ is closed under $F$.
+\end{dfn}
+
+\begin{dfn}[External left operation]
+    Let $A$ and $B$ be a non-empty classes. We shall say that $\fdefc{F_I}{B \times A}{A}{(b,a)}{F_I((b,a))}$ is an external left operation if $F_I$ is a function.
+\end{dfn}
+
+\begin{dfn}[External right operation]
+    Let $A$ and $B$ be a non-empty classes. We shall say that $\fdefc{F_D}{A \times B}{A}{(a,b)}{F_D((a,b))}$ is an external left operation if $F_D$ is a function.
+\end{dfn}
+
+As a short note, a distinguished element is something rather hard to define. It usually denotes an identity for an operation, or a first element, or any important element in the set that is of interest to our study.
+
+\begin{dfn}[Algebraic structure]
+    Let $k,l,m,n \in \nat$. An element $$(A, F_1, \ldots, F_k, E_1, \ldots, E_l, R_1, \ldots, R_m, a_1, \ldots, a_n)$$ is said to be an algebraic structure, if
+    \begin{enumerate}[label=\roman*)]
+        \item $A$ is a non-empty class,
+        \item $F_1, \ldots, F_k$ are $n_i$-ary operations, $n_i \in \nat \setminus \{0\}$ and $i \in \suc{l} \setminus \{0\}$ in $A$,
+        \item $E_1, \ldots, E_l$, are external operations in $A$,
+        \item $R_1, \ldots, R_m$ are relations from $A^{n_j}$ in $A$ which are not functions,\\
+        $n_j \in \nat \setminus \{0,1\}$ and $j \in \suc{m} \setminus \{0\}$,
+        \item $a_1, \ldots, a_n$ are distinguished elements for any of the preceeding elements.
+    \end{enumerate}
+\end{dfn}
+
+\begin{dfn}[Algebraic structures of the same kind]
+    If $A$ and $A'$ are non-empty classes, we say that $$(A, F_1, \ldots, F_k, E_1, \ldots, E_l, R_1, \ldots, R_m, a_1, \ldots, a_n)$$ $$(A', F_1', \ldots, F_{k'}', E_1', \ldots, E_{l'}', R_1', \ldots, R_{m'}', a_1', \ldots, a_{n'}')$$ are algebraic structures of the same kind if
+    \begin{enumerate}[label=\roman*)]
+        \item $k = k'$, $l = l'$, $m = m'$ and $n = n'$,
+        \item $F_i$ and $F_i'$ are $n_i$-ary operations, $n_i \in \nat \setminus \{0\}$ $i \in \suc{k} \setminus \{0\}$,
+        \item $E_j$ and $E_j'$ are external operations (either left or right) over the same class, $j \in \suc{l} \setminus \{0\}$,
+        \item $R_q$ and $R_q'$ are relations from $A^{m_q}$ to $A$, which are not functions, $m_q \in \nat \setminus \{0,1\}$ and $q \in \suc{n} \setminus \{0\}$.
+    \end{enumerate}
+\end{dfn}
+
+\begin{dfn}[Algebraic structure isomorphism]
+    If $A$ and $A'$ are non-empty classes, $$(A, F_1, \ldots, F_k, E_1, \ldots, E_l, R_1, \ldots, R_m, a_1, \ldots, a_n)$$ $$(A', F_1', \ldots, F_{k'}', E_1', \ldots, E_{l'}', R_1', \ldots, R_{m'}', a_1', \ldots, a_{n'}')$$ are algebraic structures of the same kind, their are said to be isomorphic if
+    \begin{enumerate}[label=\roman*)]
+        \item There is a bijective function $\fdefc{f}{A}{A'}{a}{f(a)}$ such that:
+        \begin{enumerate}[label=\arabic*)]
+            \item $f(a_i) = a_i'$ $\forall i \in \suc{n} \setminus \{0\}$,
+            \item The functions $$\fdefc{f^{k_j}}{A^{k_j}}{(A')^{k_j}}{(\alpha_1, \ldots, \alpha_{k_j})}{(f(\alpha_1), \ldots, f(\alpha_{k_j}))}$$
+            $\forall j \in \suc{k} \setminus \{0\}$ are such that 
+            
+            $f \circ F_i (\alpha_1, \ldots, \alpha_{k_j}) = F_i' \circ f^{k_j}(\alpha_1, \ldots, \alpha_{k_j})$, i. e., operations are preserved.
+            \item The set under which the external operations $E_q$ and $E_q'$ are defined are the same, $\forall q \in \suc{l} \setminus \{0\}$,
+            \item $\forall p \in \suc{m} \setminus \{0\}$,
+            
+            $((\alpha_1, \ldots, a_{m_p}), \alpha) \in R_p \cond ((f(\alpha_1), \ldots, f(\alpha_{m_p})), f(\alpha)) \in R_p'$.
+        \end{enumerate}
+    \end{enumerate}
+    When these conditions hold, we denote $A \isom A'$.
+\end{dfn}
+
+We will only work with binary operations, relations on the same sets and external left-operations if not stated otherwise.
+
+Now, an important generalization for the sake of defining a Peano system is the following definition:
+
+\begin{dfn}[$g$-inductive with starting element $\biota$]
+    Let $A$ be a class and $\fdefc{g}{A}{\uclass}{a}{g(a)}$. We say that $A$ is inductive over $g$ (or $g$-inductive) with starting element $\biota$ if
+    \begin{enumerate}[label=\roman*)]
+        \item $\biota \in A$,
+        \item $\forall x \in A$, $g(x) \in A$.
+    \end{enumerate}
+\end{dfn}
+
+So, the definition of inductive set generalizes to classes. And notice that the previous definition of inductive, defining $\fdefc{\Sucf}{\nat}{\nat}{n}{\suc{n}}$ as the succesor function, is a special case where $\nat$ is $\Sucf$-inductive with starting element $\varnothing$.
+
+Let us denote the succesor of $n$ by $\sucf{n}$ from now on.
+
+But still, to generalize the induction principle to $g$-inductive classes, we define, in a similar way to infinite dimensional hyperspaces on linear algebra,
+
+\begin{dfn}[Minimally $g$-inductive classes]
+    Let $A$ be a $g$-inductive class with starting element $\biota$. We say that $A$ is minimally $g$-inductive with starting element $\biota$ if no proper subclass of $A$ is $g$-inductive with starting element $\biota$.
+\end{dfn}
+
+So now, what Theorem \ref{th:induction} can be summed up to is that $\nat$ is minimally inductive over $\fdefc{\Sucf}{\nat}{\nat}{n}{S(n)}$ with starting element $\varnothing$. Now, to generalize:
+
+\begin{thm}[Principle of $g$-induction]\label{th:gInduction}
+    Let $\mathrm{P(x)}$ be a property of $x$ and $A$ a minimally $g$-inductive class with starting element $\biota$. If
+    \begin{enumerate}[label=\roman*)]
+        \item $\pPs(\biota)$,
+        \item $\forall x \in A$, $\pPs(x) \implies \pPs(g(x))$,
+    \end{enumerate}
+    then $\pPs(x)$ $\forall x \in A$.
+\end{thm}
+\begin{proof}
+    The class $\Omega := \{x \mid \mathbf{P}(x)\}$ is $g$-inductive with starting element $\biota$. Since $A$ is minimally inductive then $\Omega = A$.
+\end{proof}
+
+Now, we have all the elements to define and in the next subsections prove our main theorem of the section. So we define:
+
+\begin{dfn}[Peano system]
+    An algebraic structure $(P, \Sigma, \theta)$ is called a Peano system if it satisfies:
+    \begin{enumerate}[label=\roman*)]
+        \item $\fdefc{\Sigma}{P}{P}{\rho}{\Sigma(\rho)}$ is an injective function such that $\theta \not\in\Sigma(P)$.
+        \item $P$ is minimally $\Sigma$-inductive with starting element $\theta$.
+    \end{enumerate}
+\end{dfn}
+
+\subsection{Finite recursion theorem (Dedekind's)}
+For the sake of proving the unicity of a Peano system, and to work our way to the arithmetic of $\nat$, we state a theorem that assures the existence and uniqueness of a function for which its definition relies on a base case and a general case that depends on the previous one.
+
+\begin{thm}[Dedekind's recursion theorem] \label{th:dedekind_recursion}
+	Let $A$ be a non-empty set, $a \in A$ and $\fdefc{f}{A}{A}{a}{f(a)}$ a function. Then, there exists a unique function $\fdefc{\phi}{\nat}{A}{n}{\phi(n)}$ such that
+	
+	\begin{enumerate}[label=\roman*)]
+		\item $\phi(0) = a$, and
+		\item $\phi(\sucf{n}) = f(\phi(n))$.
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	First, we prove the existence.
+	Let $$Rs := \{ B \subset \nat \times A \mid (0,a) \in B \text{ and } (n,b)\in B \cond (\sucf{n},f(b)) \in B \}.$$ 
+	$Rs \not= \varnothing$ since $\nat \times A \in Rs$. Now, let $\phi = \bigcap_{B \in Rs} B$,  then $\phi \not= \varnothing$. Moreover, $\phi \in Rs$ and $\phi \subset B$ for any $B \in Rs$. Therefore $\min Rs = \phi$.
+	
+	Now, consider the set $W := \{ n \in \nat \mid !\exists b \in A \text{ such that } (n,b) \in \phi \}$.
+	
+	We have $(0,a) \in \phi$. Suppose $(0,a') \in \phi$. Then the set $C_0 := \phi \setminus \{(0,a')\}$ is such that $C_0 \in Rs$ and $C_0 \subset \phi$, which contradicts that $\min Rs = \phi$. Therefore $0 \in W$.
+	
+	Suppose $k \in W$ with $(k,b) \in \phi$, that is $(k,b)$ is unique. Then $(\sucf{k}, f(b)) \in \phi$. Suppose $(\sucf{k}, b') \in \phi$. Then the set $C := \phi \setminus \{(\sucf{k}, b')\}$ is such that $C \in Rs$ and $C \subset \phi$, which contradicts that $\min Rs = \phi$. Therefore $\sucf{k} \in W$. Applying the induction principle, we have $W = \nat$. Thus $\fdefc{\phi}{\nat}{A}{n}{\phi(n)}$ is a function.
+	
+	Now, for the uniqueness.
+	Assume there exists $\fdefc{\phi_1}{\nat}{B}{n}{\phi_1(n)}, \fdefc{\phi_2}{\nat}{A}{n}{\phi_2(n)}$ functions satisfying the hypotheses. Let $W_u := \{n \in \nat \mid \phi_1(n) = \phi_2(n)\}$. $\phi_1(0) = a = \phi_2(0)$, so $0 \in W_u$. Suppose $k \in W_u$. Then $\phi_1(\sucf{k}) = f(\phi_1(k)) = f(\phi_2(k)) = \phi_2(\sucf{k})$. Therefore, applying the induction principle, $W_u = \nat$, and so $\phi_1 = \phi_2$.
+\end{proof}
+
+Notice that the only property of $\nat$ used for the proof is Theorem \ref{th:induction}. This can be easily replaced by an argument of $g$-induction, and the proof remains almost the same. So we can state:
+
+\begin{thm}[Modified Dedekind's recursion theorem] \label{th:ModifiedDedekind}
+	Let $A$ be a minimally $g$-inductive class with starting element $\biota$, $B$ a non-empty class, $b \in B$ and $\fdefc{f}{B}{B}{b}{f(b)}$ a function. Then, there exists a unique function $\fdefc{\lambda}{A}{B}{x}{\lambda(x)}$ such that
+	\begin{enumerate}[label=\roman*)]
+		\item $\lambda(\biota) = b$, and
+		\item $\lambda(g(x)) = f(\lambda(x))$.
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+    Exercise.
+\end{proof}
+
+\subsection{Existence and uniqueness of a Peano system}
+Now, we prove that there's a Peano system and it's isomorphic to any other Peano system. This result lets us start natural numbers in any of its elements, like the usual accepted convention in analysis to use $\nat_1 = \nat \setminus \{0\}$.
+
+\begin{prop} \label{prop:succ_injective}
+	$\fdefc{\Sucf}{\nat}{\nat}{n}{\sucf{n}}$ is injective.
+\end{prop}
+\begin{proof}
+	Suppose that there exists $m,n \in \nat$ such that $\sucf{m} = \sucf{n}$ but $m \not = n$. Without any loss of generality, suppose $m < n$. We already have $\sucf{m} \subset \sucf{n}$. We prove $\sucf{m} \not = \sucf{n}$. Consider, since $n$ is transitive,  $m \in \sucf{n}$. By Theorem \ref{prop:NotBothNinMandMinN} we have $n \not \in m$, and by hypothesis $n \not = m$, so $n \not \in \sucf{m}$ that is $\sucf{m} \not= \sucf{n}$. It follows that $m = n$.
+\end{proof}
+
+\begin{thm}[Existence of a Peano system]
+    $(\nat, \Sucf, 0)$ is a Peano system.
+\end{thm}
+\begin{proof}
+    By the preceeding proposition, the succesor function is injective. Now, $n \in \sucf{n}$ so it has at least one element. Then $\sucf{n} \not= 0$, $\forall n \in \nat$.
+
+    Finally, by Theorem \ref{th:induction}, $\nat$ is $\Sucf$-inductive with starting element $\varnothing$.\\
+\end{proof}
+
+\begin{thm}[Uniqueness of Peano systems]
+    Any two Peano systems are isomorphic.
+\end{thm}
+\begin{proof}
+    Assume there are Peano systems $(P, \Sigma, \theta)$ and $(P', \Sigma', \theta')$. We apply Theorem \ref{th:ModifiedDedekind}. For $P$, $P'$, $\theta'$ and $\fdefc{\Sigma'}{P'}{P'}{\rho'}{\Sigma'(\rho')}$, there exists a unique function $\fdefc{\lambda_1}{P}{P'}{\rho}{\lambda_1(\rho)}$ such that $\lambda(\theta) = \theta'$ and $\lambda_1(\Sigma(\rho)) = \Sigma'(\lambda_1(\rho))$. Using Theorem \ref{th:ModifiedDedekind} again for $P'$, $P$, $\theta$ and $\fdefc{\Sigma}{P}{P}{\rho}{\Sigma(\rho)}$ we can obtain $\fdefc{\lambda_2}{P'}{P}{\rho'}{\lambda_2(\rho')}$ such that $\lambda_2(\theta') = \theta$ and $\lambda_2(\Sigma'(\rho')) = \Sigma(\lambda_2(\rho'))$.
+
+    Then $\lambda_2 \circ \lambda_1 (\theta) = \lambda_2(\lambda_1(\theta)) = \lambda_2(\theta') = \theta$. Similarly $\lambda_1 \circ \lambda_2 (\theta') = \theta'$. Now $\lambda_2 \circ \lambda_1 (\Sigma(\rho)) = \lambda_2 (\lambda_1 (\Sigma(\rho))) = \lambda_2(\Sigma'(\lambda_1(\rho))) = \Sigma(\lambda_2(\lambda_1(\rho)))$.
+    
+    Also, clearly $\id_P(\theta) = \theta$ and $\id_P \circ \Sigma(\rho) = \Sigma \circ \id_P (\rho)$. So, by Theorem $\ref{th:ModifiedDedekind}$, that is, the uniqueness of a function $\fdefc{\lambda}{P}{P}{\rho}{\lambda(\rho)}$ such that $\lambda(\Sigma(\rho)) = \Sigma(\lambda(\rho))$, implies that $\lambda_2 \circ \lambda_1 = \id_P$.
+
+    Similarly, using an analogous deduction and using the uniqueness of Theorem \ref{th:ModifiedDedekind}, we obtain $\lambda_1 \circ \lambda_2 = \id_{P'}$. That is $\fdefc{\lambda_1}{P}{P'}{\rho}{\lambda_1(\rho)}$ is a bijection. Thus $P \isom P'$.
+\end{proof}
+
+\subsection{Exercises}
+\begin{enumerate}[label=\arabic*)]
+    \item {\itshape (Alternate proof for Theorem \ref{th:dedekind_recursion})} Let $A$ be a non-empty set and $a \in A$. Define a finite calculation by $\fdefc{f_k}{k}{A}{x}{f(x)}$ such that $f_k(0) = a$ and $f_k(\sucf{x}) = \sucf{f_k(x)}$ for $k \in \nat$. Use this to prove theorem \ref{th:dedekind_recursion}.
+    \item Prove Theorem \ref{th:ModifiedDedekind}.
+    \item {\itshape (Double induction principle)} Let $A$ be a minimally $g$-inductive class with starting element $\biota$ and $R$ a relation that satisfies: 
+    \begin{enumerate}[label=(\roman*)]
+        \item $(x,\biota) \in R$ $\forall x \in A$,
+        \item $\forall x, y \in A$, if $(x,y) \in R \land (y,x) \in R \cond (x,g(y)) \in R$.
+    \end{enumerate}
+    Then $(x,y) \in R$ $\forall x,y \in A$.
+    \item Let $\fdefc{\Sucf_{\mathcal{Z}}}{\uclass}{\uclass}{x}{\{x\}}$ and $\nat_{\mathcal{Z}}$ be the intersection of all $\Sucf_{\mathcal{Z}}$-inductive classes.
+    \begin{enumerate}[label=\alph*)]
+        \item Prove that $(\nat_{\mathcal{Z}}, \Sucf_{\mathcal{Z}}, \varnothing)$ is a Peano system.
+        \item Find an explicit Peano system isomorphism betweem $(\nat, \Sucf, 0)$ and $(\nat_{\mathcal{Z}}, \Sucf_{\mathcal{Z}}, \varnothing)$.
+    \end{enumerate}
+    \item  Prove that if a class $A$ is minimally $g$-inductive with starting element $\biota$ such that $x \subset g(x)$ $\forall x \in A$ then $(A, \subset)$ is a well ordering.
+\end{enumerate}
+\newpage
+
+\section{Arithmetic on $\nat$}
+\subsection{Modifications of the recursion theorem}
+\begin{thm}[Generalized recursion theorem]
+	Let $A$ be a non-empty set, $a \in A$. Suppose $\fdefc{f}{\nat \times A}{A}{(n,a)}{f((n,a))}$ is a function. Then there exists a unique function $\fdefc{\phi}{\nat}{A}{n}{\phi(n)}$ such that
+	\begin{enumerate}[label=\roman*)]
+		\item $\phi(0) = a$,
+		\item $\forall n \in \nat$, $\phi(\sucf{n}) = f(n,\sucf{n})$.
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	Same as Theorem \ref{th:dedekind_recursion}.
+\end{proof}
+
+\begin{thm}[Modified recursion theorem] \label{th:modified_recursion}
+    \hfill \\
+	Let $\fdefc{G}{\nat \times \nat}{\nat}{(n,m)}{G((n,m))}$, $\fdefc{H}{\nat}{\nat}{n}{H(n)}$ be functions. Then, there exists a unique function $\fdefc{\phi}{\nat \times \nat}{\nat}{(n,m)}{\phi((n,m))}$ such that
+	\begin{enumerate}[label=\roman*)]
+		\item $\phi(n,0) = H(n)$, $\forall n \in \nat$,
+		\item $\phi(x, \sucf{y}) = G(x, \phi(x,y))$, $\forall x,y \in \nat$.
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	Let $n \in \nat$. Consider $t_n := H(n)$, $G_n(z) := G(n,z)$ $\forall z \in \nat$. Applying Theorem \ref{th:dedekind_recursion}, there exists a unique function $\fdefc{\phi_n}{\nat}{\nat}{x}{\phi_n(x)}$ such that $\phi_n(0) = t_n$ and $\phi_n(\sucf{y}) = G_n(\phi_n(y))$ $\forall n,y \in \nat$.
+	
+	Define $\fdefc{\phi}{\nat \times \nat}{\nat}{(n,y)}{\phi_n(y)}$ . Thus $\phi(n,0) = \phi_n(0) = t_n = H(n)$, and $\phi(n,\sucf{y}) = \phi_n(\sucf{y}) = G_n(\phi_n(y)) = G(n, \phi(n,y))$.
+	
+	Uniqueness follows from the uniqueness of $\phi_n$, $\forall n \in \nat$.
+\end{proof}
+\subsection{Addition}
+
+\begin{dfn}
+	\hfill
+	
+	By Theorem \ref{th:modified_recursion}, for $\fdefc{\id_{\nat}}{\nat}{\nat}{n}{n}$ and $\fdefc{\sucf}{\nat \times \nat}{\nat}{(m,n)}{\sucf{n}}$ there exists a unique function $\fdefc{\phi}{\nat \times \nat}{\nat}{(m,n)}{\phi((m,n))}$ such that $\phi((n,0)) = \id_{\nat}(n)=n$ and $\phi((m,\sucf{n})) = \sucf{\phi((m,n))}$.
+	
+	Let $+ := \phi$, and denote $m+n := +((m,n))$. We call $\fdefc{+}{\nat \times \nat}{\nat}{(m,n)}{m+n}$ the addition or the sum on $\nat$.
+\end{dfn}
+
+Now, we can derive a proposition for a more intuitive notation for $\sucf{n}$.
+
+\begin{prop}
+	$\forall n \in \nat$, $\sucf{n} = n+1$.
+\end{prop}
+\begin{proof}
+	Exercise.
+\end{proof}
+
+However, we will not use it for now.
+
+ Now, we shall show that $\nat$ with $\fdefc{+}{\nat \times \nat}{\nat}{(m,n)}{m+n}$ defines the following structure:
+ 
+ \begin{dfn}[Monoid]
+ 	An algebraic structure $(A, *, e)$ is called a monoid if it satisfies
+    \begin{enumerate}[label=\roman*)]
+        \item $\fdefc{*}{A \times A}{A}{a}{f(a)}$ is an associative binary operation.
+        \item $e \in A$ is a distinguished element such that $\forall a \in A$, $a * e = a = e * a$.
+        \item If $\forall a,b \in A$, $a*b = b*a$ we say that the structure is a commutative monoid.
+    \end{enumerate}
+ \end{dfn}
+ 
+ \begin{thm}[Associative property] \label{th:nat_additive_asoc}
+ 	$\forall l,m,n \in \nat$, $(l+m)+n = l+(m+n)$.
+ \end{thm}
+ \begin{proof}
+ 	Let $l,m \in \nat$ and consider $W_{l,m,+,A} := \{n \in \nat \mid (l+m)+n = l+(m+n)\}$.
+ 	
+ 	$l+m+0 = l+m = l+(m+0)$, so $0 \in W_{l,m,+,A}$. Now suppose $k \in W_{l,m,+,A}$. Then $(l+m)+\sucf{k} = \sucf{(l+m)+k} = \sucf{l+(m+k)} = l + \sucf{m + k} = l + (m + \sucf{k})$, therefore $\sucf{k} \in W_{l,m,+,A}$. Applying the induction principle we have the desired result.
+ \end{proof}
+ 
+ \begin{thm}[Additive identity] \label{th:nat_additive_id}
+ 	$\forall n \in \nat$, $n + 0 = n = 0 + n$.
+ \end{thm}
+ \begin{proof}
+ 	By definition, $n + 0 = n$ $\forall n \in \nat$. Now, let $W_0 := \{n \in \nat \mid 0 + n = n\}$.
+ 	
+ 	Of course $0 + 0 = 0$ by definition, so $0 \in W_0$. Suppose now that $l \in W_0$, i.e., $0 + l = l$. Therefore $0 + \sucf{l} = \sucf{0 + l} = \sucf{l}$. Applying the induction principle, we have $W_0 = \nat$.
+ \end{proof}
+ 
+ So, by Theorems \ref{th:nat_additive_asoc} and \ref{th:nat_additive_id}, $(\nat, +, 0)$ is a monoid. On top of that, we also prove that it is a commutative one.
+ 
+ First, we prove the following useful result:
+ 
+ \begin{prop}[Alternative application of the succesor function] \label{th:nat_alt_succ}
+    \hfill \\
+ 	$\forall n,m \in \nat$,
+ 	$n + \sucf{m} = \sucf{n} +  m$.
+ \end{prop}
+ \begin{proof}
+ 	Let $n \in \nat$ and consider the set $W_{\sucf{},n} := \{m \in \nat \mid n + \sucf{m} = \sucf{n} + m\}$.
+ 	
+ 	We have $n + \sucf{0} = \sucf{n + 0} = \sucf{n} = \sucf{n} + 0$.
+ 	
+ 	Now suppose that $l \in W_{\sucf{}, n}$, i.e., $n + \sucf{l} = \sucf{n} + l$. Now $n + \sucf{\sucf{l}} = \sucf{n + \sucf{l}} = \sucf{\sucf{n} + l} = \sucf{n} + \sucf{l}$, that is $\sucf{l} \in W_{\sucf{},n}$. Applying the induction principle, we have the desired result.
+ \end{proof}
+ 
+ \begin{thm}[Commutative property]
+ 	$\forall n,m \in \nat$, $n + m = m + n$.
+ \end{thm}
+ \begin{proof}
+ 	Let $n \in \nat$ and $W_{n,+,c} := \{m \in \nat \mid n + m =  m + n\}$. By Theorem \ref{th:nat_additive_id}, $0 \in W_{n,+,c}$. Now suppose $l \in W_{n,+,c}$, so now $n + \sucf{l} = \sucf{n + l} = \sucf{l + n} = l + \sucf{n} = \sucf{l} + n$ (by Theorem \ref{th:nat_alt_succ}), that is $\sucf{l} \in W_{n,+,c}$. So, applying the induction principle we have $W_{n,+,c} = \nat$ which brings our desired result.
+ \end{proof}
+ 
+ And simple result for operating on, now, the commutative monoid $(\nat, +, 0)$.
+ 
+ \begin{thm}[Additive cancelation]\label{th:nat_add_cancel}
+ 	$\forall l,m,n \in \nat$
+ 	\begin{enumerate}[label=\roman*)]
+ 		\item If $l + n = m + n$, then $l = m$, and
+ 		\item if $l + m = l + n$, then $m = n$.
+ 	\end{enumerate}
+ \end{thm}
+ \begin{proof}
+ 	$i)$ Let $W_{l,m,+,\not c} := \{ n \in \nat \mid l+n = m+n \cond l = m \}$.
+ 	
+ 	Of course $l + 0 = m + 0 \cond l = m$, so $0 \in W_{l,m,+, \not c}$. Now suppose $k \in W_{l,m,+, \not c}$. Then, if $l + \sucf{k} = m + \sucf{k}$, we will have $\sucf{l + k} = \sucf{m + k}$, and by Proposition \ref{prop:succ_injective} $l + k = m + k$. Thus $l = m$, and then $\sucf{k} \in W_{l,m,+,\not c}$. Applying induction we have the desired result.
+
+    $ii)$ follows from applying the commutative property and $i)$.
+ \end{proof}
+
+ Regarding the order properties of the sum, we prove the following:
+
+ \begin{lema}\label{lema:mplusn_geq_n}
+     $\forall n,m \in \nat$, $m+n \geq n$.
+ \end{lema}
+ \begin{proof}
+     Let $U := \{ x \in \nat \mid m + x \geq x \}$. Clearly $0 \in U$. Now if $l \in W$, then $m + \sucf{l} = \sucf{m + l} \geq m + l \geq n$. Applying induction we have $U = \nat$.\\
+ \end{proof}
+
+ \begin{thm}\label{th:sumorder1}
+     $\forall m,n \in \nat$, $m \leq n \bicond \exists \alpha \in \nat$ such that $m + \alpha = n$.
+ \end{thm}
+ \begin{proof}
+     For $\exists \alpha \in \nat$ such that $m + \alpha = n \cond m \leq n$ is clear.
+
+     Let $W := \{x \in \nat \mid m + x = n\}$. By Lema \ref{lema:mplusn_geq_n} $W \not= \varnothing$. By Theorem $\ref{th:nat_wellorder}$, $W$ has a minimum. Define $\alpha := \min W$, then $m + \alpha \geq n$. If $m + \alpha > n$, then by Proposition \ref{prop:exists_k_st_suck=n} there exists $r \in \nat$ sucht that $\sucf{r} = \alpha$. Now $m + \alpha = m + \sucf{r} = \sucf{m + r} > n$, thus $m + r \geq n$ and then $r \in W$ and $r < \alpha$, a contradiction. It follows that $m + \alpha = n$.
+ \end{proof}
+
+ \begin{thm}
+     $\forall l,m,n \in \nat$, $m \leq n \bicond m + l \leq n + l$.
+ \end{thm}
+ \begin{proof}
+    If $m = n$ since $\fdefc{+}{\nat \times \nat}{\nat}{(m,n)}{m+n}$ is a function, we have $m + l = n + l$. Using Theorem \ref{th:nat_add_cancel} we get that $m + l = n + l \cond m = l$ holds.
+ 
+     Assume $m < n$. Then by Theorem \ref{th:sumorder1} there exists $\alpha \in \nat$ such that $m + \alpha = n$. Now, since $\fdefc{+}{\nat \times \nat}{\nat}{(x,y)}{x+y}$ is a function, $m + \alpha + l = n + l$. By Lema \ref{lema:mplusn_geq_n} we have that $ m + l \leq n + l$.
+
+     Now, if $m + l < n + l$, then $\exists \alpha \in \nat$ such that $m + l + \alpha = n + l$. That is, by Theorem \ref{th:nat_add_cancel} $m + \alpha = n$ and then $m \leq m + \alpha = n$.
+ \end{proof}
+
+ Finally, to end this subsection:
+
+ \begin{thm}
+     $m + n = 0 \bicond m = 0$ and $n = 0$.
+ \end{thm}
+ \begin{proof}
+     $m = 0 \land n = 0 \cond m + n = 0$ is immediate. Assume $m + n = 0$. If $m > 0$ or $n > 0$ then, for $m > 0$, $m + n \geq m > 0$, thus $m + n \not= 0$. The same holds for $n > 0$. So $m = 0 \land n = 0$.
+ \end{proof}
+ 
+\subsection{Multiplication}
+
+\begin{dfn}
+	Now, we proceed in a similar way to the addition.
+	
+	Consider $\fdefc{f}{\nat}{\nat}{n}{0}$ and $\fdefc{+}{\nat \times \nat}{\nat}{(m,n)}{m+n}$. Then, by Theorem \ref{th:modified_recursion} there exists exactly one function $\fdefc{\psi}{\nat \times \nat}{\nat}{(m,n)}{\psi((m,n))}$ such that $\psi((n,0)) = f(n)=0$ and $\psi((m, \sucf{n})) = +(m,\psi((m,n))) = m + \psi((m,n))$.
+	
+	Let $\cdot := \psi$. And denote $m\cdot n :=\cdot((m,n))$ or simply $mn$ if there's no ambiguity.
+    
+    We call $\fdefc{\cdot}{\nat \times \nat}{\nat}{(m,n)}{mn}$ the multiplication or the product on $\nat$.
+\end{dfn}
+
+Most of proofs are pretty similar to those of addition. We cover these a bit more faster, most of the times using previous theorems without telling because of laziness.
+
+\begin{thm}[Multiplicative indetity]\label{th:multpIdentity}
+    $\forall n \in \nat$, $1\cdot n = n$.
+\end{thm}
+\begin{proof}
+    Let $W_{1,p} := \{n \in \nat \mid 1 \cdot n = n\}$. $0 \in W_{1,p}$, so assume that $k \in W_{1,p}$. Now $1 \cdot \sucf{k} = 1 \cdot k + 1 = \sucf{k + 0} = \sucf{k}$. Hence $W_{1,p} = \nat$.
+\end{proof}
+
+\begin{thm}
+    $\forall n \in \nat$, $0 \cdot n = 0 = n \cdot 0$.
+\end{thm}
+\begin{proof}\label{th:n0=0=0n}
+    Let $W_{0,p} := \{n \in \nat \mid 0 \cdot n = 0\}$. $0 \in W_{0,p}$, so assume that $k \in W_{0,p}$. Now $0 \cdot \sucf{k} = 0 \cdot k + 0 = 0$. Hence $W_{0,p} = \nat$.
+\end{proof}
+
+\begin{thm}[Left distribution over sum]
+    $\forall l,m,n \in \nat$, $l(m+n) = lm + ln$
+\end{thm}
+\begin{proof}
+    Let $W_{l,d,s} := \{n \in \nat \mid l(m + n) = lm + ln\}$. $l(m+0) = lm + l\cdot 0$ so $0 \in W_{l,d,s}$. Assume that $k \in W_{l,d,s}$. Now $l(m + \sucf{k}) = l\sucf{m+k} = l(m+k) + l = lm + l\sucf{k}$. Hence $W_{l,d,s} = \nat$.
+\end{proof}
+
+\begin{thm}[Right distribution over sum]
+    $\forall l,m,n \in \nat$, $(l+m)n = ln + mn$
+\end{thm}
+\begin{proof}
+    Let $W_{r,d,s} := \{n \in \nat \mid (l + m)n = ln + mn\}$. $(l+m)\cdot 0 = l\cdot 0 + m\cdot 0$ so $0 \in W_{r,d,s}$. Assume that $k \in W_{r,d,s}$. Now $(l+m)\sucf{k} = (l+m)k + (l+m) = (lk + l) + (mk + m) = l\sucf{k} + m\sucf{k}$. Hence $W_{r,d,s} = \nat$.
+\end{proof}
+
+\begin{thm}[Associative property]\label{th:multpAssociative}
+    $\forall l,m,n \in \nat$, $(lm)n = l(mn)$
+\end{thm}
+\begin{proof}
+    Let $W_{a,p} := \{n \in \nat \mid (lm)n = l(mn)\}$. $(lm)\cdot 0 = l(m\cdot 0)$ so $0 \in W_{a,p}$. Assume $k \in W_{a,p}$. Then $(lm)\sucf{k} = l(mk) + lm = l(mk + m) l\sucf{k}$. Hence $W_{a,p} = \nat$
+\end{proof}
+
+\begin{thm}[Commutative property]\label{th:multpCommutative}
+    $\forall m,n \in \nat$, $mn = nm$
+\end{thm}
+\begin{proof}
+    Let $W_{c,p} := \{n \in \nat \mid mn = nm\}$. By Theorem \ref{th:n0=0=0n} $0 \in W_{c,p}$. Assume $l \in W_{c,p}$. Then $m\sucf{l} = lm + m = (l+1)m = \sucf{l}m$. Hence $W_{c,p} = \nat$.
+\end{proof}
+
+\begin{thm}[Multiplicative cancelation]
+    $\forall l,m,n \in \nat$,
+    \begin{enumerate}[label=\roman*)]
+        \item If $n \not= 0$ and $ln = mn$ then $l = m$.
+        \item If $l \not=0$ and $ln = lm$ then $n = m$.
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    $ii)$ Assume that $m \not= n$, without loss of generality $m < n$. Then $\exists r \in \nat$ such that $m + \sucf{r} = n$, i.e. $lm + l\sucf{r} = lm + lr + l = ln$, thus $lr + l = 0$. Then by Theorem \ref{th:nat_add_cancel} $l = 0$, a contradiction. Hence $m = n$.
+
+    $i)$ Apply the commutative property and then $ii)$.
+\end{proof}
+
+\begin{thm}[Integral domain property]\label{th:integralDomainNat}
+    $\forall m,n \in \nat$, $mn=0 \cond m = 0$ o $n = 0$.
+\end{thm}
+\begin{proof}
+    Assume $m \not = 0 \land n \not= 0$. Then $\exists r \in \nat$ such that $\sucf{r} = n$. Then $m\sucf{r} = mr + m = 0$. By Theorem \ref{th:nat_add_cancel} $m = 0$, a contradiction. Hence $m = 0 \lor n = 0$.
+\end{proof}
+
+\begin{thm}
+    $\forall l,m,n \in \nat$, $m < n \bicond ml < nl$.
+\end{thm}
+\begin{proof}
+    $\exists \alpha \in \nat$ such that $m + \alpha = n$. Then $(m + \alpha)l = ml + m\alpha = nl$ and by Theorem \ref{th:integralDomainNat} $\alpha l \not = 0$. Hence $ml < nl$.
+
+    Now assume that $ml < nl$. It cannot be that $m = l$. If $n < l$ then $\exists \alpha \in \nat$ such that $n + \alpha = m$ thus $ml > nl$. Hence $m < n$.
+\end{proof}
+
+Notice that with Theorems \ref{th:multpIdentity}, \ref{th:multpAssociative} and \ref{th:multpCommutative} $(\nat, \cdot, 1)$ is also a commutative monoid with the additional integral domain property.
+
+\subsection{Exercises}
+\begin{enumerate}[label=\arabic*)]
+    \item Define exponentiation and prove its common properties.
+    \item Prove that for any $m,n \in \nat$, one and only one statement holds.
+    \begin{enumerate}[label=\roman*)]
+        \item $m = n$,
+        \item $m < n$,
+        \item $n < m$,
+    \end{enumerate}
+\end{enumerate}

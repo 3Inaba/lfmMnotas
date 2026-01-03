@@ -1,0 +1,223 @@
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+%\usepackage[paper=a4paper, margin=1 in, top=1 in, bottom=1 in]{geometry}
+\usepackage[
+    paperwidth=7in,
+    paperheight=10in,
+    inner=1in,
+    outer=0.75in,
+    top=0.8in,
+    bottom=0.8in,
+    %headsep=0.2in,
+    headheight=14pt,
+]{geometry}
+
+%---------------------------------------------------------------
+% Símbolos y notaciones. ---------------------------------------
+%---------------------------------------------------------------
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathrsfs}
+\usepackage{systeme}
+\usepackage{etoolbox}
+\usepackage{mathtools}
+%---------------------------------------------------------------
+\newcommand{\cond}{%
+	\mathbin{\raisebox{0pt}{\makebox[1.5em]{%
+			\setlength{\unitlength}{0.5em}%
+			\linethickness{0.3pt}%
+			\begin{picture}(-0.1,0.1)
+				\polygon*(0.5,0.9)(0.5,0.1)(1,0.5)
+				\polygon*(0.5,0.560)(0.5,0.440)(-1.25,0.440)(-1.25,0.560)
+			\end{picture}%
+	}}}%
+}
+\newcommand{\bicond}{%
+	\mathbin{\raisebox{0pt}{\makebox[1.5em]{%
+			\setlength{\unitlength}{0.5em}%
+			\linethickness{0.3pt}%
+			\begin{picture}(-0.1,0.1)
+				\polygon*(0.85,0.9)(0.85,0.1)(1.35,0.5)
+				\polygon*(-1.35,0.5)(-0.85,0.1)(-0.85,0.9)
+				\polygon*(-0.85,0.560)(-0.85,0.440)(0.85,0.440)(0.85,0.560)
+			\end{picture}%
+	}}}%
+}
+
+\newcommand{\tl}[1]{\text{#1}} %texto
+
+\newcommand{\fbf}{\textsl{f.b.f.}\;}
+\newcommand{\fbfs}{\textsl{f.b.f.s}\;}
+\newcommand{\raz}{\vdash}
+
+\newcommand{\uclass}{{\mathcal{V}}}
+\newcommand{\nat}{\mathbb{N}}
+%\newcommand{\nat}{{\boldsymbol{\omega}}}
+\newcommand{\intg}{\mathbb{Z}}
+\newcommand{\rat}{\mathbb{Q}}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\complex}{\mathbb{C}}
+
+\newcommand{\fdef}[3]{#1 : #2 \longrightarrow #3}
+\newcommand{\suc}[1]{#1^{+}}
+\newcommand{\Sucf}{\mathrm{S}}
+\newcommand{\sucf}[1]{\mathrm{S}(#1)}
+
+\newcommand{\biota}{\boldsymbol{\iota}}
+
+\newcommand{\id}{\mathrm{Id}}
+
+\newcommand{\fdefc}[5]{
+	\raisebox{-5pt}{
+		\(
+		\begin{array}{@{}l@{\,}l@{}}
+			#1 : & #2 \longrightarrow #3 \\[-5pt]
+			& \scalebox{0.75}{$#4 \mapsto #5$}
+		\end{array}
+		\)
+	}
+}
+\newcommand{\idfunc}[2]{\fdefc{\id}{#1}{#1}{#2}{#2}}
+
+\newcommand{\difsim}{%
+	\raisebox{0.2pt}{\makebox[0.77778em]{%
+			\setlength{\unitlength}{0.5em}%
+			\linethickness{0.3pt}%
+			\begin{picture}(-0.1,0.1)
+				\polygon(-0.5,0)(0.5,0)(0,0.8660)
+			\end{picture}%
+	    }
+    }%
+}
+
+\newcommand{\equip}{\sim}
+\newcommand{\isom}{\cong}
+\makeatletter
+\patchcmd{\endproof}
+  {\popQED}
+  {\vspace{-0.5cm}\par\pushQED{\qed}\popQED}
+  {}{}
+\makeatother
+\renewcommand{\qedsymbol}{Q.E.D.}
+
+\newcommand{\pp}{\mathrm{p}}
+\newcommand{\pP}{\mathrm{P}}
+\newcommand{\pps}{\mathrm{p}}
+\newcommand{\pPs}{\boldsymbol{\mathrm{P}}}
+\newcommand{\pqs}{\mathrm{q}}
+\newcommand{\pQs}{\boldsymbol{\mathrm{Q}}}
+\newcommand{\prs}{\mathrm{r}}
+\newcommand{\pRs}{\boldsymbol{\mathrm{R}}}
+
+%---------------------------------------------------------------
+% Fuentes. -----------------------------------------------------
+%---------------------------------------------------------------
+\usepackage{helvet}
+\usepackage{times}
+\usepackage{bookman}
+\usepackage{times}
+\usepackage{lmodern}
+\usepackage{calligra}
+
+%---------------------------------------------------------------
+% Esconder hipervínculos. --------------------------------------
+%---------------------------------------------------------------
+\usepackage[hidelinks]{hyperref}
+
+%---------------------------------------------------------------
+% Utilidades de texto
+\usepackage{setspace}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{varwidth}
+
+%---------------------------------------------------------------
+% Gráficos, tablas y portada. ----------------------------------
+%---------------------------------------------------------------
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{parskip}
+\usepackage{ragged2e}
+\usepackage{background}
+\usepackage{pict2e}
+%---------------------------------------------------------------
+\captionsetup[table]{name=Tabla, labelfont=sl, font=it}
+
+%---------------------------------------------------------------
+% Estilos, entornos y organización de secciones. ---------------
+%---------------------------------------------------------------
+\usepackage{subfiles}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+%---------------------------------------------------------------
+\titleformat{\chapter}[display]
+{\fontsize{30}{0}\selectfont\centering\bfseries}
+{\fontsize{40}{0}\selectfont\thechapter\vspace{-1cm}}
+{1em}
+{}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}
+{{\normalfont\S}\thesection \hspace{-0.5cm}}
+{1em}
+{}
+
+\titleformat{\subsection}
+{\itshape\bfseries\large}
+{\hspace{-0.5cm}}
+{0.8em}
+{}
+
+\theoremstyle{plain}
+\newtheorem{axiom}{Axiom}
+
+\newtheoremstyle{definicion}
+{3pt} % Space above
+{3pt} % Space below
+{} % Body font
+{} % Indent amount
+{\itshape\bfseries \color{black}} % Theorem head font
+{:} % Punctuation after theorem head
+{.5em} % Space after theorem head
+{ } % Theorem head spec
+\theoremstyle{definicion}
+\newtheorem*{dfn}{{Definition}}
+
+\newtheoremstyle{them}
+{3pt}{3pt}
+{\itshape}{}
+{\scshape \bfseries \color{black}}{:}
+{.5em}{ }
+\theoremstyle{them}
+\newtheorem{thm}{{Theorem}}[chapter]
+\newtheorem{prop}{Proposition}[chapter]
+\newtheorem{lema}{Lema}[chapter]
+
+%---------------------------------------------------------------
+% Colorsitos. --------------------------------------------------
+%---------------------------------------------------------------
+\usepackage[dvipsnames]{xcolor}
+%---------------------------------------------------------------
+\definecolor{mazul}{HTML}{1F2A44}
+\definecolor{sazul}{HTML}{4B6587}
+\definecolor{hazul}{HTML}{AFCDE7}
+\definecolor{sgazul}{HTML}{6C7A89}
+\definecolor{gwhite}{HTML}{F1F6FA}
+
+%---------------------------------------------------------------
+% Tabla de contenidos. -----------------------------------------
+%---------------------------------------------------------------
+\usepackage[nottoc]{tocbibind}
+\iffalse
+\addto\captionsenglish{
+    \renewcommand{\contentsname}{\normalfont \color{blue} \calligra Tabla de contenidos}
+}
+\fi
+
+%---------------------------------------------------------------
+% Texto en cajas por si acaso. ---------------------------------
+%---------------------------------------------------------------
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\tcbuselibrary{breakable}
+\tcbuselibrary{skins}
