@@ -125,7 +125,7 @@ La teoría desarrollada en el curso hace uso de la teoría de conjuntos de Zerme
 Se presenta la teoría de manera axiomática, donde se utilizan los conectores lógicos $\neg, \cond, \bicond, \lor, \land$ y los cuantificadores $\forall, \exists$. Las fórmulas atómicas serán aquellas formadas con los relatores $=$ y $\in$, donde $\in$ se interpreta como \com{está en} o simplemente \com{en}.
 
 \begin{dfn}
-	Introduciendo los símbolos $\{\}$ y $\mid$, un \textbf{término clase} es una cadena de símbolos de la forma $\{x \mid \varphi\}$ tal que $\varphi$ es una fórmula de la teoría de conjuntos.
+	Introduciendo los símbolos $\{,\}$ y $\mid$, un \textbf{término clase} es una cadena de símbolos de la forma $\{x \mid \varphi\}$ tal que $\varphi$ es una fórmula de la teoría de conjuntos.
 \end{dfn}
 
 Vale la pena interpretar la definición anterior. Un término clase o simplemente una \textbf{clase} es un objeto que no es parte de la teoría de conjuntos ZFE pero es de utilidad para hablar sobre ella. Las clases se cuantifican sobre conjuntos, informalmente, son colecciones de conjuntos.
@@ -141,7 +141,7 @@ A continuación, algunos axiomas de la teoría ZFE:
 	\item $\forall a \forall b \forall x (x \in a \bicond x \in b) \cond a=b$,
 	\item Para cada término clase $A$ $x \cap A \in \mathcal{V}$,
 	\item $\forall a \forall b \exists y \forall x (x \in y \bicond x = a \lor x = b)$,
-	\item $\forall a \exists y \forall z (z \in y \cond \exists x \in a(z \in b))$,
+	\item $\forall a \exists y \forall z (z \in y \bicond \exists x \in a(z \in x))$,
 	\item $\forall a \exists y \forall z (z \in y \bicond z \subseteq a)$,
 	\item $\forall x (\varnothing \not = x \cond \exists f(f \text{ es una función de elección para } x))$.
 \end{enumerate}
@@ -160,8 +160,8 @@ Ahora es conveniente interpretar los axiomas:
 
 De estos dos primeros axiomas se puede demostrar que el conjunto que no tiene elementos es único y por lo tanto podemos denotarlo por $\varnothing$. 
 
-\begin{axiom}[de Especificación / Esquema de Comprensión]
-	Si $\varphi$ es una fórmula de la teoría ZFE, diremos que $\varphi$ es una propiedad y denotaremos $\varphi(x)$ si la propiedad se evalúa como verdadera en $x$. Entonces para cada propiedad $\varphi$ y conjunto $x$, $\{y \in x \mid \varphi(y) \}$ es un conjunto.
+\begin{axiom}[de Especificación/Esquema de Comprensión]
+	Si $\varphi$ es una fórmula de la teoría ZFE, diremos que $\varphi$ es una propiedad y denotaremos $\varphi(x)$ si la propiedad se evalúa como verdadera en $x$. Entonces para cada propiedad $\varphi$ y conjunto $x$, el término clase $\{y \mid y \in x \land \varphi(y)\}$ que denotamos $\{y \in x \mid \varphi(y) \}$ es un conjunto.
 \end{axiom}
 
 \begin{axiom}[del Par]
@@ -526,5 +526,8 @@ También se puede definir el \textbf{módulo derecho}, la razón por la que se e
 		\item Utilizar el teorema fundamental de la aritmética para encontrar una inyección de $\mathbb{N}$ a $\mathbb{Q}^{+}$ y de $\mathbb{Q}$ a $\mathbb{N}$.
 		\item Demostrar que $\mathbb{N} \sim \mathbb{Q}$
 	\end{enumerate}
+	\item Denótese la clase $\gconmodr{\lp}{\equiv}$ a la clase de todas las fórmulas del lenguaje formal de la lógica proposicional reducida bajo la relación de equivalencia de fórmulas. Defínase $\varphi \oplus \psi \equiv \neg (\varphi \bicond \psi)$ y denótese una tautología por $\top$ y una contradicción por $\bot$.
+		
+		Demuestre que $(\gconmodr{\lp}{\equiv}, \oplus, \land)$ es un anillo.
 	
 \end{enumerate}
