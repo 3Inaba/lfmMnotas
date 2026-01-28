@@ -15,12 +15,12 @@
 %%%%%%%%%%%%%%%5%%%%%%%%%%%%%%%5%%%%%%%%%%%%%%%5%%%%%%%%%%%%%%%5%%%%%%%%%%%%%%%5%%%%%%%%%%%%%%%5%%%%%%%%%%%%%%%5%%%%%%%%%%%%%%%5%%%%%%%%%%%%%%%5%%%%%%%%%%%%%%%5%%%%%%%%%%%%%%%5
 
 %\usepackage[utf8]{inputenc}
-\usepackage[spanish, es-lcroman]{babel}
+\usepackage{babel}
 \usepackage[
     paperwidth=7in,
     paperheight=10in,
-    inner=1in,
-    outer=0.75in,
+    inner=0.75in,
+    outer=0.5in,
     top=0.8in,
     bottom=0.8in,
     %headsep=0.2in,
@@ -87,8 +87,8 @@
 \newcommand{\raz}{\vdash}
 
 \newcommand{\uclass}{{\mathcal{V}}}
-\newcommand{\nat}{\mathbb{N}}
-%\newcommand{\nat}{{\boldsymbol{\omega}}}
+%\newcommand{\nat}{\mathbb{N}}
+\newcommand{\nat}{{\boldsymbol{\omega}}}
 \newcommand{\intg}{\mathbb{Z}}
 \newcommand{\rat}{\mathbb{Q}}
 \newcommand{\real}{\mathbb{R}}
@@ -101,7 +101,7 @@
 
 \newcommand{\biota}{\boldsymbol{\iota}}
 
-\newcommand{\id}{\mathrm{Id}}
+\newcommand{\id}{\mathrm{id}}
 
 \newcommand{\fdefc}[5]{
 	\raisebox{-5pt}{
@@ -257,6 +257,8 @@
 
 \newcommand{\lpo}{\mathcal{L}_{1}}
 \newcommand{\lp}{\mathcal{L}_{\text{prop}}}
+\newcommand{\form}{\mathrm{Frm}}
+\newcommand{\flpo}{\form(\lpo)}
 
 \newcommand{\Clfpo}{C_{\lpo}}
 \newcommand{\Vlfpo}{V_{\lpo}}
@@ -343,14 +345,14 @@
 \usepackage{titlesec}
 %---------------------------------------------------------------
 \titleformat{\chapter}[display]
-{\fontsize{30}{0}\selectfont\centering\bfseries}
+{\fontsize{30}{0}\selectfont\centering\bfseries\vspace{0cm}}
 {\fontsize{40}{0}\selectfont\thechapter\vspace{-1cm}}
 {1em}
 {}
 
 \titleformat{\section}
 {\normalfont\Large\bfseries}
-{{\normalfont\S} \hspace{-0.5cm}}
+{\thesection}
 {1em}
 {}
 
@@ -370,7 +372,7 @@
 {.5em} % Space after theorem head
 { } % Theorem head spec
 \theoremstyle{axioma}
-\newtheorem{axiom}{Axioma}
+\newtheorem{axiom}{Axiom}
 
 \newtheoremstyle{definicion}
 {10pt} % Space above
@@ -382,9 +384,9 @@
 {.5em} % Space after theorem head
 { } % Theorem head spec
 \theoremstyle{definicion}
-\newtheorem*{dfn}{{Definición}}
-\newtheorem*{obs}{{Observación}}
-\newtheorem*{conven}{{Convención}}
+\newtheorem*{dfn}{{Definition}}
+\newtheorem*{obs}{{Observation}}
+\newtheorem*{conven}{{Convention}}
 
 \newtheoremstyle{them}
 {3pt}{3pt}
@@ -392,11 +394,11 @@
 {\scshape \bfseries \color{black}}{:}
 {.5em}{ }
 \theoremstyle{them}
-\newtheorem{thm}{{Teorema}}[chapter]
-\newtheorem{prop}{Proposición}[chapter]
-\newtheorem{col}{Corolario}[chapter]
-\newtheorem{lema}{Lema}[chapter]
-\newtheorem{ejem}{Ejemplo}[chapter]
+\newtheorem{thm}{{Theorem}}[chapter]
+\newtheorem{prop}{Proposition}[chapter]
+\newtheorem{col}{Corolary}[chapter]
+\newtheorem{lema}{Lemma}[chapter]
+\newtheorem{ejem}{Example}[chapter]
 
 \newtheoremstyle{mteo}
 {3pt}{3pt}
@@ -404,7 +406,7 @@
 {\calligra \color{black}}{:}
 {.5em}{ }
 \theoremstyle{mteo}
-\newtheorem{mprop}{Proposición}[chapter]
+\newtheorem{mprop}{Proposition}[chapter]
 
 %---------------------------------------------------------------
 % Colorsitos. --------------------------------------------------

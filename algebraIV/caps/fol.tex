@@ -1,6 +1,135 @@
 \chapter{First order logic}
+\section{The language of FOL}
+A completely formal study on formal languages and its full capabilities won't be explored here. What we do instead is try to give enough intuiton to not turn this into mathematical logic notes but still contemplate some definitions necessary to not leave important notions like \com{property} as a vague term.
 
-\section{Introduction}
+A formal language consists of various symbols. These symbols can form expressions by concatenating them in various ways. A {\bfseries chain} is the yuxtaposition of various symbols. When a chain makes sense we say that we have an {\bfseries formula} of our language. We define what it means for a chain of first order logic symbols to be a formula.
 
-\section{Formal languages}
-$\land \lor \cond \bicond \implies \iff $
+\begin{dfn}
+	The formal language of first order logic, denoted by $\lpo$, consists of
+	\begin{enumerate}[label=\roman*)]
+		\item propositional variables $x_1, x_2, \ldots, x_n, \ldots$,
+		\item logical connectives $\neg, \cond$,
+		\item the universal quantifier $\forall$,
+		\item parenthesis $(,),[,]$
+	\end{enumerate}
+\end{dfn}
+
+\begin{dfn}
+	A chain $\gamma$ of $\lpo$ is an $\lpo$-{\bfseries formula} if and only if
+	\begin{enumerate}[label=\roman*)]
+		\item $\gamma$ is a propositional variable.
+		\item $\gamma$ is the chain $(\neg \alpha)$ where $\alpha$ is a formula.
+		\item $\gamma$ is the chain $(\alpha \cond \beta)$ where $\alpha$ and $\beta$ are formulas.
+		\item $\gamma$ is the chain $(\forall x \alpha)$ where $x$ is a variable and $\alpha$ a formula.
+		\item There's no other way to create a formula.
+	\end{enumerate}
+\end{dfn}
+
+A criteria to verify if a certain chain is a formula is to try to find a finite succession of formulas where the final term is the chain and any other term are subchains of our chain that are formulas and are obtained using previous formulas. This can be interpreted as decomposing every part of our chain and veryfing that they are formulas.
+
+\begin{ejem}
+	The chain $((\neg(x_1 \cond x_2))\cond((\neg x_1)\cond(\neg x_2)))$ is a formula.
+	We can construct the sequence: 
+	\begin{enumerate}[label=\arabic*. ]
+		\item $x_1$ 
+		\item $x_2$
+		\item $(x_1 \cond x_2)$
+		\item $(\neg x_1)$ 
+		\item $(\neg x_2)$
+		\item $((\neg x_1)\cond(\neg x_2))$
+		\item $((\neg(x_1 \cond x_2))\cond((\neg x_1)\cond(\neg x_2)))$.
+	\end{enumerate}
+\end{ejem}
+
+Any formula of our language has a sequence for its construction, so we call it construction sequence. The collection of all formulas of $\lpo$ will be denoted by $\flpo$.
+
+From the logical connectives we can derive the next definitions
+
+\begin{dfn}
+	Given two formulas $\alpha$ and $\beta$,	
+	\begin{enumerate}[label=\roman*)]
+		\item introducing the symbol $\land$, $(\alpha \land \beta)$ is defined as $(\neg (\alpha \cond (\neg \beta)))$.
+		\item introducing the symbol $\lor$, $(\alpha \lor \beta)$ is defined as $((\neg \alpha) \cond \beta)$.
+		\item introducing the symbol $\bicond$, $\alpha \bicond \beta$ is defined as $((\alpha \cond \beta)\land (\beta \cond \alpha))$
+	\end{enumerate}
+\end{dfn}
+
+We need to assign truth values for our language of logic, which is, a bivalent logic. A propositional variable can have any two values true or false that are represented by $T$ and $F$, respectively. We need a way to assign values to our formulas, that is, something like a function, at least, a function only in intuition.
+
+\begin{dfn}
+	Given a function $v$ to assign $T$ or $F$ for any variable of $\lpo$, the evaluation for any formula in $\flpo$ is given by the function $\bar{v}$ as:
+	\begin{align*}
+		\bar{v}(x_n) &= v(x_n), \\
+		\bar{v}(\neg \alpha) &= \left\{ \begin{array}{@{}l@{\,}l@{}} F & \text{ if } \bar{v}(\alpha) = T \\ T & \text{ if } \bar{v}(\alpha) = F \end{array} \right. \\
+			\bar{v}(\alpha \cond \beta) &= \left\{ \begin{array}{@{}l@{\,}l@{}} F & \text{ if } \bar{v}(\alpha) = T \text{ and } \bar{v}(\beta) = F \\ T & \text{ otherwise}  \end{array} \right.
+	\end{align*}
+\end{dfn}
+
+In the usual first course on logic fashion, we represent the possible valuations for any variable and its respective evaluation by a table called {\bfseries truth table}, here, assuming the evaluation on formulas $\alpha$ and $\beta$:
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c}
+		$\alpha$ & $\beta$ & $(\alpha \cond \beta)$ \\
+		\hline
+		$T$ & $T$ & $T$ \\
+		$F$ & $T$ & $T$ \\
+		$T$ & $F$ & $F$ \\
+		$F$ & $F$ & $T$
+	\end{tabular} \quad
+	\begin{tabular}{c|c|c}
+		$\alpha$ & $\beta$ & $(\alpha \land \beta)$ \\
+		\hline
+		$T$ & $T$ & $T$ \\
+		$F$ & $T$ & $F$ \\
+		$T$ & $F$ & $F$ \\
+		$F$ & $F$ & $F$
+	\end{tabular} \quad
+	\begin{tabular}{c|c|c}
+		$\alpha$ & $\beta$ & $(\alpha \lor \beta)$ \\
+		\hline
+		$T$ & $T$ & $T$ \\
+		$F$ & $T$ & $T$ \\
+		$T$ & $F$ & $T$ \\
+		$F$ & $F$ & $F$
+	\end{tabular} \quad
+	\begin{tabular}{c|c|c}
+		$\alpha$ & $\beta$ & $(\alpha \bicond \beta)$ \\
+		\hline
+		$T$ & $T$ & $T$ \\
+		$F$ & $T$ & $F$ \\
+		$T$ & $F$ & $F$ \\
+		$F$ & $F$ & $T$
+	\end{tabular} \\
+	\begin{tabular}{c|c}
+		$\alpha$ & $(\neg \alpha)$ \\
+		\hline
+		$T$ & $F$ \\
+		$F$ & $T$ \\
+	\end{tabular}
+\end{table}
+
+\begin{ejem}
+	Let us evaluate the formula (verify it) $(((\neg x_1) \land x_1) \cond (x_2 \cond x_3))$ for the evaluation $v$ where $v(x_1) = F, v(x_2) = T, v(x_3) = T$.
+	For this, we evaluate $((\neg x_1) \land x_1)$, therefore $(\neg((\neg x_1) \cond (\neg x_1)))$, succesively, $((\neg x_1) \cond (\neg x_1))$, $(\neg x_1)$, and $v(x_1) = F$. Therefore $\bar{v}((\neg x_1)) = T$ and then $\bar{v}(((\neg x_1) \cond (\neg x_1))) = T$ so then $\bar{v}((\neg ((\neg x_1) \cond (\neg x_1)))) = F$. Now $\bar{v}((x_2 \cond x_3)) = T$ and then $\bar{v}((((\neg x_1) \land x_1) \cond (x_2 \cond x_3))) = T$. In general, no matter the valuation on $x_1$ and the formula in the place of $(x_1 \cond x_3)$, the whole formula evaluates in $T$. The reader can verify this using truth tables.
+
+This example is no more than a mere torture that I imagined would be useful to show that the definition works.
+\end{ejem}
+
+Now, to define what it means to satisfy and to correctly infere, we define:
+
+\begin{dfn}
+	We say that a truth assignment $v$ satisfies a formula $\alpha$ if and only if $\bar{v}(\alpha) = T$.
+\end{dfn}
+
+\begin{dfn}
+	For a formula $\alpha$:
+	\begin{enumerate}[label=\roman*]
+		\item $\alpha$ is a {\bfseries tautology} if $v$ satisfies $\alpha$ for every valuation $v$.
+		\item $\alpha$ is an indetermination if there is a valuation $v$ that satisfies $\alpha$ but not every valuation satisfies $\alpha$.
+		\item $\alpha$ is a contradiction if no valuation satisfies $\alpha$.
+	\end{enumerate}
+\end{dfn}
+
+\section{Propositional logic}
+\section{First order predicate logic}

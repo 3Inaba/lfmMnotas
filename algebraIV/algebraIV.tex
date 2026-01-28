@@ -1,4 +1,4 @@
-\documentclass[11pt, twoside]{book}
+\documentclass[10pt, twoside]{book}
 \input{misc/preamble}
 \begin{document}
 \include{misc/cover}
@@ -39,23 +39,24 @@
 \include{misc/intro}
 \pdfbookmark[0]{Table of Contents}{toc}
 
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{1}
 \tableofcontents
 \begin{spacing}{1.0}
 
 \mainmatter
 \include{caps/fol}
 \include{caps/aost}
-\include{caps/seto}
 \include{caps/rf}
 \include{caps/nat}
 \include{caps/ext}
-
-\backmatter
+\include{caps/inf}
 
 \appendix
 \include{apx/equiv}
+\include{apx/categ}
+\include{apx/logic}
 
+\backmatter
 \printbibliography
     
 \end{spacing}

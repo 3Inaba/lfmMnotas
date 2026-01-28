@@ -1,0 +1,53 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{anyt/global//global/global/global}
+    \entry{settheorywillard}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=cd939c5aa7528152c6660f83e659c19e}{%
+           family={Quine},
+           familyi={Q\bibinitperiod},
+           given={Willard\bibnamedelimb Van\bibnamedelima Orman},
+           giveni={W\bibinitperiod\bibinitdelim V\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Harvard University Press}%
+      }
+      \strng{namehash}{cd939c5aa7528152c6660f83e659c19e}
+      \strng{fullhash}{cd939c5aa7528152c6660f83e659c19e}
+      \strng{fullhashraw}{cd939c5aa7528152c6660f83e659c19e}
+      \strng{bibnamehash}{cd939c5aa7528152c6660f83e659c19e}
+      \strng{authorbibnamehash}{cd939c5aa7528152c6660f83e659c19e}
+      \strng{authornamehash}{cd939c5aa7528152c6660f83e659c19e}
+      \strng{authorfullhash}{cd939c5aa7528152c6660f83e659c19e}
+      \strng{authorfullhashraw}{cd939c5aa7528152c6660f83e659c19e}
+      \field{labelalpha}{Qui09}
+      \field{sortinit}{Q}
+      \field{sortinithash}{ce69a400a872ddd02ee7fdb3b38c6abd}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Revised}
+      \field{title}{Set Theory and Its Logic}
+      \field{year}{2009}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

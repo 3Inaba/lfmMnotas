@@ -1,35 +1,26 @@
 \chapter{Natural numbers}
 
-To begin the construction of natural numbers we want them to satisfy their usual properties.
-For starters, we want to define every natural number in a way that lets us obtain the following one. We also want to derive its order properties, like the tricotomy property. We want them to satisfy Peano axioms, one property in particular is to have a succesor function that is injective and for them to be inductive. We'll explore what all this means by shortly exploring Zermelo's construction and then Von Neumann's. Other constructions along with a full Zermelo's construction is found in \cite{settheorywillard}.
+We begin the construction of our usual known number systems by defining the natural numbers. The intuitive idea of them being used to count kind of relates to their formal construction. The problem of defining every natural number can be reduced to defining the first natural number. For our construction, the first natural number is 0, so then we can define the succesor of a natural number, find out if it also satisfies the definition of one and have every natural number determined. Given all basic definitions we want to bring the class of all natural numbers $\nat$ into set theory so we can apply everything we know about sets to show and construct all of its properties, obtaining what is called a Zermelo's Universe, to then finally construct the rest of our number systems how we want them to behave.
+Of course, this can be achieved in ZF set theory or another set theory via different methods. The one treated in these notes is given by Von Neuamnn. Other constructions can be found in \cite{settheorywillard}.
 
-\section{Notions and constructions}
+\section{Notions and construction}
 
-\subsection{Zermelo's construction}
+When thinking about a natural number, the first thing that comes to mind may be a group of $n$ things. That is, we already use the natural number $n$ to define it. A circular definition like this cannot be given to formalize the natural numbers.
+But we can still preserve the idea, establishing the idea of having $x$ elements without recurring to the object $x$. Therefore, we define:
 
-
-\subsection{Von Neumann's construction}
-The principal idea of this construction is to have a natural defined by its precedent numbers. This representation is actually pretty intuitive since here any natural number $n$ has exactly $n$ elements. But we do not use this property to define them since it is circular. But we can formally identify any set resembling this idea of having $n$ elements so it's clear that we can choose a representative for these sets.
-
-\begin{dfn}[Cardinality]
-    Let $X,Y$ be classes, we say that $X$ has the same cardinality as $Y$ or that $X$ is equipotent to $Y$ if there is a bijective function $\fdefc{f}{X}{Y}{x}{f(x)}$.
+\begin{dfn}[Equipotence]
+	Let $A,B$ be sets. We define the class relation on $\uclass$ by 
+	$$A \sim B \bicond \text{ there exists a bijection } \fdef{f}{A}{B}$$.
 \end{dfn}
 
-Notice that we can define equipotent in terms of a function that instead is defined from $Y$ to $X$.
+This class relation is a class equivalence relation. Thus, it can form a partition for $\uclass$.
+This way we can choose a convenient representative for the sets that have $n$ elements and we avoid the circular definition. In essence, every natural number should contain any previous natural number, that's the core idea behind Von Neumann's construction.
 
-\begin{prop}
-    Let $X,Y \in \uclass$. Define $X \equip Y \bicond X$ is equipotent to $Y$.
-    Then $\equip$ is an equivalence relation in $\uclass$.
-\end{prop}
-\begin{proof}
-    The identity function $\idfunc{X}{x}$ is bijective.
+Now, since we want an order for natural numbers, consider $\in$ as a total ordering on a set $n$. The question of it being strict or not may require to talk about well founded sets, but we can avoid it for now. Since we want our natural numbers to be contained in greater natural numbers we will have that $n \in m$ only if m is greater than n, but this definition also implies that $n \subset m$. This specific property is called transitivity. Formally:
 
-    If $X \equip Y$ then there is a bijective function $\fdefc{f}{X}{Y}{x}{f(x)}$, that is, it's inverse $\fdefc{f^{-1}}{Y}{X}{y}{f^{-1}(y)}$ also is bijective.
-
-    Finally, if $X \equip Y$ and $Y \equip Z$ then there are bijective functions $\fdefc{f}{X}{Y}{x}{f(x)}$ and $\fdefc{g}{Y}{Z}{y}{f(y)}$. Its composition $\fdefc{g\circ f}{X}{Z}{x}{(g \circ f) (x)}$ is bijective.
-\end{proof}
-
-So now we can choose a convenient representative for the sets that have $n$ elements. And we did not use that notion to define the concept, so there should be no contradictions. 
+\begin{dfn}
+	A set $x$ is said to be transitive if $y \in x \implies y \subset x$.
+\end{dfn}
 
 \begin{dfn}[Natural number]
     A set $n$ is a natural number if it satisfies:
