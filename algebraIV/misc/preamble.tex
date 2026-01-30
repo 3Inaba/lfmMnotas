@@ -17,12 +17,12 @@
 %\usepackage[utf8]{inputenc}
 \usepackage{babel}
 \usepackage[
-    paperwidth=7in,
-    paperheight=10in,
-    inner=0.75in,
-    outer=0.5in,
-    top=0.8in,
-    bottom=0.8in,
+    paperwidth=17cm,
+    paperheight=24cm,
+    inner=15mm,,
+    outer=10mm,
+    top=15mm,
+    bottom=15mm,
     %headsep=0.2in,
     headheight=14pt,
 ]{geometry}
@@ -39,12 +39,23 @@
 \usepackage{xfrac}
 %---------------------------------------------------------------
 \newcommand{\cond}{%
-	\mathbin{\raisebox{0pt}{\makebox[1.5em]{%
+	\mathbin{\raisebox{0pt}{\makebox[1.0em]{%
 			\setlength{\unitlength}{0.5em}%
 			\linethickness{0.3pt}%
 			\begin{picture}(-0.1,0.1)
 				\polygon*(0.5,0.9)(0.5,0.1)(1,0.5)
 				\polygon*(0.5,0.560)(0.5,0.440)(-1.25,0.440)(-1.25,0.560)
+			\end{picture}%
+	}}}%
+}
+\renewcommand{\implies}{%
+	\mathbin{\raisebox{0pt}{\makebox[1.0em]{%
+			\setlength{\unitlength}{0.5em}%
+			\linethickness{0.3pt}%
+			\begin{picture}(-0.1,0.1)
+				\polygon*(0.5,0.9)(0.5,0.1)(1,0.5)
+				\polygon*(0.5,0.560)(0.5,0.540)(-1.25,0.540)(-1.25,0.560)
+				\polygon*(0.5,0.360)(0.5,0.340)(-1.25,0.340)(-1.25,0.360)
 			\end{picture}%
 	}}}%
 }
@@ -79,6 +90,14 @@
 			\end{picture}%
 	}}%
 }
+
+\newcommand{\Dashv}{%
+	\mathrel{\reflectbox{$\vDash$}}
+}%
+
+\newcommand{\leqv}{%
+	\vDash\Dashv
+}%
 
 \newcommand{\cad}[1]{\iarr #1 \darr}
 
@@ -256,9 +275,10 @@
 \newcommand{\gen}{\bigwedge}
 
 \newcommand{\lpo}{\mathcal{L}_{1}}
-\newcommand{\lp}{\mathcal{L}_{\text{prop}}}
+\newcommand{\lp}{\mathcal{L}_{0}}
 \newcommand{\form}{\mathrm{Frm}}
 \newcommand{\flpo}{\form(\lpo)}
+\newcommand{\flp}{\form(\lp)}
 
 \newcommand{\Clfpo}{C_{\lpo}}
 \newcommand{\Vlfpo}{V_{\lpo}}
@@ -325,6 +345,7 @@
 % Gráficos, tablas y portada. ----------------------------------
 %---------------------------------------------------------------
 \usepackage{tikz}
+\usetikzlibrary{matrix}
 \usepackage{graphicx}
 
 \usepackage{caption}

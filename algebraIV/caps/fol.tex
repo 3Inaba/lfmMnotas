@@ -1,21 +1,21 @@
 \chapter{First order logic}
-\section{The language of FOL}
+\section{Propositoinal logic}
 A completely formal study on formal languages and its full capabilities won't be explored here. What we do instead is try to give enough intuiton to not turn this into mathematical logic notes but still contemplate some definitions necessary to not leave important notions like \com{property} as a vague term.
 
-A formal language consists of various symbols. These symbols can form expressions by concatenating them in various ways. A {\bfseries chain} is the yuxtaposition of various symbols. When a chain makes sense we say that we have an {\bfseries formula} of our language. We define what it means for a chain of first order logic symbols to be a formula.
+\subsection{The formal language and semantic notions}
+A formal language consists of symbols. These symbols can form expressions via concatenation in various ways. A {\bfseries chain} is the yuxtaposition of various symbols. When a chain makes sense we say that we have an {\bfseries formula} of our language. We define what it means for a chain of first order logic symbols to be a formula.
 
 \begin{dfn}
-	The formal language of first order logic, denoted by $\lpo$, consists of
+	The formal language of propositional logic, denoted by $\lp$, consists of
 	\begin{enumerate}[label=\roman*)]
 		\item propositional variables $x_1, x_2, \ldots, x_n, \ldots$,
 		\item logical connectives $\neg, \cond$,
-		\item the universal quantifier $\forall$,
 		\item parenthesis $(,),[,]$
 	\end{enumerate}
 \end{dfn}
 
 \begin{dfn}
-	A chain $\gamma$ of $\lpo$ is an $\lpo$-{\bfseries formula} if and only if
+	A chain $\gamma$ of $\lp$ is an $\lp$-{\bfseries formula} if and only if
 	\begin{enumerate}[label=\roman*)]
 		\item $\gamma$ is a propositional variable.
 		\item $\gamma$ is the chain $(\neg \alpha)$ where $\alpha$ is a formula.
@@ -41,7 +41,7 @@ A criteria to verify if a certain chain is a formula is to try to find a finite 
 	\end{enumerate}
 \end{ejem}
 
-Any formula of our language has a sequence for its construction, so we call it construction sequence. The collection of all formulas of $\lpo$ will be denoted by $\flpo$.
+Any formula of our language has a sequence for its construction, so we call it construction sequence. The collection of all formulas of $\lp$ will be denoted by $\flp$.
 
 From the logical connectives we can derive the next definitions
 
@@ -57,7 +57,7 @@ From the logical connectives we can derive the next definitions
 We need to assign truth values for our language of logic, which is, a bivalent logic. A propositional variable can have any two values true or false that are represented by $T$ and $F$, respectively. We need a way to assign values to our formulas, that is, something like a function, at least, a function only in intuition.
 
 \begin{dfn}
-	Given a function $v$ to assign $T$ or $F$ for any variable of $\lpo$, the evaluation for any formula in $\flpo$ is given by the function $\bar{v}$ as:
+	Given a function $v$ to assign $T$ or $F$ for any variable of $\lp$, the evaluation for any formula in $\flp$ is given by the function $\bar{v}$ as:
 	\begin{align*}
 		\bar{v}(x_n) &= v(x_n), \\
 		\bar{v}(\neg \alpha) &= \left\{ \begin{array}{@{}l@{\,}l@{}} F & \text{ if } \bar{v}(\alpha) = T \\ T & \text{ if } \bar{v}(\alpha) = F \end{array} \right. \\
@@ -65,9 +65,9 @@ We need to assign truth values for our language of logic, which is, a bivalent l
 	\end{align*}
 \end{dfn}
 
-In the usual first course on logic fashion, we represent the possible valuations for any variable and its respective evaluation by a table called {\bfseries truth table}, here, assuming the evaluation on formulas $\alpha$ and $\beta$:
+In the usual first course on logic fashion, we represent the possible valuations for any variable and its respective evaluation by a table called {\bfseries truth table}, here, assuming the evaluation on formulas $\alpha$ and $\beta$ on Table \ref{tab:truth tables}
 
-\begin{table}[h]
+\begin{table}[h] 
 	\centering
 	\begin{tabular}{c|c|c}
 		$\alpha$ & $\beta$ & $(\alpha \cond \beta)$ \\
@@ -92,21 +92,26 @@ In the usual first course on logic fashion, we represent the possible valuations
 		$F$ & $T$ & $T$ \\
 		$T$ & $F$ & $T$ \\
 		$F$ & $F$ & $F$
-	\end{tabular} \quad
-	\begin{tabular}{c|c|c}
+	\end{tabular} \\ 
+	\begin{tabular}{c|c|c} 
 		$\alpha$ & $\beta$ & $(\alpha \bicond \beta)$ \\
 		\hline
 		$T$ & $T$ & $T$ \\
 		$F$ & $T$ & $F$ \\
 		$T$ & $F$ & $F$ \\
 		$F$ & $F$ & $T$
-	\end{tabular} \\
+	\end{tabular} \quad 
 	\begin{tabular}{c|c}
 		$\alpha$ & $(\neg \alpha)$ \\
 		\hline
 		$T$ & $F$ \\
 		$F$ & $T$ \\
+		 & \\
+		 &
 	\end{tabular}
+
+	\caption{Truth tables}
+	\label{tab:truth tables}
 \end{table}
 
 \begin{ejem}
@@ -116,20 +121,171 @@ In the usual first course on logic fashion, we represent the possible valuations
 This example is no more than a mere torture that I imagined would be useful to show that the definition works.
 \end{ejem}
 
-Now, to define what it means to satisfy and to correctly infere, we define:
+A notion to be defined is that of satisfaction. What is meant by satisfaction is for the evaluation to be true in a formula, that is, what the formula means is true for the given valuation. This notion permits us to define the following.
 
 \begin{dfn}
-	We say that a truth assignment $v$ satisfies a formula $\alpha$ if and only if $\bar{v}(\alpha) = T$.
+	We say that a valuation $v$ satisfies a formula $\alpha$ (denoted $v \vDash \alpha$) if and only if $\bar{v}(\alpha) = T$. If we have a subcollection $\Gamma$ of $\flp$, we say that a valuation satisfies $\Gamma$ (denoted $v \vDash \Gamma$) if it satisfies every one of its formulas.
 \end{dfn}
 
 \begin{dfn}
 	For a formula $\alpha$:
-	\begin{enumerate}[label=\roman*]
-		\item $\alpha$ is a {\bfseries tautology} if $v$ satisfies $\alpha$ for every valuation $v$.
-		\item $\alpha$ is an indetermination if there is a valuation $v$ that satisfies $\alpha$ but not every valuation satisfies $\alpha$.
-		\item $\alpha$ is a contradiction if no valuation satisfies $\alpha$.
+	\begin{enumerate}[label=\roman*)]
+		\item $\alpha$ is a {\bfseries tautology} if $v \vDash \alpha$ for every valuation $v$.
+		\item $\alpha$ is an indetermination if $v \vDash \alpha$ for some valuation $v$ but $\alpha$ is not a tautology.
+		\item $\alpha$ is a contradiction if no valuation satisfies $\alpha$ (the same as saying that $\alpha$ is unsatisfiable).
+		\item $\alpha$ if $\Gamma$ is a subcollections of $\flp$, we say that $\Gamma$ tautologically implies $\alpha$ (denoted $\Gamma \vDash \alpha$) if for every valuation $v$ that satisfies $\Gamma$ we have that $v \vDash \alpha$.
 	\end{enumerate}
 \end{dfn}
+
+With these definition, we can prove (with a metaproof) the following results:
+
+\begin{prop}
+	$\Gamma \vDash \alpha$ if and only if $\Gamma'$, the collection that consists of all elements of $\Gamma$ along with $(\neg \alpha)$, is unsatisfiable.
+\end{prop}
+
+\begin{proof}
+	Assume that no valuation $v$ satisfies both $\Gamma$ and $(\neg \alpha)$. Then $v(\alpha) = T$ for any valuation $v$. That is by definition, $\Gamma \vDash \alpha$. For the converse where $\Gamma \vDash \alpha$ we have that $v(\alpha) = T$ whenever $v$ satisfies any formula in $\Gamma$. Then $v((\neg \alpha)) = F$  whenever $v$ satisfies any formula in $\Gamma$, so the collection $\Gamma'$ isn't satisfied by any $v$.
+\end{proof}
+
+\begin{prop}(Deduction metatheorem)
+	$\Gamma \vDash \alpha \cond \beta$ if and only if $\Gamma'$, the collection that consists of all elements of $\Gamma$ along with $\alpha$, is such that $\Gamma' \vDash \beta$.
+\end{prop}
+
+\begin{proof}
+	Assume that $\Gamma \vDash \alpha \cond \beta$. Then $v(\alpha \cond \beta) = T$ whenever $v$ satisfies any formula in $\Gamma$, that is that it cannot be that $v(\alpha) = T$ and $v(\beta) = F$ whenever $v$ satisfies any formula in $\Gamma$. So if $v$ satisfies $\Gamma'$ then there's no other option but that $v(\beta) = T$, so $\Gamma' \vDash \beta$.
+	For the converse, if $\Gamma' \vDash \beta$ then a analogous reasoning gives us $\Gamma \vDash \alpha \cond \beta$.
+\end{proof}
+
+When needed, the parenthesis in each formula can be erased in exchange for a careful handling of the meaning of the formulas. This can be done with a hierarchy or just with fewer parenthesis. The reader should choose whichever is their favorite.
+
+Now, the following results can be established through our construction and the next definition.
+
+\begin{dfn}
+	If $\alpha \vDash \beta$ and $\beta \vDash \alpha$ then we write $\alpha \leqv \beta$.
+\end{dfn}
+
+\begin{prop}
+	\hfill
+	\begin{enumerate}[label=\roman*)]
+		\item $(\alpha \land \beta) \land \gamma \leqv \alpha \land (\beta \land \gamma)$.
+		\item $(\alpha \lor \beta) \lor \gamma \leqv \alpha \lor (\beta \lor \gamma)$.
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+	$i)$ Writing the truth tables for both formulas we have that
+	\begin{center}
+	\begin{tabular}{c|c|c|c|c}
+		$\alpha$ & $\beta$ & $\gamma$ & $\alpha \land \beta$ & $(\alpha \land \beta) \land \gamma$ \\
+		\hline
+		$T$ & $T$ & $T$ & $T$ & $T$ \\ 
+		$F$ & $T$ & $T$ & $F$ & $F$ \\
+		$T$ & $F$ & $T$ & $F$ & $F$ \\
+		$F$ & $F$ & $T$ & $F$ & $F$ \\
+		$T$ & $T$ & $F$ & $T$ & $F$ \\
+		$F$ & $T$ & $F$ & $F$ & $F$ \\
+		$T$ & $F$ & $F$ & $F$ & $F$ \\
+		$F$ & $F$ & $F$ & $F$ & $F$ 
+	\end{tabular} \quad and \quad
+	\begin{tabular}{c|c|c|c|c}
+		$\alpha$ & $\beta$ & $\gamma$ & $\beta \land \gamma$ & $\alpha \land (\beta \land \gamma)$ \\
+		\hline
+		$T$ & $T$ & $T$ & $T$ & $T$ \\ 
+		$F$ & $T$ & $T$ & $T$ & $F$ \\
+		$T$ & $F$ & $T$ & $F$ & $F$ \\
+		$F$ & $F$ & $T$ & $F$ & $F$ \\
+		$T$ & $T$ & $F$ & $F$ & $F$ \\
+		$F$ & $T$ & $F$ & $F$ & $F$ \\
+		$T$ & $F$ & $F$ & $F$ & $F$ \\
+		$F$ & $F$ & $F$ & $F$ & $F$ 
+	\end{tabular}
+	\end{center}
+	have the same truth tables. This is, that $(\alpha \land \beta) \land \gamma \vDash \alpha \land (\beta \land \gamma)$ and $\alpha \land (\beta \land \gamma) \vDash (\alpha \land \beta) \land \gamma$.
+	
+	$ii)$ The proof is analogous.
+\end{proof}
+
+The proposition is here just for peace of mind when making equivalent statements using the symbols $\land$ and $\lor$.
+
+\subsection{Natural deduction}
+To bring a mechanic way to obtain formulas from other formulas with a certain sense via rules of transformation is what is permited by what we call {\bfseries inference systems}. An inference system consist of our formal language and inference rules that tell us how to transform formulas into other formulas in the way we want to. The first systems were given via an axiomatization of FOL, that is, a collection of metaformulas from which we know how to derive one formula from another. This method isn't too practical for our purposes, so we introduce the following method of natural deduction.
+
+\iffalse
+Our basic shared notion between inference systems in this subsection is that of derivation.
+\begin{dfn}
+	We say that for a subcollection $\Gamma$ of $\flp$ and a formula $\alpha$, $\alpha$ is derived from $\Gamma$ (denoted $\Gamma \vdash \alpha$) in an inference system if and only if $\Gamma \vDash \alpha$.
+\end{dfn}
+
+Actually, these notions are not equivalent per se. The difference is that $\vDash$ is a semmantical notion, that is, it involves the meaning of the formulas. Meanwhile $\vdash$ us purely syntactical, i.e. it involves only the way in which formulas transform to create other formulas. We give the equivalence as definition, but a rigorous study of this can be found in the appendices.
+
+In an inference system, when we establish that $\Gamma \vdash \alpha$ implies $\Gamma \vDash \alpha$ then we say that the inference system is {\bfseries sound} or that there is {\bfseries soundness}. When the converse is proven, then we say that the inference system is {\bfseries complete}. For this chapter, the reader should have faith that natural deduction system is sound. If not, check the appendix.
+\fi
+
+\begin{dfn}(Natural deduction)
+	\hfill
+	\begin{enumerate}[label=\roman*)]
+		\item For a finit sequence $\Gamma$ of $\flp$ and a formula $\beta$, an {\bfseries inference scheme} (or just inference) is the chain $\Gamma \vdash \beta$. If for the sequence $\Gamma$ we write $\alpha_1, \ldots, \alpha_k$ then we write $\alpha_1, \ldots, \alpha_k \vdash \beta$.
+		\iffalse
+		\item A deduction $\Gamma \vdash \alpha$ holds if for any valuation $v$ such that $v \vDash \Gamma$ we have $v \vDash \beta_j$ for some $\beta_j$ in $\Delta$, equivalently, $v$ satisfies $(\alpha_1 \land \cdots \land \alpha_k) \cond (\beta_1 \lor \cdots \lor \beta_l)$.
+		\item A deduction $\Gamma \vdash \Delta$ is valid if it holds and $\Gamma$ is a tautology. In other words $(\alpha_1 \land \cdots \land \alpha_k) \cond (\beta_1 \lor \cdots \lor \beta_l)$ is a tautology.
+		\fi
+		\item The system of natural deduction for $\lp$ has the following rules of inference. For any formulas $\varphi$, $\psi$ and $\zeta$ the following are valid inferences:
+			\begin{enumerate}[label=\alph*), leftmargin=1.5cm]
+				\item[RI $\neg$:] $\varphi \cond \cdots \cond \psi \land \neg\psi \vdash \neg\varphi$.
+				\item[RE $\neg$:] $\neg\neg\varphi \vdash \varphi$.
+				\item[RI $\cond$:] $\varphi \cond \cdots \cond \psi \vdash \varphi \cond \psi$.
+				\item[RE $\cond$:] $\varphi \cond \psi, \varphi \vdash \psi$.
+				\item[RI $\land$:] $\varphi, \psi \vdash \varphi \land \psi$.
+				\item[RE $\land$:] $\varphi \land \psi \vdash \varphi$ or $\varphi \land \psi \vdash \psi$.
+				\item[RI $\lor$:] $\varphi \vdash \varphi \lor \psi$.
+				\item[RE $\lor$:] $\varphi \lor \psi, \varphi \cond \cdots \cond \zeta, \psi \cond \cdots \cond \zeta \vdash \zeta$.
+			\end{enumerate}
+		\item A deduction $\Gamma \vdash \beta$ holds if there is a finite sequence of valid inferences such that the last element of the sequence is $\beta$ and if $\alpha_i$ is an element of the sequence before $\beta$ then:
+			\begin{enumerate}[label=\alph*)]
+				\item $\alpha_i$ is a valid inference.
+				\item $\alpha_k = \alpha_j \cond \alpha_i$ for some $k,j < i$.
+			\end{enumerate}
+	\end{enumerate}
+\end{dfn}
+
+The inference rules are actually tautologies of the form $\varphi \cond \psi$. They're choosen in a "natural" way that adjusts to our intuition but as an excercise it should be proved via truth tables that these are indeed tautologies.
+
+We introduce the following notation used in \cite{logicadeaño}. When making a assumptions, a vertical line extends for the subsequent derivations and then a horizontal line closes with the conclusion. So we write the inference rules like:
+
+\begin{center}
+\begin{tikzpicture}
+	    \matrix (m) [
+		matrix of nodes,
+		column sep=0.5em,
+		row sep=0.1ex,
+		nodes={anchor=west, inner sep=2pt},
+		column 1/.style={minimum width=6em, align=left}
+		]{
+		RI $\neg$: \\
+		$\varphi$ \\
+		$\vdots$ \\
+		$\psi \land \neg\psi$ \\
+		$\neg\varphi$ \\
+		};
+\draw[thick] ([yshift=7pt]m-3-1.north west) -- ([xshift=0pt]m-4-1.south west);
+\draw[thick] ([yshift=-4pt]m-2-1.north west) -- ([yshift=-4pt, xshift=20pt]m-2-1.north west);
+\draw[thick] ([yshift=0pt]m-5-1.north west) -- ([yshift=0pt, xshift=60pt]m-5-1.north west);
+\end{tikzpicture}
+\begin{tikzpicture}
+	    \matrix (m) [
+		matrix of nodes,
+		column sep=0.5em,
+		row sep=0.1ex,
+		nodes={anchor=west, inner sep=2pt},
+		column 1/.style={minimum width=6em, align=left}
+		]{
+		RE $\neg$: \\
+		$\neg\neg\varphi$ \\
+		$\varphi$ \\
+		};
+\draw[thick] ([yshift=0pt]m-3-1.north west) -- ([yshift=0pt, xshift=60pt]m-3-1.north west);
+\end{tikzpicture}
+\end{center}
 
 \section{Propositional logic}
 \section{First order predicate logic}

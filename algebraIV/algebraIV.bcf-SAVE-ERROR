@@ -2372,3 +2372,4 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">biblo.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
+    <bcf:citekey order="1" intorder="1">logicadeaño</bcf:citekey>
