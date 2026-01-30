@@ -1,5 +1,5 @@
 \chapter{First order logic}
-\section{Propositoinal logic}
+\section{Propositional logic}
 A completely formal study on formal languages and its full capabilities won't be explored here. What we do instead is try to give enough intuiton to not turn this into mathematical logic notes but still contemplate some definitions necessary to not leave important notions like \com{property} as a vague term.
 
 \subsection{The formal language and semantic notions}
@@ -65,10 +65,9 @@ We need to assign truth values for our language of logic, which is, a bivalent l
 	\end{align*}
 \end{dfn}
 
-In the usual first course on logic fashion, we represent the possible valuations for any variable and its respective evaluation by a table called {\bfseries truth table}, here, assuming the evaluation on formulas $\alpha$ and $\beta$ on Table \ref{tab:truth tables}
+In the usual first course on logic fashion, we represent the possible valuations for any variable and its respective evaluation by a table called {\bfseries truth table}, here, assuming the evaluation on formulas $\alpha$ and $\beta$: 
 
-\begin{table}[h] 
-	\centering
+\begin{center}
 	\begin{tabular}{c|c|c}
 		$\alpha$ & $\beta$ & $(\alpha \cond \beta)$ \\
 		\hline
@@ -109,10 +108,7 @@ In the usual first course on logic fashion, we represent the possible valuations
 		 & \\
 		 &
 	\end{tabular}
-
-	\caption{Truth tables}
-	\label{tab:truth tables}
-\end{table}
+\end{center}
 
 \begin{ejem}
 	Let us evaluate the formula (verify it) $(((\neg x_1) \land x_1) \cond (x_2 \cond x_3))$ for the evaluation $v$ where $v(x_1) = F, v(x_2) = T, v(x_3) = T$.
@@ -224,7 +220,7 @@ In an inference system, when we establish that $\Gamma \vdash \alpha$ implies $\
 \begin{dfn}(Natural deduction)
 	\hfill
 	\begin{enumerate}[label=\roman*)]
-		\item For a finit sequence $\Gamma$ of $\flp$ and a formula $\beta$, an {\bfseries inference scheme} (or just inference) is the chain $\Gamma \vdash \beta$. If for the sequence $\Gamma$ we write $\alpha_1, \ldots, \alpha_k$ then we write $\alpha_1, \ldots, \alpha_k \vdash \beta$.
+		\item For a finite collection $\Gamma$ of $\flp$ and a formula $\beta$, an {\bfseries inference scheme} (or just inference) is the chain $\Gamma \vdash \beta$. If for the collection $\Gamma$ we write $\alpha_1, \ldots, \alpha_k$ then we write $\alpha_1, \ldots, \alpha_k \vdash \beta$.
 		\iffalse
 		\item A deduction $\Gamma \vdash \alpha$ holds if for any valuation $v$ such that $v \vDash \Gamma$ we have $v \vDash \beta_j$ for some $\beta_j$ in $\Delta$, equivalently, $v$ satisfies $(\alpha_1 \land \cdots \land \alpha_k) \cond (\beta_1 \lor \cdots \lor \beta_l)$.
 		\item A deduction $\Gamma \vdash \Delta$ is valid if it holds and $\Gamma$ is a tautology. In other words $(\alpha_1 \land \cdots \land \alpha_k) \cond (\beta_1 \lor \cdots \lor \beta_l)$ is a tautology.
@@ -240,9 +236,10 @@ In an inference system, when we establish that $\Gamma \vdash \alpha$ implies $\
 				\item[RI $\lor$:] $\varphi \vdash \varphi \lor \psi$.
 				\item[RE $\lor$:] $\varphi \lor \psi, \varphi \cond \cdots \cond \zeta, \psi \cond \cdots \cond \zeta \vdash \zeta$.
 			\end{enumerate}
-		\item A deduction $\Gamma \vdash \beta$ holds if there is a finite sequence of valid inferences such that the last element of the sequence is $\beta$ and if $\alpha_i$ is an element of the sequence before $\beta$ then:
+		\item A deduction $\Gamma \vdash \beta$ is valid if there is a finite sequence of formulas such that the last element of the sequence is $\beta$ and if $\alpha_i$ is an element of the sequence before $\beta$ then one of the following holds:
 			\begin{enumerate}[label=\alph*)]
-				\item $\alpha_i$ is a valid inference.
+				\item $\alpha_i$ is a tautology.
+				\item $\alpha_i$ is an element of $\Gamma$.
 				\item $\alpha_k = \alpha_j \cond \alpha_i$ for some $k,j < i$.
 			\end{enumerate}
 	\end{enumerate}
@@ -250,42 +247,128 @@ In an inference system, when we establish that $\Gamma \vdash \alpha$ implies $\
 
 The inference rules are actually tautologies of the form $\varphi \cond \psi$. They're choosen in a "natural" way that adjusts to our intuition but as an excercise it should be proved via truth tables that these are indeed tautologies.
 
-We introduce the following notation used in \cite{logicadeaño}. When making a assumptions, a vertical line extends for the subsequent derivations and then a horizontal line closes with the conclusion. So we write the inference rules like:
+\begin{ejem}
+	Prove $\alpha, \alpha \cond \beta, \beta \cond \gamma \vdash \gamma$.
+	\begin{proof}
+		We construct the sequence:
+		\begin{enumerate}[label=\arabic*. ]
+			\item $\alpha$
+			\item $\alpha \cond \beta$
+			\item $\beta$
+			\item $\beta \cond \gamma$
+			\item $\gamma$
+		\end{enumerate}
+	\end{proof}
+\end{ejem}
+
+A not yet provable but useful theorem is the deduction theorem for syntactical consequence, i.e., for inference in our context. It will be stated but not proved.
+
+\begin{thm}[Deduction theorem]
+	If $\Gamma, \varphi \vdash \psi$ then $\Gamma \vdash \varphi \cond \psi$
+\end{thm}
+
+With the deduction theorem, the next kind of proof can be given.
+
+\begin{ejem}
+	Prove $\alpha \vdash \neg\neg \alpha$:
+	\begin{proof}
+		\hfill
+		\begin{enumerate}[label=\arabic*. ]
+			\item $\alpha, \neg\neg\neg\alpha \vdash \neg\alpha$
+			\item $\alpha \vdash \neg\neg\neg\alpha \cond \neg\alpha$
+			\item $\alpha \vdash \alpha \cond \neg\neg\alpha$
+			\item $\alpha \vdash \neg\neg\alpha$
+		\end{enumerate}
+	\end{proof}
+\end{ejem}
+
+We introduce the following notation used in \cite{logicadeaño}. When making a assumptions (adding a formula to our collection), a vertical line extends for the subsequent derivations and then a horizontal line closes with the conclusion. So we write the inference rules like:
 
 \begin{center}
 \begin{tikzpicture}
-	    \matrix (m) [
-		matrix of nodes,
-		column sep=0.5em,
-		row sep=0.1ex,
-		nodes={anchor=west, inner sep=2pt},
-		column 1/.style={minimum width=6em, align=left}
-		]{
-		RI $\neg$: \\
-		$\varphi$ \\
-		$\vdots$ \\
-		$\psi \land \neg\psi$ \\
-		$\neg\varphi$ \\
-		};
-\draw[thick] ([yshift=7pt]m-3-1.north west) -- ([xshift=0pt]m-4-1.south west);
-\draw[thick] ([yshift=-4pt]m-2-1.north west) -- ([yshift=-4pt, xshift=20pt]m-2-1.north west);
-\draw[thick] ([yshift=0pt]m-5-1.north west) -- ([yshift=0pt, xshift=60pt]m-5-1.north west);
-\end{tikzpicture}
-\begin{tikzpicture}
-	    \matrix (m) [
-		matrix of nodes,
-		column sep=0.5em,
-		row sep=0.1ex,
-		nodes={anchor=west, inner sep=2pt},
-		column 1/.style={minimum width=6em, align=left}
-		]{
-		RE $\neg$: \\
-		$\neg\neg\varphi$ \\
-		$\varphi$ \\
-		};
-\draw[thick] ([yshift=0pt]m-3-1.north west) -- ([yshift=0pt, xshift=60pt]m-3-1.north west);
+	\matrix (m) [
+	matrix of nodes,
+	column sep=0.5em,
+	row sep=0.1ex,
+	nodes={anchor=west, inner sep=2pt},
+	column 1/.style={minimum width=6em, align=left}
+	]{
+	RI $\neg$: \\
+	$\varphi$ \\
+	$\vdots$ \\
+	$\psi \land \neg\psi$ \\
+	\hfill \\
+	$\neg\varphi$ \\
+	};
+	\draw[thick] ([yshift=7pt]m-3-1.north west) -- ([xshift=0pt]m-4-1.south west);
+	\draw[thick] ([yshift=-4pt]m-2-1.north west) -- ([yshift=-4pt, xshift=20pt]m-2-1.north west);
+	\draw[thick] ([yshift=0pt]m-5-1.north west) -- ([yshift=0pt, xshift=60pt]m-5-1.north west);
+
+	\matrix (reneg) [
+	matrix of nodes,
+	right=2cm,
+	column sep=0.5em,
+	row sep=0.1ex,
+	nodes={anchor=west, inner sep=2pt},
+	column 1/.style={minimum width=6em, align=left}
+	]{
+	RE $\neg$: \\
+	$\neg\neg\varphi$ \\
+	\hfill \\
+	$\varphi$ \\
+	};
+	\draw[thick] ([yshift=0pt]reneg-3-1.north west) -- ([yshift=0pt, xshift=60pt]reneg-3-1.north west);
+
+	\matrix (ricond) [
+	matrix of nodes,
+	right=5cm,
+	column sep=0.5em,
+	row sep=0.1ex,
+	nodes={anchor=west, inner sep=2pt},
+	column 1/.style={minimum width=6em, align=left}
+	]{
+	RI $\cond$: \\
+	$\varphi$ \\
+	\vdots \\
+	$\psi$ \\
+	\hfill \\
+	$\varphi \cond \psi$ \\
+	};
+	\draw[thick] ([yshift=7pt]ricond-3-1.north west) -- ([xshift=0pt]ricond-4-1.south west);
+	\draw[thick] ([yshift=-4pt]ricond-2-1.north west) -- ([yshift=-4pt, xshift=20pt]ricond-2-1.north west);
+	\draw[thick] ([yshift=0pt]ricond-5-1.north west) -- ([yshift=0pt, xshift=60pt]ricond-5-1.north west);
+
+	\matrix (recond) [
+	matrix of nodes,
+	right=8cm,
+	column sep=0.5em,
+	row sep=0.1ex,
+	nodes={anchor=west, inner sep=2pt},
+	column 1/.style={minimum width=6em, align=left}
+	]{
+	RE $\cond$: \\
+	$\varphi \cond \psi$ \\
+	$\varphi$ \\
+	\hfill \\
+	$\psi$ \\
+	};
+	\draw[thick] ([yshift=0pt]recond-4-1.north west) -- ([yshift=0pt, xshift=60pt]recond-4-1.north west);
 \end{tikzpicture}
 \end{center}
 
-\section{Propositional logic}
+From which, we can derive the following inferences in such fashion.
+
+*CHINGO DE INFERENCIAS A LO WEY*
+
+Of course, the full definition and formal notion of derivation, that is, syntactical consequence is explored in more depth in the appendix. When we stablish synctatic consequence we also stablish semantic consequence, that is, a tautology. These notions are equivalent for the natural deduction system as well as tableaux and sequent calculus, other inference systems.
+So, when we stablish $\Gamma \vdash \beta$ we also stablish $\Gamma \vDash \beta$ and viceversa.
+
 \section{First order predicate logic}
+\subsection{Formal language and models}
+\subsection{Free and bound variables}
+\subsection{Natural deduction for FOL}
+
+\section{Theories and axiomatic systems}
+\subsection{First order arithmetic}
+\subsection{First order NBG set theory}
+\subsection{First order mathematical structures}
