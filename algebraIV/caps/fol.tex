@@ -203,7 +203,7 @@ Now, the following results can be established through our construction and the n
 
 The proposition is here just for peace of mind when making equivalent statements using the symbols $\land$ and $\lor$.
 
-\subsection{Natural deduction}
+\subsection{Syntactic consequence: Natural deduction}
 To bring a mechanic way to obtain formulas from other formulas with a certain sense via rules of transformation is what is permited by what we call {\bfseries inference systems}. An inference system consist of our formal language and inference rules that tell us how to transform formulas into other formulas in the way we want to. The first systems were given via an axiomatization of FOL, that is, a collection of metaformulas from which we know how to derive one formula from another. This method isn't too practical for our purposes, so we introduce the following method of natural deduction.
 
 \iffalse
@@ -235,12 +235,13 @@ In an inference system, when we establish that $\Gamma \vdash \alpha$ implies $\
 				\item[RE $\land$:] $\varphi \land \psi \vdash \varphi$ or $\varphi \land \psi \vdash \psi$.
 				\item[RI $\lor$:] $\varphi \vdash \varphi \lor \psi$.
 				\item[RE $\lor$:] $\varphi \lor \psi, \varphi \cond \cdots \cond \zeta, \psi \cond \cdots \cond \zeta \vdash \zeta$.
+				\item[*:] Any tautology of the form $\varphi \cond \psi$ writtem as $\varphi \vdash \psi$.
 			\end{enumerate}
-		\item A deduction $\Gamma \vdash \beta$ is valid if there is a finite sequence of formulas such that the last element of the sequence is $\beta$ and if $\alpha_i$ is an element of the sequence before $\beta$ then one of the following holds:
+		\item It can be stablished that $\Gamma \vdash \beta$ if there is a finite sequence of inferences such that the last element of the sequence is $\beta$ and if $\alpha_i$ is an element of the sequence before $\beta$ then one of the following holds:
 			\begin{enumerate}[label=\alph*)]
-				\item $\alpha_i$ is a tautology.
+				\item $\alpha_i$ is a valid inference.
 				\item $\alpha_i$ is an element of $\Gamma$.
-				\item $\alpha_k = \alpha_j \cond \alpha_i$ for some $k,j < i$.
+				\item $\alpha_k = \alpha_j \vdash \alpha_i$ for some $k,j < i$.
 			\end{enumerate}
 	\end{enumerate}
 \end{dfn}
