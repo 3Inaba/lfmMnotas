@@ -1,0 +1,60 @@
+\documentclass[10pt, twoside]{book}
+\input{misc/preamble}
+\begin{document}
+%\include{misc/cover}
+\backgroundsetup{
+	scale=1,
+	angle=0,
+	opacity=1,
+	contents=
+	{
+		\begin{tikzpicture}[remember picture,overlay]
+			\path[
+			left color = white,
+			middle color = white,
+			right color = white
+			]
+			(current page.south west)
+			rectangle
+			(current page.north east);
+		\end{tikzpicture}
+	}
+}
+
+%---------------------------------------------------------------
+%---------------------------------------------------------------
+\pagestyle{fancy}
+
+\fancyhf{}
+\fancyhead[LE]{\nouppercase{\leftmark\hfill\S\thesection}}
+\fancyhead[RO]{\nouppercase{\S\thesection\hfill\rightmark}}
+\fancyfoot[RO]{\thepage}
+\fancyfoot[LE]{\thepage}
+
+\pagecolor{white}
+%---------------------------------------------------------------
+%---------------------------------------------------------------
+
+\frontmatter
+\setcounter{tocdepth}{1}
+\pdfbookmark[0]{Table of Contents}{toc}
+\tableofcontents
+%\include{misc/intro}
+\printbibliography
+
+\begin{spacing}{1.0}
+
+\mainmatter
+\chapter{Fundamentos de la geometría euclidiana}
+\include{caps/fgeoeucli/eveucli}
+\include{caps/fgeoeucli/torto}
+\include{caps/fgeoeucli/pvolvec}
+\include{caps/fgeoeucli/calcdfin}
+
+\appendix
+
+\backmatter
+    
+\end{spacing}
+	
+\end{document}

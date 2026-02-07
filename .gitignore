@@ -8,4 +8,6 @@
 *.run.xml
 *.synctex.gz
 *.toc
-latexmkrc
+*.fls
+*.xdv
+*.fdb_latexmk
