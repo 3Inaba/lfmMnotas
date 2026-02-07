@@ -1,0 +1,239 @@
+\pdfbookmark[0]{Portada}{cover}
+\backgroundsetup{
+	scale=1,
+	angle=45,
+	opacity=1,
+	vshift=10,
+	contents=
+	{
+	\begin{tikzpicture}[remember picture,overlay]
+		\path[
+			left color = white,
+			middle color = white,
+			right color = white
+		]
+		(current page.south west)
+		rectangle
+		(current page.north east);
+	\end{tikzpicture}
+	}
+}
+
+\begin{titlepage}
+	\thispagestyle{empty}
+	\newgeometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+	\begin{tikzpicture}[overlay]
+		\fill[
+			left color= hazul,
+			middle color = sazul,
+			right color= mazul,
+			rotate=45,
+			opacity=0.25
+		] (0.5, -5.5) rectangle (19, -19);
+		\fill[
+		left color= hazul,
+		middle color = sazul,
+		right color= mazul,
+		rotate=45,
+		opacity=0.25
+		] (-10, -5.5) rectangle (19, -19);
+		\fill[
+		left color= hazul,
+		middle color = sazul,
+		right color= mazul,
+		rotate=45,
+		opacity=0.25
+		] (-10, -10) rectangle (10, -30);
+		\fill[
+		hazul,
+		opacity=0.25
+		] (-10, 10) rectangle (14, -30);
+		\fill[
+		hazul,
+		opacity=0.25
+		] (-10, 10) rectangle (10, -30);
+		\fill[
+		hazul,
+		opacity=0.25
+		] (-10, 10) rectangle (5, -30);
+		\fill[
+		hazul,
+		opacity=0.25
+		] (-10, 10) rectangle (0, -30);
+		
+		\fill[mazul] (-1.5, -37) rectangle (0.5, 4);
+		\fill[sazul] (-2.5, -37) rectangle (-1.5, 4);
+		\fill[gwhite] (-0.5, -19.5) rectangle (0, 4);
+%		\fill[hazul] (-2, -20.5) rectangle (-1.5, 4);
+		\fill[gwhite] (-2.5, -19) rectangle (0, -19.5);
+%		\fill[hazul] (-2, -20) rectangle (0.5, -20.5);
+		
+		\fill[mazul] (0.5, -5.5) rectangle (19, 0.5);
+		
+		\iffalse
+		\iffalse
+        \node[anchor=north east, scale=2.5] at (12, -13.25) {
+			{
+				\bfseries
+				\color{mazul}
+				$\begin{bmatrix}
+					\{1,2\}\cap A & \{1,3,4\}\cap B \\
+					\{X\}\cap A & \{1,2,4\}\cap B  
+				\end{bmatrix}$
+			}
+		};
+		
+		\node[anchor=north east, scale=3] at (8, -17.75) {
+			{
+				\bfseries
+				\color{mazul}
+				$B = P^{-1}AP$
+			}
+		};
+		\fi
+		
+		\node[anchor=north east, scale=3, opacity=0.5] at (14, -11.5) {
+			{
+				\bfseries
+				\color{mazul}
+				$\displaystyle\sum_{\sigma \in S_n}\sgn{\sigma}\prod_{i=1}^n A((i, \sigma(i)))$
+			}
+		};
+		
+		\iffalse
+		\node[anchor=north east, scale=3.5] at (12.5, -17.5) {
+			{
+				\bfseries
+				\color{sazul}
+				$\Mnc{n}{R}$
+			}
+		};
+		\fi
+		
+		
+		\node[anchor=north east, scale=3, opacity=0.5] at (15, -6) {
+			{
+				\bfseries
+				\color{mazul}
+				$
+				\begin{bmatrix}
+					\begin{bmatrix}
+						1 & 1 \\
+						0 & 1 
+					\end{bmatrix}
+					\begin{bmatrix}
+						0 & 1 \\
+						1 & 1
+					\end{bmatrix} \\[0.3cm]
+					\begin{bmatrix}
+						2 & 3 \\
+						1 & 2 
+					\end{bmatrix}
+					\begin{bmatrix}
+						1 & 2 \\
+						0 & 1
+					\end{bmatrix} \\
+				\end{bmatrix}
+				\begin{bmatrix}
+					\begin{bmatrix}
+						1 & 3 \\
+						1 & 5 
+					\end{bmatrix} \\[0.3cm]
+					\begin{bmatrix}
+						3 & 10 \\
+						1 & 5
+					\end{bmatrix}
+				\end{bmatrix}
+				$
+				
+			}
+		};
+		
+		\node[anchor=north east, scale=2.1, opacity=0.5] at (13.75, -17.75) {
+			{
+				\bfseries
+				\color{mazul}
+				$\Gamma := \{f^{-1}(\{\alpha_i'\}) \in \mathcal{P}(\mathscr{B}) \mid \alpha_i' \in f(\mathscr{B})\}$
+			}
+		};
+		\fi
+		
+		\node[anchor=north east, scale=1.2, color=gwhite, opacity=0.8, rotate=-90] at (13.7, -20) {
+			{
+				\begin{tikzpicture}
+					% Nodos
+					\node (H)  at (-4.5, 3) {$H$};
+					\node (K)  at (3.4, 3) {$K$};
+					\node (HK) at (-0.34, 1) {$H\cap K$};
+					\node (HsHK) at (-2,2) {$H^*(H \cap K)$};
+					\node (KsHK) at (2.4,2) {$K^*(H \cap K)$};
+					
+					\node (1) at (0.6,-2) {$(H^* \cap K)(H \cap K^*)$};
+					
+					\node (2) at (-2,-0.5) {$H^*(H \cap K^*)$};
+					\node (3) at (2.4,-0.5) {$K^*(H^* \cap K)$};
+					
+					\node (Hs) at (-5.3,-2) {$H^*$};
+					\node (HsK) at (-3,-3) {$H^* \cap K$};
+					\node (Ks) at (4.4,-2) {$K^*$};
+					\node (HKs) at (2.6,-3) {$H \cap K^*$};
+					
+					% Aristas
+					\draw (H) --(HsHK) -- (HK) -- (KsHK) -- (K);
+					\draw (H) -- (Hs);
+					\draw (K) -- (Ks);
+					\draw (Hs) -- (HsK) -- (1) -- (HKs) -- (Ks);
+					\draw (2) -- (1) -- (3);
+					\draw (Hs) -- (2) -- (HsK);
+					\draw (Ks) -- (3) -- (HKs);
+					\draw (1) -- (HK);
+					\draw (2) -- (HsHK);
+					\draw (3) -- (KsHK);
+				\end{tikzpicture}
+			}
+		};
+		
+		\node[anchor=north east] at (12.87, -1) {
+			{
+				\fontsize{30}{5}
+				\selectfont
+				\color{gwhite}
+				ÁLGEBRA ABSTRACTA:
+			}
+		};
+		\node[anchor=north east] at (14.8, -2.5) {
+			{
+				\fontsize{19}{0}
+				\selectfont
+				\color{gwhite}
+				Notas y resolución de ejercicios del curso impartido 
+			}
+		};
+		\node[anchor=north east] at (10.76, -3.3) {
+			{
+				\fontsize{19}{0}
+				\selectfont
+				\color{gwhite}
+				por el MC. Ignacio Miranda Vargas.
+			}
+		};
+	\end{tikzpicture}
+	
+	\begin{spacing}{1.0}
+		{
+			\huge \color{gwhite} \noindent \RaggedRight
+			%{\hspace{0.5cm} \fontsize{55}{10} \color{hazul} \selectfont ÁLGEBRA II}
+			%\\[0.30cm]
+			%{\hspace{0.5cm} \fontsize{35}{0} \selectfont Notas del curso}
+			%\\[0.25cm]
+			%{\hspace{0.5cm} \fontsize{20}{10} \selectfont de las clases del  Dr. Hugo Méndez Delgadillo}
+			%\\[0.5cm]
+		}
+	\end{spacing}
+	\vfill
+	\begin{flushleft}
+		\hspace{1cm}\LARGE\color{mazul}\vspace{-1cm}
+		Obed Leyva Victoriano
+	\end{flushleft}
+\end{titlepage}
+\thispagestyle{empty}
