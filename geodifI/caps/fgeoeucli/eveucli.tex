@@ -1,1 +1,17 @@
 \section{Espacios vectoriales euclidianos}
+
+\begin{dfn}
+	Sea $E$ un espacio vectorial real de dimensión finita. $E$ se llamará un \textit{espacio vectorial euclidiano} si está dada una transformación $E \times E \longrightarrow \R, (x,y) \mapsto \esc{x,y}$ llamada \textbf{producto escalar} que goza de las siguientes propiedades:
+	\begin{enumerate}[label=(\alph*)]
+		\item \textbf{(Bilinealidad)}:
+		
+		$\esc{\alpha_1 x_1 + \alpha_2x_2, y} = \alpha_1\esc{x_1,y} + \alpha_2\esc{x_2,y} \quad \forall x_1,x_2,y \in E$ y $\alpha_1,\alpha_2 \in \R$.
+		
+		$\esc{x, \beta_1 y_1 + \beta_2 y_2} = \beta_1\esc{x,y_1} + \beta_2\esc{x,y_2} \quad \forall y_1, y_2,x \in E$ y $\beta_1,\beta_2 \in \R$.
+		\item \textbf{(Simetría)}:
+		
+		$\esc{x,y} = \esc{y,x} \quad \forall x,y \in E$.
+		\item $\esc{x,x} \ge 0 \quad x \in E$.
+		\item $\esc{x,x} = 0 \Rightarrow x = 0$.
+	\end{enumerate}
+\end{dfn}
