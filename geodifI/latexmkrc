@@ -1,7 +1,7 @@
 $pdf_mode = 5;
 $xelatex = 'xelatex -shell-escape -interaction-nonstopmode %O %S';
 
-$pdf_previewer = 'start sioyek %O %S';
+$pdf_previewer = 'start zathura %O %S';
 $preview_continuous_mode = 1;
 
 @default_files = ('geodifI.tex');
