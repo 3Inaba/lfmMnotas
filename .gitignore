@@ -11,3 +11,5 @@
 *.fls
 *.xdv
 *.fdb_latexmk
+*.bbl-SAVE-ERROR
+*.bcf-SAVE-ERROR

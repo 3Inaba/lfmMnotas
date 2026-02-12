@@ -15,3 +15,18 @@
 		\item $\esc{x,x} = 0 \Rightarrow x = 0$.
 	\end{enumerate}
 \end{dfn}
+
+\subsection{Orientación en $\real^n$.}
+Sean $\{\alpha_1, \ldots, \alpha_n\}$ y $\{\beta_1, \ldots, \beta_n\}$ bases de $\real^n$. Existe $\{a_{ij}\}_{i,j=1}^n \subset \real$ tal que
+	$$\alpha_i = \sum_{j=1}^n a_{ij}\beta_j.$$
+Sea $A \in \mtxn{n}$ con $(A)_{ij} = a_{ij}$ y $\func{T_A}{\real^n}{\real^n}$ con $\alpha \mapsto A \alpha$. Supóngase que $\alpha = \sum_{k=1}^{n}c_k\alpha_k$. Note que $T_A(\alpha) = \sum_{k=1}^n d_k\beta_k$ para algunos $d_k \in \real$. Si se tiene que $T_A(\alpha) = 0_{\real^n}$, como $\{b_k\}_{k=1}^n$ es base, se tiene que $d_k = 0, \quad \forall k = 1, \ldots, n$. Por lo tanto $\alpha = 0$, luego $T_A$ es no singular. Aún más, $T_A$ es un isomorfismo, por lo que $A$ es invertible.
+$A$ se dice ser la matriz de cambio de base de la base $\{\alpha_k\}_{k=1}^n$ a la base $\{\beta_k\}_{k=1}^n$.
+
+Sea $\fkB$ el conjunto de todas las bases de $\real^n$. Sobre este conjunto, se define:
+\begin{centering}
+	Dadas $B_1, B_2 \in \fkB$ decimos que: $B_1 \sim B_2$ si y sólo si la matriz de cambio de base de la base $B_1$ a la base $B_2$ tiene determinante positivo.
+\end{centering}
+
+Claramente la matriz cambio de base de $B_1$ a $B_1$ es $\id_{\mtxn{n}}$ por lo que $B_1 \sim B_2$. Como la matriz de cambio de base es invertible y $|A^{-1}| = 1/|A|$ entonces si $B_1 \sim B_2$ entonces $B_2 \sim B_1$. Si $C$ es la matriz cambio de base de $B_1$ a $B_2$ y $D$ es la matriz cambio de base de $B_2$ a $B_3$, se tiene que la matriz de cambio de base de $B_1$ a $B_3$ es $DC$. De este modo, si $B_1 \sim B_2$ y $B_2 \sim B_3$ entonces $|DC| = |D||C| > 0$. Luego $\sim$ define una relación de equivalencia.
+
+Notamos que $\fkB/\sim$ es un conjunto con dos elementos. Si $B \in \fkB$ y $B \in [\{e_k\}_{k=1}^n]$ entonces diremos que el espacio $\real^n$ dotado con la base $B$ tiene orientación positiva. Si $B \not\in [\{e_k\}_{k=1}^n]$ entonces decimos que $\real^n$ dotado con la base $B$ tiene orientación negativa.
