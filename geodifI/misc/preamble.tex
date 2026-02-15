@@ -40,14 +40,28 @@
 %---------------------------------------------------------------
 \newcommand{\com}[1]{\text{``#1"}}
 \newcommand{\esc}[1]{\langle #1 \rangle}
+\newcommand{\iprod}[1]{\langle #1 \rangle}
 
 \newcommand{\real}{\mathbb{R}}
 
-\newcommand{\func}[3]{#1: #2 \longrightarrow #3}
 \newcommand{\mtxn}[1]{\mathbb{M}_{n}}
 \newcommand{\id}{\mathrm{id}}
+\newcommand{\func}[3]{#1: #2 \longrightarrow #3}
+\newcommand{\rfunc}[5]{
+	\raisebox{-5pt}{
+		\(
+		\begin{array}{@{}l@{\,}l@{}}
+			#1 : & #2 \longrightarrow #3 \\[-1pt]
+			& \scalebox{0.75}{$#4 \mapsto #5$}
+		\end{array}
+		\)
+	}
+}
 
 \newcommand{\fkB}{\mathfrak{B}}
+\newcommand{\inte}[1]{[\![#1]\!]} % Intervalo entero [[1,m]]
+
+\newcommand{\bcanon}{\mathcal{C}}
 
 %---------------------------------------------------------------
 % Fuentes. -----------------------------------------------------
@@ -82,6 +96,7 @@
 % Gráficos, tablas y portada. ----------------------------------
 %---------------------------------------------------------------
 \usepackage{tikz}
+\usepackage{tikz-cd}
 \usetikzlibrary{matrix}
 \usepackage{graphicx}
 
@@ -94,6 +109,7 @@
 \usepackage{pgfplots}
 
 \usetikzlibrary{fadings}
+\usetikzlibrary{babel}
 %---------------------------------------------------------------
 \captionsetup[table]{name=Tabla, labelfont=sl, font=it}
 

@@ -1,19 +1,80 @@
 \section{Espacios vectoriales euclidianos}
 
+Notación. Sean $e_1 := (1,0,0,\ldots, 0), e_2 := (0,1,0,\ldots,0), \ldots, e_n := (0,0,0,\ldots,1) \in \real^n$. Al conjunto $\bcanon := \{e_1, e_2, \ldots, e_n\}$ lo llamaremos {\bfseries base canónica} de $\real^n$.
+
 \begin{dfn}
-	Sea $E$ un espacio vectorial real de dimensión finita. $E$ se llamará un \textit{espacio vectorial euclidiano} si está dada una transformación $E \times E \longrightarrow \real, (x,y) \mapsto \esc{x,y}$ llamada \textbf{producto escalar} que goza de las siguientes propiedades:
+	Sea $V$ un $\real$-espacio vectorial de dimensión finita. $V$, dotado de un funcional lineal $\esc{\cdot,\cdot} : V \times V \longrightarrow \real$ definido por $(x,y) \mapsto \esc{x,y}$, se llamará un {\bfseries espacio vectorial euclidiano} si se cumple:
 	\begin{enumerate}[label=(\alph*)]
-		\item \textbf{(Bilinealidad)}:
+		\item {(Bilinealidad)}: $\esc{\alpha_1 x_1 + \alpha_2x_2, y} = \alpha_1\esc{x_1,y} + \alpha_2\esc{x_2,y} \quad \forall x_1,x_2,y \in V$ y $\alpha_1,\alpha_2 \in \real$.
 		
-		$\esc{\alpha_1 x_1 + \alpha_2x_2, y} = \alpha_1\esc{x_1,y} + \alpha_2\esc{x_2,y} \quad \forall x_1,x_2,y \in E$ y $\alpha_1,\alpha_2 \in \real$.
-		
-		$\esc{x, \beta_1 y_1 + \beta_2 y_2} = \beta_1\esc{x,y_1} + \beta_2\esc{x,y_2} \quad \forall y_1, y_2,x \in E$ y $\beta_1,\beta_2 \in \real$.
-		\item \textbf{(Simetría)}:
-		
-		$\esc{x,y} = \esc{y,x} \quad \forall x,y \in E$.
-		\item $\esc{x,x} \ge 0 \quad x \in E$.
-		\item $\esc{x,x} = 0 \Rightarrow x = 0$.
+		$\esc{x, \beta_1 y_1 + \beta_2 y_2} = \beta_1\esc{x,y_1} + \beta_2\esc{x,y_2} \quad \forall y_1, y_2,x \in V$ y $\beta_1,\beta_2 \in \real$.
+		\item {(Simetría)}:
+		$\esc{x,y} = \esc{y,x} \quad \forall x,y \in V$.
+		\item {(No negatividad)} $\esc{x,x} \geq 0 \quad x \in V$, y $\esc{x,x} = 0 \iff x = 0$.
 	\end{enumerate}
+\end{dfn}
+
+\begin{lrbox}{\diagCanonico}
+	\begin{tikzcd}
+		S \times S \arrow[d, "\iota \times \iota"] \arrow[r, "\delta"] & \real \\
+		\real^n \times \real^n \arrow[ur, "\esc{\cdot, \cdot}"', dashed] & 
+	\end{tikzcd}
+\end{lrbox}
+
+El funcional simétrico y bilineal $\func{\esc{\cdot,\cdot}}{V \times V}{\real}$ se llama {\bfseries producto interno}. El producto interno canónico\footnote{
+	El nombre canónico puede verse como consecuencia de ser la única forma bilineal que hace ortogonal a la base canónica de $\real^n$. Formalmente, si $S = \inte{1,n}$, $\func{\delta}{S \times S}{\real}$ es la delta de Kronecker y $\func{\iota}{S}{\real^n}$ es la inclusión de $S$ en $\real^n$ dada por $k \mapsto e_k$, entonces es conmutativo el diagrama
+	\[ \usebox{\diagCanonico} \]
+	$(k_1, k_2) \xrightarrow{\iota \times \iota} (e_{k_1}, e_{k_2}) \xrightarrow{\iprod{\cdot, \cdot}}$ $
+	\left\{\begin{array}{c}
+		1, \text{ si } k_1 = k_2 \\
+		0, \text{ si } k_1 \not= k_2
+	\end{array} \right.$
+}
+para el $\real$-espacio vectorial $\real^n$ está dado por la regla:
+
+\[
+	\forall x = (x_1, \ldots, x_n), z = (z_1 \ldots, z_n) \in \real^n \left( \esc{x,z} = \sum_{i=1}^n x_i z_i \right)
+\]
+
+Cada producto interno induce una función $\func{\|\cdot\|}{V}{\real}$ con $x \mapsto \esc{x, x}$ a la cual se le define por
+
+\begin{dfn}
+	La función $\func{\|\cdot\|}{\real^n}{[0,+\infty[}$ dada por $x \mapsto \iprod{x,x}$ se le llama {\bfseries norma}. Si $\iprod{\cdot, \cdot}$ es el producto interno canónico entonces a $\|\cdot\|$ le decimos {\bfseries norma euclidiana}.
+\end{dfn}
+
+\begin{prop}
+	La norma inducida por un producto interno satisface las propiedades:
+	\begin{enumerate}[label=\alph*.]
+		\item $\|x\| \geq 0$, $\forall x \in \real^n$. $\|x\| = 0$ si y sólo si $x = 0$.
+		\item $\|\lambda x\| = |\lambda|\|x\|$, $\forall x \in \real^n$, $\forall \lambda \in \real$.
+		\item $\|x + z\| \leq \|x\| + \|z\|$, $\forall x,z \in \real^n$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	Ejercicio.
+\end{proof}
+
+\begin{thm}[Desigualdad de Cauchy-Schwarz]
+	$\forall x, z \in \real^n$ se verifica $|\iprod{x,z}| \leq \|x\|\|z\|$.
+\end{thm}
+\begin{proof}
+	Ejercicio.
+\end{proof}
+
+\begin{dfn}
+	Si $x, z \in \real^n \setminus \{0_{\real^n}\}$, definimos el {\bfseries ángulo} $\theta \in [0,\pi]$ entre los vectores $x$ y $z$ como el número real que satisface
+	\[ \cos(\theta) = \frac{\iprod{x, z}}{\|x\|\|z\|} \]
+\end{dfn}
+
+Observación. $\iprod{x, z} = \|x\|\|z\|\cos(\theta)$.
+
+\begin{dfn}
+	Si $x, z \in \real^n$, decimos que estos vectores son {\bfseries ortogonales} si $\iprod{x,z} = 0$.
+\end{dfn}
+
+\begin{dfn}
+	Sean $x, z \in \real^n \setminus \{0_{\real^n}\}$. Definimos la {\bfseries proyección} del vector $x$ sobre el vector $z$, denotada por $x_z$ como
+	\[ x_z := \frac{\iprod{x, z}}{\|z\|^2}z \]
 \end{dfn}
 
 \subsection{Orientación en $\real^n$.}
@@ -23,10 +84,66 @@ Sea $A \in \mtxn{n}$ con $(A)_{ij} = a_{ij}$ y $\func{T_A}{\real^n}{\real^n}$ co
 $A$ se dice ser la matriz de cambio de base de la base $\{\alpha_k\}_{k=1}^n$ a la base $\{\beta_k\}_{k=1}^n$.
 
 Sea $\fkB$ el conjunto de todas las bases de $\real^n$. Sobre este conjunto, se define:
-\begin{centering}
-	Dadas $B_1, B_2 \in \fkB$ decimos que: $B_1 \sim B_2$ si y sólo si la matriz de cambio de base de la base $B_1$ a la base $B_2$ tiene determinante positivo.
-\end{centering}
+\begin{center}
+	dadas $B_1, B_2 \in \fkB$ decimos que: $B_1 \sim B_2$ si y sólo si la matriz de cambio de base de la base $B_1$ a la base $B_2$ tiene determinante positivo.
+\end{center}
 
 Claramente la matriz cambio de base de $B_1$ a $B_1$ es $\id_{\mtxn{n}}$ por lo que $B_1 \sim B_2$. Como la matriz de cambio de base es invertible y $|A^{-1}| = 1/|A|$ entonces si $B_1 \sim B_2$ entonces $B_2 \sim B_1$. Si $C$ es la matriz cambio de base de $B_1$ a $B_2$ y $D$ es la matriz cambio de base de $B_2$ a $B_3$, se tiene que la matriz de cambio de base de $B_1$ a $B_3$ es $DC$. De este modo, si $B_1 \sim B_2$ y $B_2 \sim B_3$ entonces $|DC| = |D||C| > 0$. Luego $\sim$ define una relación de equivalencia.
 
-Notamos que $\fkB/\sim$ es un conjunto con dos elementos. Si $B \in \fkB$ y $B \in [\{e_k\}_{k=1}^n]$ entonces diremos que el espacio $\real^n$ dotado con la base $B$ tiene orientación positiva. Si $B \not\in [\{e_k\}_{k=1}^n]$ entonces decimos que $\real^n$ dotado con la base $B$ tiene orientación negativa.
+Notamos que $\fkB/{\sim}$ es un conjunto con dos elementos. Si $B \in \fkB$ y $B \in [\{e_k\}_{k=1}^n]$ entonces diremos que el espacio $\real^n$ dotado con la base $B$ tiene orientación positiva. Si $B \not\in [\{e_k\}_{k=1}^n]$ entonces decimos que $\real^n$ dotado con la base $B$ tiene orientación negativa.
+
+Ejercicio. Determina si la base $\{ (1,3,5), (2,3,7), (4,8,3) \}$ proporciona una orientación positiva a $\real^3$.
+
+\begin{dfn}
+	Sean $x = (x_1, x_2, x_3), z = (z_1, z_2, z_3) \in \real^3$. Definimos el producto vectorial (también llamado producto cruz) de $x$ y $z$ denotado por $x \times z$ como sigue\footnote{
+	Simbólicamente se suele escribir
+		\[
+			x \times z =
+			\begin{vmatrix}
+				e_1 	& e_2 	& e_3	\\
+				x_1	& x_2	& x_3	\\
+				z_1	& z_2	& z_3
+			\end{vmatrix}
+		\]
+}
+	\[
+		x \times z = 
+			\begin{vmatrix} x_2 & x_3 \\ z_2 & z_3 \end{vmatrix}e_1 -
+			\begin{vmatrix} x_1 & x_3 \\ z_1 & z_3 \end{vmatrix}e_2 +
+			\begin{vmatrix} x_1 & x_2 \\ z_1 & z_2 \end{vmatrix}e_3
+	\]
+\end{dfn}
+
+
+\begin{prop}
+	El producto vectorial cumple las siguiente propiedades. Si $x, y, z\in \real^3$ entonces se tiene:
+	\begin{enumerate}[label=\alph*.]
+		\item $x \times z = - z \times x $
+		\item $x \times (y + z) = x \times y + x \times z $
+		\item $(\lambda x) \times z = \lambda (x \times z)$
+		\item $x \times (y \times z) = \esc{x,z}y - \esc{x, y}z $
+		\item $\esc{x \times y, z} =
+			\begin{vmatrix}
+			x_1 & x_2 & x_3 \\
+			y_1 & y_2 & y_3 \\
+			z_1 & z_2 & z_3 
+			\end{vmatrix}$
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+	Ejercicio.
+\end{proof}
+
+Ejercicio. Demuestre que $\iprod{x \times y, z \times w } = \iprod{x, z}\iprod{y, w} - \iprod{x, w}\iprod{y, z}$.
+
+Ejercicio. Considere el paralelogramo $\mathcal{P}:$
+\[
+	\begin{tikzpicture}[scale=1.5]
+		\draw[-{Stealth}, thick] (0,0) -- (0.5,1) node[midway, left]{$y$};
+		\draw[-{Stealth}, thick] (0,0) -- (2,0) node[midway, below]{$x$};
+		\draw[thick] (2,0) -- (2.5,1); 
+		\draw[thick] (0.5,1) -- (2.5,1); 
+	\end{tikzpicture}
+\]
+Calcular el área de $\mathcal{P}$ en función de $x \times y$.

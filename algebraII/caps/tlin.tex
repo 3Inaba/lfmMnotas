@@ -529,6 +529,17 @@ Para \Fevs{F} de dimensión finita, introducimos el concepto de \textbf{hiperesp
 	Sea $V$ un \Fev{F} de dimensión finita. Para cada $\alpha \in V$ se define
 	$$\fdefc{L_\alpha}{V^*}{F}{f}{f(\alpha)}$$
 	Entonces la función $\fdefc{\psi}{V}{V^{**}}{\alpha}{L_{\alpha}}$ es un isomorfismo.
+
+	En términos categóricos, si $V$ y $W$ son $F$-espacios vectoriales de dimensión finita y si $\fdef{T}{V}{W}$ es t.l. y $\fdef{\psi_V}{V}{V^{**}}$ con $\psi_V(\alpha) = L_\alpha$ entonces el diagrama:
+
+	\[
+		\begin{tikzcd}[column sep=large, row sep=huge]
+			V \arrow[d, "T"] \arrow[r, "\psi_V"] & V^{**} \arrow[d, "T^{**}"] \\
+			W \arrow[r, "\psi_W"] & W^{**} 
+		\end{tikzcd}
+	\]
+
+	conmuta. Luego $\psi_V$ y $\psi_W$ componen un isomorfismo natural.
 	\begin{proof}
 		Es claro que $L_\alpha$ es lineal. Sean $\alpha,\beta \in V$, $c \in F$ y $\gamma = c\alpha + \beta$. Entonces para cada $f \in V^{*}$
 		\begin{align*}

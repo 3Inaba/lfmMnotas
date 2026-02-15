@@ -1,2 +1,14 @@
-$pdflatex = 'xelatex -interaction=nonstopmode %0 %S';
-$pdf_mode = 1;
+$pdf_mode = 5;
+$xelatex = 'xelatex -shell-escape -interaction-nonstopmode %O %S';
+
+$pdf_previewer = 'start zathura %O %S';
+$preview_continuous_mode = 1;
+
+@default_files = ('algebra_II_limpio.tex');
+
+$biber = 'biber %O %S';
+
+$recorder = 1;
+$clean_ext = 'synctex.gz synctex.gz(busy) nav snm vrb run.xml bbl blg xdv';
+
+$regenerate_after_file_change = 1;
