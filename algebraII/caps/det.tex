@@ -327,7 +327,7 @@ Se designa por $A_n$ al conjunto de todas las permutaciones pares de grado $n$.
 	\item Demostrar el Lema \ref{lema:CLDeFuncionesNLinealesAlternantesSonCerradas}
 	\item Demostrar el Teorema \ref{teo:DetAB=DetADetB}.
 	\item Demostrar que toda permutación en $S_n$, $n \geq 3$ se puede descomponer en $3$-ciclos de la forma $(1,2,3), (1,2,4), \ldots, (1,2,n)$.
-	\item Sea $R$ una anillo conmutativo con identidad y $A \in \Mnc{3}{R}$ con
+	\item Sea $R$ un anillo conmutativo con identidad y $A \in \Mnc{3}{R}$ con
 	$$A = \begin{bmatrix}
 		0 & a & b \\
 		-a & 0 & c \\
@@ -337,10 +337,10 @@ Se designa por $A_n$ al conjunto de todas las permutaciones pares de grado $n$.
 	\item Una matriz $A \in \Mnc{n}{R}$, $R$ un anillo conmutativo con identidad, se dice triangular si $A_{ij} = 0$ para $i,j \in \inte{1}{n}$ con $i > j$ o si $A_{ij} = 0$ para $i < j$. Demuestra que si $A$ es una matriz triangular entonces
 	$$ \det(A) = \prod_{i=1}^{n} A_{ii} $$
 	\item Sea $\sigma \in S_n$ y $A \in \Mnc{n}{F}$, con $F$ un campo. Sean $\alpha_1, \ldots, \alpha_n$ los vectores fila de $A$. Definimos
-	$$\sigma(A) = [\alpha_{\sigma(1)}, \cdots, \alpha_{\sigma(n)}].$$
+	$$\sigma(A) := [\alpha_{\sigma(1)} \cdots \alpha_{\sigma(n)}].$$
 	\begin{enumerate}[label=\alph*.]
 		\item Sea $B \in \Mnc{n}{F}$. Demuestre que $\sigma(AB) = \sigma(A)B$, y en particular que $\sigma(A) = \sigma(I)A$.
-		\item Sea $\fdefc{T}{F^n}{F^n}{(x_1, \ldots, x_n)}{x_{\sigma(1)}, \ldots, x_{\sigma(n)}}$. Probar que $T$ es un operador lineal invertible.
+		\item Sea \[\fdefc{T}{F^n}{F^n}{(x_1, \ldots, x_n)}{x_{\sigma(1)}, \ldots, x_{\sigma(n)}}.\] Probar que $T$ es un operador lineal invertible.
 		\item Probar que $[T]_{\mathscr{C}} = \sigma(I)$.
 		\item ¿Es $\sigma^{-1}(I)$ la matriz inversa de $\sigma(I)$?
 		\item ¿Es $\sigma(A)$ similar a $A$?

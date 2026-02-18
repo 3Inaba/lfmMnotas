@@ -122,24 +122,43 @@ Si $v$ es una valoración en $\lpo$ en un modelo $M$, $a$ está en el universo d
 \subsection{Algunos axiomas y resultados}
 La teoría desarrollada en el curso hace uso de la teoría de conjuntos de Zermelo-Frankel con el axioma de elección (ZFE). Un estudio más detallado se puede encontrar en \cite{settheoryhernandez}, \cite{settheoryraymond} y \cite{tecoloteII}. Para consultar sobre lógica, los primeros capítulos de dichos libros además de \cite{alfredologica} y \cite{metamathematics} son suficientes para tener una idea.
 
-Se presenta la teoría de manera axiomática, donde se utilizan los conectores lógicos $\neg, \cond, \bicond, \lor, \land$ y los cuantificadores $\forall, \exists$. Las fórmulas atómicas serán aquellas formadas con los relatores $=$ y $\in$, donde $\in$ se interpreta como \com{está en} o simplemente \com{en}.
+Se presenta la teoría de conjuntos Zermelo-Fraenkel (ZF) con el Axioma de Elección (ZFE) de manera axiomática a través de un lenguaje formal. Decimos que el lenguaje formal de la teoría de conjuntos (o simplemente el lenguaje TC) consiste de los siguiente símbolos \cite{breton}:
+\begin{enumerate}[label=\arabic*.]
+	\item Funtores o conectivos lógicos: $\land, \lor, \cond, \bicond$.
+	\item Cuantificadores: $\forall, \exists$.
+	\item Variables: $a, b, c, \ldots, A, B, C, \ldots, \alpha, \beta, \gamma, \ldots, a_1, a_2, a_3, \ldots$.
+	\item Paréntesis: $(,)$.
+	\item Relatores: $=, \in$.
+\end{enumerate}
+
+Una fórmula del lenguaje TC es una cadena finita de símbolos (finita en su sentido común) de forma que \com{tenga sentido}. Dicho de otro modo, haciendo las fórmulas atómicas como aquellas formadas con los relatores y las variables, digamos por ejemplo $x = y$ o $a \in b$, una cadena de símbolos será una fórmula si se puede construir a partir de otras fórmulas bajo ciertas reglas. Dichas reglas son, por ejemplo, que si $\varphi$ es una fórmula entonces $\forall x (\varphi)$ es una fórmula. Por ejemplo \[\forall x \exists z (x \in y \cond \neg x = z)\] se construye a partir de $x \in y$ y $x \not = z$. De la lógica clásica, diremos que $\varphi \cond \psi$ y $\neg \varphi$ es una fórmula si $\varphi$ y $\psi$ son fórmulas, por lo que $x \in y \cond \neg x = z$ es una fórmula. Luego $\exists z ( x\in y \cond \neg x = z )$ es una fórmula y entonces $\forall x \exists z (x \in y \cond \neg x = z)$ es una fórmula.
+
+Otras cadenas como $\forall x \land \in z \neg$ no son fórmulas.
+
+Abreviamos $\neg x = y$ por $x \not= y$, $\neg x \in y$ por $x \not\in y$, $\forall z (z \in x \cond z \in y)$ por $x \subseteq y$ y $\neg x \subseteq y$ por $x \not\subseteq y$. De manera similares, podemos introducir nuevos símbolos para representar fórmulas de nuestro lenguaje formal.
 
 \begin{dfn}
-	Introduciendo los símbolos $\{,\}$ y $\mid$, un \textbf{término clase} es una cadena de símbolos de la forma $\{x \mid \varphi\}$ tal que $\varphi$ es una fórmula de la teoría de conjuntos.
+	Si $\varphi$ es una fórmula del lenguaje TC, decimos que $x$ es una {\bfseries variable libre} en $\varphi$ si $x$ no está afectada por ningún cuantificador. Denotamos que $x$ es libre en $\varphi$ por $\varphi(x)$. Si al menos un cuantificador afecta a $x$ entonces decimos que la variable es ligada en $\varphi$.
 \end{dfn}
 
-Vale la pena interpretar la definición anterior. Un término clase o simplemente una \textbf{clase} es un objeto que no es parte de la teoría de conjuntos ZFE pero es de utilidad para hablar sobre ella. Las clases se cuantifican sobre conjuntos, informalmente, son colecciones de conjuntos.
+Por ejemplo, la fórmula $\exists y (x \not= y)$ tiene variable libre $x$ y variable ligada $y$. Intuitivamente, una fórmula con variable libre $x$ se interpreta como una \com{propiedad}. Esto nos permite hablar de propiedadades mientras podamos llevarlas al lenguaje TC. Si le es posible definir lo que significa \com{ser un perro rabioso} en el lenguaje TC entonces le es posible construir la colección de los perros rabiosos como sigue 
 
-Podemos describir la \textbf{clase de todos los conjuntos} por $\uclass := \{x \mid x=x\}$ y entonces convenir en que $x \in \uclass$ significa que $x$ es un conjunto.
+\begin{dfn}
+	Introduciendo los símbolos $\{,\}$ y $\mid$, si $\varphi$ es una fórmula del lenguaje TC con variable libre $x$, definimos un \textbf{término clase} como la cadena de símbolos de la forma $\{x \mid \varphi(x)\}$.
+\end{dfn}
 
-Para clases $A$ y $B$ se define $A \cap B \equiv \{x \mid x \in A \land x \in B\}$ y $A \subseteq B \equiv \forall x (x \in A \cond x \in B)$.
+Vale la pena interpretar la definición anterior. Un término clase o simplemente una \textbf{clase} es un objeto que no es parte del lenguaje TC pero es de utilidad para hablar sobre la teoría que se construye a traves de él. Las clases se cuantifican sobre conjuntos, informalmente, son colecciones de conjuntos. Aquí $\mid$ se interpreta como \com{tal que} de modo que la definición nos dice que la clase $A$ es la colección de los conjuntos $x$ tales que $x$ es libre en $\varphi$, o bien, tales que $\varphi(x)$ (que se interpreta como \com{$x$ cumple la propiedad $\varphi$}).
 
-A continuación, algunos axiomas de la teoría ZFE:
+Podemos describir la \textbf{clase de todos los conjuntos} por $\uclass := \{x \mid x=x\}$ y entonces convenir en que $x \in \uclass$ significa que $x$ es un conjunto, y en general, decir que si $x \in A$ entonces $\varphi(x)$.
+
+Para clases $A$ y $B$ se escribe $A \cap B$ por $\{x \mid x \in A \land x \in B\}$ y $A \subseteq B$ por $\forall x (x \in A \cond x \in B)$.
+
+A continuación, utilizando el lenguaje que acabamos de definir (de manera poco formal), se introducen algunos axiomas de la teoría ZFE:
 
 \begin{enumerate}[label=A.\arabic*]
 	\item $\exists y \forall x (\neg x \in y)$,
 	\item $\forall a \forall b \forall x (x \in a \bicond x \in b) \cond a=b$,
-	\item Para cada término clase $A$ $x \cap A \in \mathcal{V}$,
+	\item Para cada término clase $A$, $x \cap A \in \mathcal{V}$,
 	\item $\forall a \forall b \exists y \forall x (x \in y \bicond x = a \lor x = b)$,
 	\item $\forall a \exists y \forall z (z \in y \bicond \exists x \in a(z \in x))$,
 	\item $\forall a \exists y \forall z (z \in y \bicond z \subseteq a)$,
@@ -161,8 +180,10 @@ Ahora es conveniente interpretar los axiomas:
 De estos dos primeros axiomas se puede demostrar que el conjunto que no tiene elementos es único y por lo tanto podemos denotarlo por $\varnothing$. 
 
 \begin{axiom}[de Especificación/Esquema de Comprensión]
-	Si $\varphi$ es una fórmula de la teoría ZFE, diremos que $\varphi$ es una propiedad y denotaremos $\varphi(x)$ si la propiedad se evalúa como verdadera en $x$. Entonces para cada propiedad $\varphi$ y conjunto $x$, el término clase $\{y \mid y \in x \land \varphi(y)\}$ que denotamos $\{y \in x \mid \varphi(y) \}$ es un conjunto.
+	Para cualquier propiedad $\varphi(z)$ (fórmula del lenguaje TC con variable libre $z$) y conjunto $x$, la clase \[\{z \mid z \in x \land \varphi(z)\}\] que escribimos como \[\{z \in x \mid \varphi(z)\}\] es un conjunto.
 \end{axiom}
+
+Note que en realidad el axioma Esquema de Comprensión adquiere su nombre por ser un esquema para crear, a lo más, tantos axiomas como clases.
 
 \begin{axiom}[del Par]
 	Para cualesquiera conjuntos $a$ y $b$ existe un conjunto $y$ tal que $x \in y$ si y sólo si $x = a$ o $x = b$.
@@ -176,9 +197,11 @@ De estos dos primeros axiomas se puede demostrar que el conjunto que no tiene el
 	Para cualquier conjunto $a$ existe un conjunto $y$ tal que $z \in y$ si y sólo si $z \subseteq a$.
 \end{axiom}
 
-Los conjuntos determinados por el axioma Esquema de Comprensión, axioma del Par, el axioma de Unión y el axioma del Conjunto Potencia son únicos.
+Los conjuntos determinados por el axioma Esquema de Comprensión, axioma del Par, el axioma de Unión y el axioma del Conjunto Potencia son únicos. Por esto podemos denotar sin ambigüedad al conjunto determinado por A.6 por $\mathcal{P}(a)$, al conjunto determinado por A.5 por $\bigcup a$ y si $a$ consiste de dos elementos (i.e. $\forall z (z \in a \bicond z = x \lor z = y)$ con $x \not= y$), denotando $a = \{x,y\}$, entonces escribimos $x \cup y := \bigcup \{x,y\}$. En general, si $a$ es el conjunto definido por $\forall x (x \in a \bicond x = x_1 \lor \cdots \lor x = x_n)$ con $x_1, \ldots, x_n$ distintos entre sí entonces podemos denotar a través de las clases $a = \{x_1, \ldots, x_n\}$.
 
 No se extenderá el estudio de conjuntos en estas notas a los términos clases, así que de aquí en adelante se denota a los conjuntos con letras mayúsculas o letras caligráficas, góticas, etc. Para un estudio desde otras teorías o extensiones de la utilizada consultar \cite{settheoryraymond} y \cite{quine}.
+
+Finalmente, cuando se dice que \com{formalizamos} un concepto lo que queremos decir es que definimos el concepto en un lenguaje formal. En nuestro caso, formalizar algo como los sistemas de ecuaciones será abstraer lo que son y definirlos en el lenguaje TC. Claramente esta no es la única formalización posible, conociéndose otros lenguajes formales o definiendo uno.
 
 \begin{dfn}[Par ordenado]
 	Se define el \textbf{par ordenado} de elementos $a$ y $b$ como
@@ -523,11 +546,14 @@ También se puede definir el \textbf{módulo derecho}, la razón por la que se e
 	\item Demostrar que el conjunto $\mathcal{P}_g = \{y \in \mathcal{F} \mid \frac{d^2}{dx^2}y(x) + a_1\frac{d}{dx}y(x) + a_0 y(x) = 0\}$ con la operación usual de $+$ forma un grupo abeliano.
 	\item Demostrar que el conjunto $\mathcal{F}_{\mathscr{I}} = \{f \in \mathcal{F} \mid f \text{ es integrable en } [a,b]\}$ junto con la operación usual de $+$ forma un grupo abeliano.
 	\item \begin{enumerate}[label=\alph*), leftmargin=2em]
-		\item Utilizar el teorema fundamental de la aritmética para encontrar una inyección de $\mathbb{N}$ a $\mathbb{Q}^{+}$ y de $\mathbb{Q}$ a $\mathbb{N}$.
+		\item Utilizar el teorema fundamental de la aritmética para encontrar una inyección de $\mathbb{Q}^+$ a $\mathbb{N}$.
 		\item Demostrar que $\mathbb{N} \sim \mathbb{Q}$
 	\end{enumerate}
 	\item Denótese la clase $\gconmodr{\lp}{\equiv}$ a la clase de todas las fórmulas del lenguaje formal de la lógica proposicional reducida bajo la relación de equivalencia de fórmulas. Defínase $\varphi \oplus \psi \equiv \neg (\varphi \bicond \psi)$ y denótese una tautología por $\top$ y una contradicción por $\bot$.
 		
 		Demuestre que $(\gconmodr{\lp}{\equiv}, \oplus, \land)$ es un anillo.
-	
+	\item Demuestre que $\uclass$ no es un conjunto.
+	\item Demuestre que $\bigcap \varnothing = \uclass$.
+	\item Si $y \not= \varnothing$ es un conjunto, demuestre que la clase $\{x \mid x \sim y \}$ no es un conjunto.
+	\item Demuestre que la clase $\{x \mid x \text{ es función}\}$ no es un conjunto.
 \end{enumerate}
