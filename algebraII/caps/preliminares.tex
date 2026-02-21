@@ -4,125 +4,15 @@
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-\iffalse
-\section{Lógica de predicados de primer orden}
-
-Se introduce un tratamiento de la lógica como lenguaje formal. A quien tenga la curiosidad de saber más sobre lógica lea los libros \cite{tecoloteI}, \cite{mathlogicmonk}, \cite{logicivorra}, \cite{setlogicivorra}, o con un enfoque más filosófico lea \cite{alfredologica} y \cite{metamath}.
-
-Considérese la noción de colección de objetos. No se dará como tal una definición de esto así que se tendrá que pensar con la idea intuitiva durante el tratamiento que se dará de la lógica en estos apuntes. De manera similar a la noción de conjunto que dio Cántor, consideramos una colección un objeto por sí mismo, con un nombre y elementos que están en relación con la colección por la relación de pertenencia. Por ejemplo, se dirá que $\difsim$ está en $\mathfrak{O}$.
-
-\begin{dfn}
-	Un lenguaje formal de primer orden es una colección de colecciones de símbolos que contiene:
-	\begin{enumerate}[label=\roman*)]
-		\item Una colección de símbolos $\Clf$ que llamamos constantes.
-		\item Una colección de símbolos $\Vlf$ que llamamos variables.
-		\item Una colección de símbolos $\Flf$ que llamamos funtores.
-		\item Una colección de símbolos $\Rlf$ que llamamos relatores.
-		\item Una colección de símbolos $\Slf$ que llamamos conectores.
-		\item Una colección de símbolos $\Qlf$ que llamamos cuantificadores.
-	\end{enumerate}
-\end{dfn}
-
-El lenguaje formal sobre el que trabajaremos será:
-
-\begin{dfn}
-	El lenguaje formal de la lógica de primer orden $\lpo$ consiste de:
-	\begin{enumerate}[label=\roman*)]
-		\item $\Clfpo$ contiene letras minúsculas indizadas sobre números naturales $c_i$, en abstracto $c$.
-		\item $\Vlfpo$ contiene letras minúsculas indizadas sobre números naturales $x_i$, en abstracto $x$.
-		\item $\Flfpo$ contiene letras minúsculas indizadas sobre números naturales $f_i$, en abstracto $f$. Cada funtor tiene asociado una \com{$n$-aridad} que se denota por $f^n$.
-		\item $\Rlfpo$ contiene el símbolo $=$ y contiene letras mayúsculas indizadas sobre números naturales $R_i$, en abstracto $R$. Cada relator tiene asociado una \com{$n$-aridad} que se denota por $R^n$.
-		\item $\Slfpo$ contiene los símbolos $\cond$ y $\neg$ y ningún otro. A $\cond$ se le llama condicional o implicador y a $\neg$ se le llama negador.
-		\item $\Qlfpo$ contiene el símbolo $\gen$ y ningún otro. A $\gen$ se le llama cuantificador universal o generalizador.
-	\end{enumerate}
-\end{dfn}
-
-\begin{dfn}
-	Una cadena de símbolos de $\lpo$ es una sucesión finita de símbolos de colecciones de $\lpo$. Si $a_1, \ldots, a_n$ son símbolos de $\Clfpo, \Vlfpo, \Flfpo$, $\Rlfpo$, $\Slfpo$ o $\Qlfpo$, se denota la sucesión finita formada por dichos elementos como $\cad{a_1 a_2 \cdots a_n}$ o simplemente $a_1 a_2 \cdots a_n$. Si $\cdA_1, \ldots, \cdA_k$ son cadenas de símbolos entonces la concatenación de las cadenas es la yuxtaposición de una delante de la otra, e.g., $\cad{\cdA_1 \cdots \cdA_k}$ o simplemente $\cdA_1 \cdots \cdA_k$. 
-	
-	(Note que para cualquier permutación $\sigma \in S_n$, $\cdA_{\sigma(1)} \cdots \cdA_{\sigma(n)}$ es una cadena.)
-\end{dfn}
-
-Decimos que dos cadenas $\cdA, \cdB$ son equivalentes si para cada término $a_i$ de $\cdA$ que corresponda a $b_i$ de $\cdB$ se tiene que $a_i$ es el mismo símbolo que $b_i$. Denotamos $\cdA \equiv \cdB$.
-
-Así, por ejemplo, las siguientes son cadenas de símbolos de $\lpo$:
-\begin{enumerate}[label=\roman*)]
-	\item $\cad{{\cond} {\cond} R^n \neg a_2 {=} \alpha} \equiv \cad{{\cond}} \cad{{\cond} R^n} \cad{\neg a_2 } \cad{ {=} \alpha}$
-	\item ${\cond}{\cond}{\cond}{\cond}{\cond}{\cond}{\cond}a$
-\end{enumerate}
-
-\begin{dfn}
-	Una cadena de $\lpo$ se dice término si el primer símbolo es una variable, una constante o un funtor, y se dice fórmula si su primer símbolo es un relator, un conector o un cuantificador universal.
-\end{dfn}
-
-\begin{dfn}
-	Una expresión de $\lpo$ es una cadena de símbolos $\phi$ si y sólo si existe una sucesión finita $\cad{\psi_1,\ldots,\psi_k}$ de cadenas de símbolos de $\lpo$ de modo que $\psi_k = \phi$ y cada $\psi_l$ satisface alguna de las siguientes condiciones:
-	\begin{enumerate}[label=\roman*)]
-		\item $\psi_l \equiv \cad{c}$ donde $c$ es una constante de $\lpo$,
-		\item $\psi_l \equiv \cad{x}$ donde $\alpha$ es una variable de $\lpo$,
-		\item $\psi_l \equiv f \psi_{j_1} \cdots \psi_{j_n}$ donde $f$ es un funtor $n$-ádico, $0 \le j_1, \ldots, j_n \ls l$ y $\psi_{j_1}, \ldots, \psi_{j_n}$ son términos.
-		\item $\psi_l \equiv R \psi_{j_1} \cdots \psi_{j_n}$ donde $R$ es un relator $n$-ádico, $0 \le j_1, \ldots, j_n \ls l$ y $\psi_{j_1}, \ldots, \psi_{j_n}$ son términos.
-		\item $\psi_l \equiv \neg \psi_j$, donde $0 \le j \ls l$ y $\psi_j$ es una fórmula.
-		\item $\psi_l \equiv \cond \psi_i \psi_j$, donde $0 \le j,i \ls l$ y $\psi_j$ y $\psi_i$ son fórmulas.
-		\item $\psi_l \equiv \forall x \psi_j$, donde $x$ es una variable de $\lpo$, $0 \le j \ls l$ y $\psi_j$ es una fórmula.
-	\end{enumerate}
-\end{dfn}
-
-\begin{ejem}
-	La cadena de símbolos $\phi \equiv \cad{{\cond} \neg \neg {=} x c {=} x c}$ es una expresión de $\lpo$. En efecto, consideremos $\cad{\psi_1,\psi_2,\psi_3,\psi_4,\psi_5,\psi_6}$:
-	\begin{enumerate}[label=\arabic*)]
-		\item $\psi_1 \equiv x$,
-		\item $\psi_2 \equiv c$,
-		\item $\psi_3 \equiv {=}xc$,
-		\item $\psi_4 \equiv \neg{=}xc $,
-		\item $\psi_5 \equiv \neg\neg{=}xc$,
-		\item $\psi_6 \equiv {\cond}\neg\neg{=}xc{=}xc \equiv \phi$.
-	\end{enumerate}
-\end{ejem}
-
-Note que cualquier expresión de $\lpo$ se lee de manera única. Una demostración de esto se hace mediante la formalización desde la matemática en \cite{mathlogicmonk}. Esta notación (usualmente llamada polaca) nos es de utilidad pues no necesita de paréntesis. Acordamos, de manera más informal, escribir expresiones en la notación usual haciendo uso de paréntesis teniendo en cuenta la notación con la que construimos las expresiones del lenguaje. Así, una expresión de $\lpo$ como ${\cond}{\cond}{=}c_1c_2{=}c_2c_1{\cond}\neg{=}c_2c_1\neg{=}c_1c_2$ se escribirá como $(c_1=c_2 \cond c_2=c_1) \cond (\neg c_2=c_1 \cond \neg c_1 = c_2)$.
-
-Si $R$ es un relator a las expresiones del tipo $R^n t_1 \cdots t_n$ donde $t_1, \ldots, t_n$ son términos se les llamará fórmulas atómicas.
-
-\begin{dfn}
-	Un modelo $M$ para $\lpo$ consiste en:
-	\begin{enumerate}[label=\roman*)]
-		\item Una colección $U$ que llamaremos el universo de $M$.
-		\item A cada $c$ en $\Clfpo$ se le asigna un único valor en $U$ denotado por $M(c)$ o $\olc$.
-		\item A cada relator $n$-ádico $R^n$ en $\Rlfpo$ se le asigna una única relación $n$-ádica en $U$ denotada $M(R^n)$ o $\olR$. A ${=}$ se le asigna la identidad en $U$ ${\equiv}$.
-		\item A cada funtor $n$-ádico $f^n$ en $\Flfpo$ se le asigna una única función $n$-ádica en $U$ denotada $M(f^n)$ o $\olf$.
-	\end{enumerate}
-\end{dfn}
-
-Formalizando, un modelo es una función de la colección de expresiones de un lenguaje formal a la colección (el conjunto) $\{0,1\}$. La noción puede ser más general, consultar \cite{setlogicivorra}.
-
-\begin{dfn}
-	Una valoración en $\lpo$ en un modelo $M$ es una relación $v$ que asigna a cada variable $x$ de $\lpo$ un único objeto $v(x)$ del universo de $M$.
-\end{dfn}
-
-Si $v$ es una valoración en $\lpo$ en un modelo $M$, $a$ está en el universo de $M$ y $x$ es una variable, entonces denotamos $v_x^a$ a la valoración donde $v_x^a(y) \equiv a$ si $y = x$ y $v_x^a (y) \equiv v(y)$ si $y \not \equiv x$.
-
-\begin{dfn}
-	Si $v$ es una valoración de $\lpo$ en un modelo $M$, decimos que $M$ satisface la fórmula $\phi$ respecto a la valoración $v$ (denotado $M \sfl \phi[v]$) y cuándo un término $t$ denota en $M$, respecto a la valoración $v$, a un objeto denotado por $M(t)[v]$ o $\olt$, si se satisface:
-	\begin{enumerate}[label=\roman*)]
-		\item $M(x_i)[v] \equiv v(x_i)$,
-		\item $M(c_i)[v] \equiv \olc_i$,
-		\item $M \sfl R^n t_1 \cdots t_n$ si y sólo si $\olR^n(\olt_1 \cdots \olt_n)$,
-		\item $M(f^n t_1 \cdots t_n)[v] \equiv \olf^n(\olt_1 \cdots \olt_n)$,
-		\item $M \sfl \neg \phi[v]$ si y sólo si no $M \sfl \phi[v]$,
-		\item $M \sfl (\phi_1 \cond \phi_2)$ si y sólo si no $M \sfl \phi_1[v]$ o $M \sfl \phi_2[v]$,
-		\item $M \sfl \gen x_i \phi [v]$ si y sólo si para todo objeto $a$ del universo de $M$ se cumple que $M \sfl \phi[v_x^a]$.
-	\end{enumerate}
-\end{dfn}
-
-\fi
-
-
 \section{Nociones sobre conjuntos}
-\subsection{Algunos axiomas y resultados}
-La teoría desarrollada en el curso hace uso de la teoría de conjuntos de Zermelo-Frankel con el axioma de elección (ZFE). Un estudio más detallado se puede encontrar en \cite{settheoryhernandez}, \cite{settheoryraymond} y \cite{tecoloteII}. Para consultar sobre lógica, los primeros capítulos de dichos libros además de \cite{alfredologica} y \cite{metamathematics} son suficientes para tener una idea.
+\subsection{El lenguaje de la teoría de conjuntos$^\dagger$}
+Esta sección se indica opcional mediante el superíndice $^\dagger$. Está aquí para clarificar lo que es una propiedad en la teoría de conjuntos y cómo construirlas a partir de interpretaciones.
 
-Se presenta la teoría de conjuntos Zermelo-Fraenkel (ZF) con el Axioma de Elección (ZFE) de manera axiomática a través de un lenguaje formal. Decimos que el lenguaje formal de la teoría de conjuntos (o simplemente el lenguaje TC) consiste de los siguiente símbolos \cite{breton}:
+La teoría desarrollada en el curso hace uso de la teoría de conjuntos de Zermelo-Frankel con el axioma de elección. Un estudio más detallado se puede encontrar en \cite{settheoryhernandez}, \cite{settheoryraymond} y \cite{tecoloteII}. Para consultar sobre la lógica que de la que se hace uso aquí, \cite{alfredologica} y \cite{metamathematics} son fuentes suficientes para entender más a detalle lo que aquí se presenta. 
+
+Se presenta la teoría de conjuntos Zermelo-Fraenkel (ZF) con el Axioma de Elección (ZFE) de manera axiomática a través de un lenguaje formal. Un lenguaje formal consta de un alfabeto, reglas sintácticas y una interpretación. A grandes rasgos, un lenguaje formal es un lenguaje con estructura de \com{cálculo}. Se supone que el lector ya tiene nociones de lógica, aún cuando estas no son del todo formales, se entiende que sabe cómo formar proposiciones yuxtaponiendo símbolos como $p \cond q$. De manera similar, se dará el lenguaje de la teoría de conjuntos con el cual se formarán cadenas de símbolos bajo ciertas reglas y las cuales interpretaremos como dichos o declaraciones sobre los conjuntos. 
+
+Decimos que el lenguaje formal de la teoría de conjuntos (o simplemente el lenguaje TC) consiste de los siguientes símbolos \cite{breton}:
 \begin{enumerate}[label=\arabic*.]
 	\item Funtores o conectivos lógicos: $\land, \lor, \cond, \bicond$.
 	\item Cuantificadores: $\forall, \exists$.
@@ -131,29 +21,56 @@ Se presenta la teoría de conjuntos Zermelo-Fraenkel (ZF) con el Axioma de Elecc
 	\item Relatores: $=, \in$.
 \end{enumerate}
 
-Una fórmula del lenguaje TC es una cadena finita de símbolos (finita en su sentido común) de forma que \com{tenga sentido}. Dicho de otro modo, haciendo las fórmulas atómicas como aquellas formadas con los relatores y las variables, digamos por ejemplo $x = y$ o $a \in b$, una cadena de símbolos será una fórmula si se puede construir a partir de otras fórmulas bajo ciertas reglas. Dichas reglas son, por ejemplo, que si $\varphi$ es una fórmula entonces $\forall x (\varphi)$ es una fórmula. Por ejemplo \[\forall x \exists z (x \in y \cond \neg x = z)\] se construye a partir de $x \in y$ y $x \not = z$. De la lógica clásica, diremos que $\varphi \cond \psi$ y $\neg \varphi$ es una fórmula si $\varphi$ y $\psi$ son fórmulas, por lo que $x \in y \cond \neg x = z$ es una fórmula. Luego $\exists z ( x\in y \cond \neg x = z )$ es una fórmula y entonces $\forall x \exists z (x \in y \cond \neg x = z)$ es una fórmula.
+Una cadena de símbolos es la yuxtaposición de símbolos del lenguaje formal. En este caso, $\cond \forall A \exists = \alpha \in \land \beta$ es una cadena de símbolos que el lector percibirá que no tiene sentido. Y con toda razón. Lo que buscamos es construir cadenas de símbolos con cierta estructura para poder dotarlas de un significado sin ambigüedades. Así entonces, damos reglas sintácticas para construir lo que llamaremos {\bfseries fórmulas}, primero en noción y luego dando reglas de formación explícitas..
 
-Otras cadenas como $\forall x \land \in z \neg$ no son fórmulas.
+Una fórmula del lenguaje TC es una cadena finita de símbolos (finita en su sentido común: que termina) de forma que \com{tenga sentido}, lo cual se puede lograr de varias formas\footnote{Para evitar ambigüedad, libros que introducen el lenguaje formal de la lógica proposicional definen fórmulas mediante el uso de la notación polaca inversa. Por ejemplo, $\cond p q$ (note la estructura $f(a,b)$) tiene dicha estructura y tiene la interpretación usual, $p$ entonces $q$. Sin embargo esta notación evita la ambigüedad de escribir, por ejemplo, $p \cond q \cond r$, supliéndola por una notación de lectura única ${\cond} \cond p q r$ sin la necesidad de paréntesis.}. Nos decantaremos por evitar esta notación y en su lugar utilizar los paréntesis para remover ambigüedades. Primero, queremos expresar declaraciones conjuntistas mediante la lógica. Por esto es necesario que dentro de nuestro lenguaje esté contenido el lenguaje de la lógica de primer orden. Esto es, que si cadenas de símbolos del lenguaje TC, $\varphi$ y $\psi$, son fórmulas, entonces estas suplen el lugar de las variables proposicionales $\neg \varphi$, $\varphi \cond \psi$, $\varphi \land \psi$, $\varphi \lor \psi$ y $\varphi \bicond \psi$, haciendo de estas nuevas proposiciones, fórmulas del lenguaje TC. En cuanto a los cuantificadores, las fórmulas toman el lugar de las proposiciones para formar predicados como $\forall x (\varphi)$ o $\exists y (\psi)$ donde $x$ y $y$ son variables.
 
-Abreviamos $\neg x = y$ por $x \not= y$, $\neg x \in y$ por $x \not\in y$, $\forall z (z \in x \cond z \in y)$ por $x \subseteq y$ y $\neg x \subseteq y$ por $x \not\subseteq y$. De manera similares, podemos introducir nuevos símbolos para representar fórmulas de nuestro lenguaje formal.
+Ahora, las reglas de formación explícitas son:
+\begin{enumerate}[label=RF\arabic*., leftmargin=4em]
+	\item Para cualesquiera variables $x$ y $y$, $x \in y$ es una fórmula.
+	\item Para cualesquiera variables $x$ y $y$, $x = y$ es una fórmula.
+	\item Para cualquier fórmula $\varphi$, $\neg \varphi$ es una fórmula.
+	\item Para cualesquiera fórmulas $\varphi$ y $\psi$, $\varphi \cond \psi$ es una fórmula.
+	\item Para cualesquiera fórmulas $\varphi$ y $\psi$, $\varphi \land \psi$ es una fórmula.
+	\item Para cualesquiera fórmulas $\varphi$ y $\psi$, $\varphi \lor \psi$ es una fórmula.
+	\item Para cualquier fórmula $\varphi$ y cualquier variable $x$, $\forall x (\varphi)$ es una fórmula.
+	\item Para cualquier fórmula $\varphi$ y cualquier variable $x$, $\exists x (\varphi)$ es una fórmula.
+	\item Estas son las únicas maneras de construir fórmulas.
+\end{enumerate}
+
+Estas reglas de formación nos permiten saber si una cadena es una fórmula del lenguaje TC mediante la examinación parte por parte de la cadena. Por ejemplo \[\forall x \exists z (x \in y \cond \neg x = z)\] se construye a partir de las cadenas $x \in y$ y $x = z$ las cuales son fórmulas por RF1 y RF2. Entonces $\neg x = z$ es una fórmula por RF3 y $x \in y \cond \neg x = z$ es una fórmula por RF4. Luego $\exists z ( x\in y \cond \neg x = z )$ es una fórmula por RF8 y entonces $\forall x \exists z (x \in y \cond \neg x = z)$ es una fórmula por RF7.
+
+De este modo, otras cadenas como $\forall x \land \in z \neg$ no son fórmulas y esto encajará con el sentido del que dotaremos a las fórmulas.
+
+Los símbolos lógicos se interpretan de la misma manera que se hace en su propio lenguaje formal, e.g. \com{entonces}, \com{y}, \com{o} (en su sentido inclusivo), etc. Mientras que los símbolos del lenguaje TC $\in$ y $=$ se interpretan como \com{estar en} (o simplemente \com{en}) y \com{es igual} o simplemente \com{igual}, respectivamente. Esto nos permite interpretar predicados más complejos, como \[\exists y \forall x (\neg x \in y)\] como \com{existe $y$ para todo $x$ tal que no $x$ está en $y$}, que mejor interpretado significaría \com{existe $y$ para todo $x$ tal que ningún $x$ está en $y$}. Aquí una distinción recurrente que llega a causar problemas es que $\forall x (\varphi)$ no significa que existan elementos $x$ para los cuales se declare $\varphi$. Significa que, sin importar si existen o no existen elementos $x$, de ellos se dice $\varphi$. Así entonces, una traducción final a la fórmula anterior sería \com{existe un $y$ tal que, de existir $x$, entonces $x$ no está en $y$}, la cual deja claro este rol del cuantificador $\forall$, pero quedará implícita en la mayoría de declaraciones sobre conjuntos que se hagan. Y, sin abordar demasiado el tema, los cuantificadores trabajan sobre un {\itshape universo} definido. Esto es, cuando se dice algo sobre las variables $x$ mediante la fórmula $\forall x (\varphi)$, esas variables tienen que salir de algún lugar, del universo de trabajo. Esto permite, intuitivamente, pensar que cuando escribimos $\forall x (\varphi)$, nos es posible determinar un asignamiento de verdad (verdadero o falso) a la fórmula mediante la interpretación de las variables $x$ en dicho universo\footnote{Algo que no exploramos aquí es lo que se entiende por verdad de las fórmulas. Para ese tipo de estudio se requiere introducir la noción de {\itshape modelo}, lo cual se desvía de los propósitos de la sección. Por esto, se deja al lector con otra noción intuitiva de las fórmulas que son verdaderas y las que no dependiendo del universo que contiene a sus variables}.
+
+Para un tratamiento más riguroso, es necesario cubrir por completo las reglas de transformación. Sin embargo, se evitará esto, en su lugar dejando al lector con la manipulación lógica que ha practicado en el primer semestre o con otros textos. Las reglas de transformación son reglas que nos dicen cómo pasar sintácticamente de una fórmula a otra. Estas vienen, usualmente, de la intuición lógica usual, es decir, de manipular los predicados o proposiciones para obtener otros equivalentes. Por ejemplo, pasar de $\neg (\forall x (\varphi))$ a $\exists x (\neg \varphi)$ o de $\neg(\varphi \land \psi)$ a $(\neg \varphi) \lor (\neg \psi)$. La cuestión sintáctica y deductiva requiere de métodos como el axiomático o el de deducción natural para establecer formalmente las reglas. Para el lector, de momento, será suficiente con manejar intuitivamente estos conceptos, guiándose por la intuición o de algún libro.
+
+Abreviamos $\neg x = y$ por $x \not= y$, $\neg x \in y$ por $x \not\in y$, $\forall z (z \in x \cond z \in y)$ por $x \subseteq y$ y $\neg x \subseteq y$ por $x \not\subseteq y$. De maneras similares, podemos introducir nuevos símbolos para representar fórmulas de nuestro lenguaje formal mientras exploramos la teoría.
+
+Ahora, el principal fin de esta sección es dejar claro qué constituye una propiedad en nuestro lenguaje formal. Para esto, se da la siguiente definición.
 
 \begin{dfn}
 	Si $\varphi$ es una fórmula del lenguaje TC, decimos que $x$ es una {\bfseries variable libre} en $\varphi$ si $x$ no está afectada por ningún cuantificador. Denotamos que $x$ es libre en $\varphi$ por $\varphi(x)$. Si al menos un cuantificador afecta a $x$ entonces decimos que la variable es ligada en $\varphi$.
 \end{dfn}
 
-Por ejemplo, la fórmula $\exists y (x \not= y)$ tiene variable libre $x$ y variable ligada $y$. Intuitivamente, una fórmula con variable libre $x$ se interpreta como una \com{propiedad}. Esto nos permite hablar de propiedadades mientras podamos llevarlas al lenguaje TC. Si le es posible definir lo que significa \com{ser un perro rabioso} en el lenguaje TC entonces le es posible construir la colección de los perros rabiosos como sigue 
+Por ejemplo, la fórmula $\exists y (x \not= y)$ tiene variable libre $x$ y variable ligada $y$. Su interpretación es \com{existe un $y$ tal que $x$ no es igual a $y$}, de donde se debe notar que se está diciendo algo sobre $x$, o que se está dictando una {\bfseries propiedad} de $x$ mientras que se está utilizando a $y$ para decir algo sobre $x$. Otro ejemplo, en $\exists y \forall x (x \not\in y)$ no hay variables libres. En este caso, no estamos predicando algo sobre algún $y$, estamos afirmando que existe uno que cumple con $x \not\in y$.
+
+Intuitivamente, una fórmula con variable libre $x$ se interpreta como una \com{propiedad} de $x$. Esto nos permite hablar de propiedadades mientras podamos llevarlas al lenguaje TC. Así, establecemos la siguiente definición.
 
 \begin{dfn}
 	Introduciendo los símbolos $\{,\}$ y $\mid$, si $\varphi$ es una fórmula del lenguaje TC con variable libre $x$, definimos un \textbf{término clase} como la cadena de símbolos de la forma $\{x \mid \varphi(x)\}$.
 \end{dfn}
 
-Vale la pena interpretar la definición anterior. Un término clase o simplemente una \textbf{clase} es un objeto que no es parte del lenguaje TC pero es de utilidad para hablar sobre la teoría que se construye a traves de él. Las clases se cuantifican sobre conjuntos, informalmente, son colecciones de conjuntos. Aquí $\mid$ se interpreta como \com{tal que} de modo que la definición nos dice que la clase $A$ es la colección de los conjuntos $x$ tales que $x$ es libre en $\varphi$, o bien, tales que $\varphi(x)$ (que se interpreta como \com{$x$ cumple la propiedad $\varphi$}).
+Vale la pena interpretar la definición anterior. Un término clase o simplemente una \textbf{clase} es un objeto que no es parte del lenguaje TC pero es de utilidad para hablar sobre la teoría que se construye a traves de él. Las clases se cuantifican sobre conjuntos, informalmente, son colecciones de conjuntos. Aquí $\mid$ se interpreta como \com{tal que} de modo que la definición nos dice que la clase $A$ es la colección de los conjuntos $x$ tales que $x$ es libre en $\varphi$, o bien, tales que $\varphi(x)$ (que se interpreta como ``aquellos $x$ que cumplen\footnote{Note que un término clase junto con la fórmula de variable libre $x$ es una definición meramente sintáctica. No exploramos lo que significa, por ejemplo, sustituir un $a$ del universo en la fórmula o qué significa que $\varphi$ sea verdadera en $x$.} la propiedad $\varphi$").
 
-Podemos describir la \textbf{clase de todos los conjuntos} por $\uclass := \{x \mid x=x\}$ y entonces convenir en que $x \in \uclass$ significa que $x$ es un conjunto, y en general, decir que si $x \in A$ entonces $\varphi(x)$.
+Si le es posible definir lo que significa \com{ser un perro rabioso} en el lenguaje TC entonces le es posible construir la colección de los perros rabiosos a través de los términos clases. Esto último, en pocas palabras, se refiere a lo que significa \com{formalizar} un concepto. En medida de lo posible, la formalización trata de evitar elecciones arbitrarias de propiedades, por ejemplo, \com{ser pequeño} o \com{estar gordo} son propiedades subjetivas que pueden ser formalizadas\footnote{e.g. decimos que $x$ es pequeño si $\exists x_1 \exists x_2 \forall y (y \in x \bicond (y = x_1 \lor y = x_2))$. Pero estas nociones de pequeño y grande pueden ser de interés para teorías como la de categorías.} pero que carecen de importancia para la teoría, por ejemplo, de los números reales.
 
-Para clases $A$ y $B$ se escribe $A \cap B$ por $\{x \mid x \in A \land x \in B\}$ y $A \subseteq B$ por $\forall x (x \in A \cond x \in B)$.
+Podemos describir la \textbf{clase de todos los conjuntos} por $\uclass := \{x \mid x=x\}$ (la colección de todos los $x$ que son iguales a sí mismos, esto es, todos los objetos de la teoría de conjuntos: los conjuntos) y entonces convenir en que $x \in \uclass$ significa que $x$ es un conjunto, y en general, decir que si $x \in A$ entonces $\varphi(x)$, i.e., $x$ cumple la propiedad que define al término clase $A$.
 
-A continuación, utilizando el lenguaje que acabamos de definir (de manera poco formal), se introducen algunos axiomas de la teoría ZFE:
+Si se tienen clases $A$ y $B$ se escribe $A \cap B$ por $\{x \mid x \in A \land x \in B\}$ y se escribe $A \subseteq B$ por $\forall x (x \in A \cond x \in B)$.
+
+A continuación, utilizando el lenguaje que acabamos de definir (de manera poco formal) se crea una TC-teoría, i.e. una colección de fórmulas del lenguaje TC que se siguen de la manipulación lógica de fórmulas dadas, que llamamos {\itshape axiomas}. La teoría de conjuntos ZFE tiene los siguientes axiomas.
 
 \begin{enumerate}[label=A.\arabic*]
 	\item $\exists y \forall x (\neg x \in y)$,
@@ -167,7 +84,8 @@ A continuación, utilizando el lenguaje que acabamos de definir (de manera poco 
 
 Algunos detalles sobre el Axioma 7 se encuentran en el apéndice B. Este es utilizado de forma implícita en muchas demostraciones en matemáticas.
 
-Ahora es conveniente interpretar los axiomas:
+\subsection{Algunos axiomas y resultados}
+Ahora es conveniente interpretar los axiomas para trabajar con ellos de forma más entendible en el lenguaje natural.
 
 \begin{axiom}[de Existencia]
 	Existe un conjunto que no tiene elementos.
@@ -200,8 +118,6 @@ Note que en realidad el axioma Esquema de Comprensión adquiere su nombre por se
 Los conjuntos determinados por el axioma Esquema de Comprensión, axioma del Par, el axioma de Unión y el axioma del Conjunto Potencia son únicos. Por esto podemos denotar sin ambigüedad al conjunto determinado por A.6 por $\mathcal{P}(a)$, al conjunto determinado por A.5 por $\bigcup a$ y si $a$ consiste de dos elementos (i.e. $\forall z (z \in a \bicond z = x \lor z = y)$ con $x \not= y$), denotando $a = \{x,y\}$, entonces escribimos $x \cup y := \bigcup \{x,y\}$. En general, si $a$ es el conjunto definido por $\forall x (x \in a \bicond x = x_1 \lor \cdots \lor x = x_n)$ con $x_1, \ldots, x_n$ distintos entre sí entonces podemos denotar a través de las clases $a = \{x_1, \ldots, x_n\}$.
 
 No se extenderá el estudio de conjuntos en estas notas a los términos clases, así que de aquí en adelante se denota a los conjuntos con letras mayúsculas o letras caligráficas, góticas, etc. Para un estudio desde otras teorías o extensiones de la utilizada consultar \cite{settheoryraymond} y \cite{quine}.
-
-Finalmente, cuando se dice que \com{formalizamos} un concepto lo que queremos decir es que definimos el concepto en un lenguaje formal. En nuestro caso, formalizar algo como los sistemas de ecuaciones será abstraer lo que son y definirlos en el lenguaje TC. Claramente esta no es la única formalización posible, conociéndose otros lenguajes formales o definiendo uno.
 
 \begin{dfn}[Par ordenado]
 	Se define el \textbf{par ordenado} de elementos $a$ y $b$ como
@@ -392,7 +308,7 @@ Para facilitar la escritura se escribe $a \mathrel{R} b$ para $(a,b) \in R$.
 \end{ejem}
 
 \begin{prop} \label{prop:equipotenciaEnV}
-	La equipotencia en la clase de todos los conjuntos es una relación de equivalencia.
+	La equipotencia en la clase de todos los conjuntos es una relación de equivalencia de clases (definiendo un análogo para estas).
 	\begin{proof}
 		Ejercicio.
 	\end{proof}
