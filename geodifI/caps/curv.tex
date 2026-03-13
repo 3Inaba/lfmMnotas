@@ -1,9 +1,24 @@
 \section{Curvas}
 
 \begin{dfn}
-	$\forall i \in \inte{1}{n}$, se define la función $ \rfunc{\pi_i}{\mathbb{R}^n}{\mathbb{R}}{(x_1, ..., x_n)}{x_i}$, llamada i-ésima proyección.
+	$\forall i \in \inte{1,n}$, se define la función $ \rfunc{\pi_i}{\mathbb{R}^n}{\mathbb{R}}{(x_1, ..., x_n)}{x_i}$, llamada i-ésima proyección.
 \end{dfn}
 
 \begin{dfn}
-	Sea $A \subseteq \mathbb{R}^n$ y $\func{f}{A}{\mathbb{R}^n}$, a la función $\pi_j \circ f$, $\forall \, j \in \inte{1}{m}$ le llamamos función componente jésima de $f$, denotada $f_j$. 
+	Sea $A \subseteq \mathbb{R}^ n $ y $\func{f}{A}{\mathbb{R}^n}$, a la función $\pi_j \circ f$, $\forall \, j \in \inte{1,m}$ le llamamos función componente jésima de $f$, denotada $f_j$. 
+\end{dfn}
+
+
+\begin{dfn}
+	Sea $A \subseteq \mathbb{R}^n$ abierto, decimos que una función $\func{f}{A}{\mathbb{R}^n}$ es de clase $C^q \, \, (q \in \mathbb{N})$ si todas las derivadas parciales de $f$ hasta el orden $q$ existen y son continuas.
+	
+	Si $f$ es de clase $C^q \, \, \forall \, q \in \mathbb{N}$, decimos que $f$ es de clase $C^{\infty}$
+\end{dfn}
+
+\subsection{Curvas Parametrizadas}
+
+\begin{dfn}
+	Una \uwave{curva parametrizada} de clase $C^k \, \, (k \in \n \cup \{ \infty \})$ en $\rn \, \, (n\ge 2)$ es una función $\func{\sigma}{I}{\rn}$ de clase $C^k$, donde $I \subseteq \rr$ es un intervalo.
+
+	A $\sigma (I)$ se le llama la traza de $\sigma$, y si $I=[a,b]$, con $\sigma (a)=\sigma(b)$, decimos que la curva $\sigma$ es cerrada. 
 \end{dfn}

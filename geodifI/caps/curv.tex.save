@@ -1,0 +1,21 @@
+\section{Curvas}
+
+\begin{dfn}
+	$\forall i \in \inte{1,n}$, se define la función $ \rfunc{\pi_i}{\mathbb{R}^n}{\mathbb{R}}{(x_1, ..., x_n)}{x_i}$, llamada i-ésima proyección.
+\end{dfn}
+
+\begin{dfn}
+	Sea $A \subseteq \mathbb{R}^n$ y $\func{f}{A}{\mathbb{R}^n}$, a la función $\pi_j \circ f$, $\forall \, j \in \inte{1,m}$ le llamamos función componente jésima de $f$, denotada $f_j$. 
+\end{dfn}
+
+\begin{dfn}
+	Sea $A \subseteq \mathbb{R}^n$ abierto, decimos que una función $\func{f}{A}{\mathbb{R}^n}$ es de clase $C^q, \, \, q \in \mathbb{N}$ si todas las derivadas parciales de $f$ hasta el orden $q$ existen y son continuas.
+
+	Decimos que $f$ es de clase $C{\infty}$ si es de clase $C^q \, \, \forall q \in \mathbb{N}$ 
+\end{dfn}
+
+\subsection{Curvas Parametrizadas}
+
+\begin{dfn}
+	Dado $k \in \mathbb{Z}^+ \cup $
+\end{dfn}
