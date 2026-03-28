@@ -28,7 +28,7 @@
 
 	Si $I$ no es un intervalo abieto y $k \ge 1$, significa que $\sigma$ se extiende a una función $\hat{\sigma}$ de clase $C^k $ definida en un intervalo abierto que contiene propiamente a $I$.
 
-	Además, si $\sigma$ es cerrada de clase $C^k$, asumiremos que $\sigma' (a)= \sigma' (b), ..., \sigma ^{(k)} (a)= \sigma ^{(k)} (b)$ salvo que se especifique lo contrario.
+	Además, si $\sigma$ es cerrada de clase $C^k$, asumiremos que $\sigma ^{'} (a)= \sigma ^{'} (b), ..., \sigma ^{(k)} (a)= \sigma ^{(k)} (b)$ salvo que se especifique lo contrario.
 
 \end{obs}
 
@@ -38,7 +38,7 @@
 
 	Si $\func{\sigma}{[a,b]}{\rn}$ es una curva parametrizada de clase $C^1$, se define
 	 \[ \int_a ^b \sigma dt= \left( \int_a ^b \sigma_1 dt, ..., \int_a ^b \sigma_n dt   \right)  \]
-	y se tiene que $\displaystyle \int_a ^b \sigma' dt= \left( \sigma_1(b)- \sigma_1(a), ..., \sigma_n(b)- \sigma_n(a)   \right) = \sigma(b)- \sigma(a) $
+	y se tiene que $\displaystyle \int_a ^b \sigma^{'} dt= \left( \sigma_1(b)- \sigma_1(a), ..., \sigma_n(b)- \sigma_n(a)   \right) = \sigma(b)- \sigma(a) $
 
 \end{dfn}
 
@@ -51,7 +51,7 @@
 
 \begin{dfn}
 
-	Sea $P= \{ t_0, ..., t_k  \}$ una partición del intervalo $I=[a,b] \subseteq \rr$. Definimos la \uwave{norma de $P$} $\displaystyle \left\| P \right\| \coloneqq \text{máx} \{ |t_i-t_{i-1}| : i \in \inte{1,k}  \}$ 
+	Sea $P= \{ t_0, ..., t_k  \}$ una partición del intervalo $I=[a,b] \subseteq \rr$. Definimos la \uwave{norma de $P$} $\displaystyle \left\| P \right\| \coloneqq máx \{ |t_i-t_{i-1}| : i \in \inte{1,k}  \}$ 
 
 \end{dfn}
 
@@ -70,7 +70,7 @@
 
 \begin{thm}
 
-	Sea $\func{\sigma}{[a,b]}{\rn}$ una curva parametrizada de clase $C^1$, entonces $\sigma$ es rectificable y \[ L( \sigma )= \int_a ^b \left\| \sigma' (t) \right\| dt   \]
+	Sea $\func{\sigma}{[a,b]}{\rn}$ una curva parametrizada de clase $C^1$, entonces $\sigma$ es rectificable y \[ L( \sigma )= \int_a ^b \left\| \sigma ^{'} (t) \right\| dt   \]
 
 \end{thm}
 
@@ -78,21 +78,11 @@
 
 \begin{proof}
 
-	Sea $\epsilon > 0$, como $ \sigma $ es de clase $C^1$, $ \sigma'$ es continua sobre $[a,b]$ compacto; luego, $\exists \, \delta > 0 \, : \, \forall \, t, s \in [a,b]$ con $|t-s| < \delta$, $\displaystyle \left\| \sigma' (t)- \sigma' (s) \right\| < \frac{\epsilon}{b-a}  $.
+	Sea $\epsilon > 0$, como $ \sigma $ es de clase $C^1$, $ \sigma ^'$ es continua sobre $[a,b]$ compacto; luego, $\exists \, \delta > 0 \, : \, \forall \, t, s \in [a,b]$ con $|t-s| < \delta$, $\displaystyle \left\| \sigma ^' (t)- \sigma ^' (s) \right\| < \frac{\epsilon}{b-a}  $.
 
-	Sea $P=\{ t_0, ..., t_k \}$ una partición de $[a,b] \, : \, \left\| P \right\| < \delta $. Primeramente, note que $ \forall \, i \in \inte{1,k}$, $\displaystyle \left\| \sigma (t_i)- \sigma (t_{i-1})  \right\|= \left\| \int_{t_{i-1}}^{t_i} \sigma' (t) dt  \right\| \le \int_{t_{i-1}}^{t_i} \left\|  \sigma' (t) \right\|  dt  $.
+	Sea $P=\{ t_0, ..., t_k \}$ una partición de $[a,b] \, : \, \left\| P \left \| < \delta $. Primeramente, note que $ \forall \, i \in \inte{1,k}$, $\displaystyle \left\| \sigma (t_i)- \sigma (t_{i-1})  \right\|= \left\| \int_{t_{i-1}^{t_i} \sigma ^' (t) dt  \right\| \le \int_{t_{i-1}^{t_i} \left\|  \sigma ^' (t) \right\|  dt  $.
 
-	Lo cual implica que $\displaystyle L( \sigma ,P)= \sum_{i=1}^k \left\| \sigma (t_i)- \sigma (t_{i-1}) \right\| \le \sum_{i=1}^k \int_{t_{i-1}} ^{t_i} \left\|  \sigma' (t) \right\|  dt = \int_a ^b  \left\|  \sigma' (t) \right\|  dt  $. (*)
-	
-	
-	
-	Por otra parte, 
-	\begin{align*}
-		\sigma(t_i)-\sigma(t_{i-1}) &= \int_{t_{i-1}}^{t_i} \sigma' (t)dt =\int_{t_{i-1}}^{t_i} (\sigma' (s)+\sigma' (t)-\sigma' (s))dt \\
-		&=\int_{t_{i-1}}^{t_i} \sigma' (s)dt + \int_{t_{i-1}}^{t_i} (\sigma' (t)-\sigma' (s))dt = \sigma'(s) (t_i-t_{i-1})+ \int_{t_{i-1}}^{t_i} (\sigma' (t)-\sigma' (s))dt
-	\end{align*}
-
-	De esto se sigue que 
+	Lo cual implica $\displaystyle L( \sigma ,P)= \sum_{i=1}^k \left\| \sigma (t_i)- \sigma (t_{i-1}) \right\| \le \sum_{i=1}^k \int_{t_{i-1}^{t_i} \left\|  \sigma ^' (t) \right\|  dt = \int_a ^b  \left\|  \sigma ^' (t) \right\|  dt  $. (*)
 
 \end{proof}
 
