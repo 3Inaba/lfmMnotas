@@ -67,6 +67,12 @@
 
 \end{dfn}
 
+\begin{tikzpicture}
+	\draw (1,1) -- (3,1);
+	\draw (2,2) arc [start angle=170, end angle=10, x radius=1.75cm, y radius=0.7cm];
+\end{tikzpicture}
+
+
 
 \begin{thm}
 
@@ -92,12 +98,45 @@
 		&=\int_{t_{i-1}}^{t_i} \sigma' (s)dt + \int_{t_{i-1}}^{t_i} (\sigma' (t)-\sigma' (s))dt = \sigma'(s) (t_i-t_{i-1})+ \int_{t_{i-1}}^{t_i} (\sigma' (t)-\sigma' (s))dt
 	\end{align*}
 
-	De esto se sigue que 
+	De esto se sigue que \[ \left\| \sigma(t_i)-\sigma(t_{i-1}) - \int_{t_{i-1}}^{t_i} (\sigma' (t)-\sigma' (s))dt \right\| = \left\| \sigma'(s) (t_i-t_{i-1}) \right\| \]
+	
+	Pero \[ \left\| \sigma(t_i)-\sigma(t_{i-1}) \right|\ + \left\| \int_{t_{i-1}}^{t_i} (\sigma' (t)-\sigma' (s))dt \right\| \ge \left\| \sigma(t_i)-\sigma(t_{i-1}) - \int_{t_{i-1}}^{t_i} (\sigma' (t)-\sigma' (s))dt \right\| \]
+	
+	Con lo cual,
+	\begin{align*}
+		\left\| \sigma(t_i)-\sigma(t_{i-1}) \right\| &\ge \left\| \sigma'(s) (t_i-t_{i-1}) \right\| - \left\| \int_{t_{i-1}}^{t_i} (\sigma' (t)-\sigma' (s))dt \right\| \\
+		&\ge \left\| \sigma'(s) (t_i-t_{i-1}) \right\| -  \int_{t_{i-1}}^{t_i} \left\| (\sigma' (t)-\sigma' (s)) \right\| dt | \\
+		&\ge \left\| \sigma'(s) \right\| (t_i-t_{i-1}) - \frac{\epsilon}{b-a} (t_i-t_{i-1})
+	\end{align*}
+	
+	Esto es
+	\[
+		\left\| \sigma(t_i)-\sigma(t_{i-1}) \right\| = \int_{t_{i-1}}^{t_i} \frac{\left\| \sigma(t_i)-\sigma(t_{i-1}) \right\|}{t_i-t_{i-1}} \ge \int_{t_{i-1}}^{t_i} \left\| \sigma'(s) \right\| ds - \frac{\epsilon}{b-a} (t_i-t_{i-1})
+	\]
+	
+	Por lo tanto
+	\[ \sum_{i=1}^k  \left\| \sigma(t_i)-\sigma(t_{i-1}) \right\| \ge \sum_{i=1}^k \int_{t_{i-1}}^{t_i} \left\| \sigma'(s) \right\| ds - \frac{\epsilon}{b-a}  \sum_{i=1}^k (t_i-t_{i-1}) \]
+	
+	Finalmente, de (*)
+	
+	\[ \left| \int_{a}^{b} \left\| \sigma '(s) \right\| ds - L(\sigma, P) \right| \le \epsilon \]
 
 \end{proof}
 
+\subsection{Reparametrización}
+
+\begin{dfn}
+	Sean $I, J \subseteq \rr $ intervalos abiertos, un difeormismo de $I$ en $J$ es una función biyectiva $\func{f}{I}{J}$ tal que $f$ y $f^{-1}$ son diferenciables sobre $I$ y $J$, respectivamente.
+\end{dfn}
+
+\begin{obs}
+	Si $\func{f}{I}{J}$, $\func{g}{J}{L}$ son difeomorfismos, entonces $\func{g \circ f}{I}{L}$ es un difeomorfismo.
+\end{obs}
 
 
+\begin{dfn}
+	Dos curvas parametrizadas $\func{\sigma}{I}{\rn}$, $\func{\hat{\sigma}}{\hat{I}}{\rn}$ de clase $C^k$ son \uwave{equivalentes} si $\exists \, \func{h}{\hat{I}}{I}$ difeomorfismo de clase $C^k$ tal que $\hat{\sigma}=\sigma\circ h$. Es decir, el siguiente diagrama conmuta
+\end{dfn}
 
 
 
