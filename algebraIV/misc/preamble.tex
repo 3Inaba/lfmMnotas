@@ -256,29 +256,29 @@
 	\end{align*}
 }
 
-\newcommand{\mfL}{\mathcal{L}}
-\newcommand{\mfT}{\mathfrak{T}}
-\newcommand{\mfC}{\mathfrak{C}}
-\newcommand{\mfV}{\mathfrak{V}}
-\newcommand{\mfF}{\mathfrak{F}}
-\newcommand{\mfR}{\mathfrak{R}}
-\newcommand{\mfN}{\mathfrak{N}}
-\newcommand{\mfQ}{\mathfrak{Q}}
+\newcommand{\mcL}{\mathcal{L}}
+\newcommand{\mcT}{\mathcal{T}}
+\newcommand{\mcC}{\mathcal{C}}
+\newcommand{\mcV}{\mathcal{V}}
+\newcommand{\mcF}{\mathcal{F}}
+\newcommand{\mcR}{\mathcal{R}}
+\newcommand{\mcN}{\mathcal{N}}
+\newcommand{\mcQ}{\mathcal{Q}}
 
-\newcommand{\Clf}{C_{\mfL}}
-\newcommand{\Vlf}{V_{\mfL}}
-\newcommand{\Flf}{F_{\mfL}}
-\newcommand{\Rlf}{R_{\mfL}}
-\newcommand{\Slf}{S_{\mfL}}
-\newcommand{\Qlf}{Q_{\mfL}}
+\newcommand{\Clf}{C_{\mcL}}
+\newcommand{\Vlf}{V_{\mcL}}
+\newcommand{\Flf}{F_{\mcL}}
+\newcommand{\Rlf}{R_{\mcL}}
+\newcommand{\Slf}{S_{\mcL}}
+\newcommand{\Qlf}{Q_{\mcL}}
 
 \newcommand{\gen}{\bigwedge}
 
-\newcommand{\lpo}{\mathcal{L}_{1}}
-\newcommand{\lp}{\mathcal{L}_{0}}
+\newcommand{\fol}{\mathcal{L}_{1}}
+\newcommand{\pl}{\mathcal{L}_{0}}
 \newcommand{\form}{\mathrm{Frm}}
-\newcommand{\flpo}{\form(\lpo)}
-\newcommand{\flp}{\form(\lp)}
+\newcommand{\ffol}{\form(\lpo)}
+\newcommand{\fpl}{\form(\lp)}
 
 \newcommand{\Clfpo}{C_{\lpo}}
 \newcommand{\Vlfpo}{V_{\lpo}}
@@ -306,6 +306,11 @@
 \newcommand{\sfl}{\vDash}
 
 \newcommand{\com}[1]{\text{``#1"}}
+
+% Command for categories
+\newcommand{\obj}[1]{\mathrm{obj}(#1)}
+\newcommand{\dom}[1]{\mathrm{dom}(#1)}
+\newcommand{\cod}[1]{\mathrm{cod}(#1)}
 
 %---------------------------------------------------------------
 % Fuentes. -----------------------------------------------------
@@ -400,8 +405,8 @@
 {10pt} % Space below
 {} % Body font
 {} % Indent amount
-{\itshape\bfseries \color{black}} % Theorem head font
-{:} % Punctuation after theorem head
+{\itshape\color{black}} % Theorem head font
+{.} % Punctuation after theorem head
 {.5em} % Space after theorem head
 { } % Theorem head spec
 \theoremstyle{definicion}
