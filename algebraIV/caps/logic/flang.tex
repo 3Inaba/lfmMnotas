@@ -1,11 +1,11 @@
 \section{First order formal languages}
 
-Every definition given here might be understood as not strictly mathematical. That meaning, we won't dive into details nor ontological remarks about the things that we define. Collections are to be understood in the intuitive sense, as well as known collections like the natural numbers. The natural numbers are given with their operations.
+Every definition given here might be understood as not strictly mathematical. That meaning, we won't dive too much into detailed mathematical descriptions nor ontological remarks about the things that we define. Collections are to be understood in an intuitive sense, as well as known collections like the natural numbers. Consider the collection of natural numbers given along with its operations $+$, $\cdot$.
 
 \begin{dfn}
-	A \textit{first order formal language} $\mcL$ is a collection of symbols, each identified with a type\footnote{As in, this object is of type Natural number, or of type Logical connective.}. It can be interpreted as  a collection of collections, each of them being infinite (not necessarily having every type of collection). 
+	A \textit{first order formal language} $\mcL$ is a collection of symbols, each identified with a type\footnote{As in, this object is of type \com{Natural number}, or of type \com{Logical connective}.}. It can be interpreted as a collection of collections. 
 	\begin{enumerate} 
-		\item An infinite countable\footnote{Each variable can be related one-to-one to a natural number.} amount of variables: $$x_1, x_2, x_3, \ldots$$
+		\item At most an infinite countable\footnote{Each variable can be related one-to-one to a natural number.} amount of variables: $$x_1, x_2, x_3, \ldots$$
 		\item Constant symbols: $$c_1, c_2, c_3, \ldots$$
 		\item Relation symbols, each of them with an associated range $n_i$, a natural number greater than 0. That should be interpreted as \com{they relate $n_i$ variables/constants}: $$R_1^{n_1}, R_2^{n_2}, R_3^{n_3}, \ldots$$
 		\item Function symbols, each of them also with a range $m_i$: $$f_1^{m_1}, f_2^{m_2}, f_3^{m_3}, \ldots$$
@@ -15,23 +15,23 @@ Every definition given here might be understood as not strictly mathematical. Th
 	\end{enumerate} 
 \end{dfn}
 
-Function symbols with range 0 are to be tought as constant symbols. In intuition, they don't take any input and just output the same thing always. Synctactically, they never change its written form. We also call a range $n$ function symbol a $n$-ary function symbol, the same holds for relations. We shall use the usual language with this remark, i.e. binary for $2$-ary, etc.
+Function symbols with range 0 are to be thought of as constant symbols. In intuition, they don't take any input and just output the same thing always. Syntactically, they never change its written form. We also call a range $n$ function symbol a $n$-ary function symbol, the same holds for relations. We shall use the usual language after doing this remark, i.e. unary for $1$-ary, binary for $2$-ary, etc.
 
-What the \com{first order} part of the definition actually means will be determined later, but for an intuitive idea, it refers to the \com{level} on which the things we talk about reside. For exmaple, to make a statement about natural numbers, we should use the first order language of arithmetic, and to declare induction on natural numbers we would need to talk about statements of natural numbers, that is, to use a higher order language, in this case, second order\footnote{But is not strictly necessary, as we may see further into these notes.}.
+What the \com{first order} part of the definition actually means will be determined later, but for an intuitive idea, it refers to the \com{level} on which the things we talk about reside. For exmaple, to make a statement about natural numbers, we should use the first order language of arithmetic. To declare induction on natural numbers we would need to talk about statements of natural numbers, that is, to use a higher order language, in this case, second order\footnote{But is not strictly necessary, as we may see further into these notes.}.
 
 \begin{dfn}
-	For a first order formal language $\mcL$, a \textit{chain} is the yuxtaposition of symbols of $\mcL$. More mathematically, a chain is a sequence (finite or infinite) of elements of $\mcL$.
-	To state that two chains are equivalent we use $\equiv$.
+	For a first order formal language $\mcL$, a \textit{chain} is the juxtaposition of symbols of $\mcL$. More mathematically, a chain is a sequence (finite or infinite) of elements of $\mcL$.
+	To state that two chains $\alpha_1, \alpha_2$ are equivalent we use $\equiv$ as $\alpha_1 \equiv \alpha_2$.
 \end{dfn}
 
-Examples of chains are $x_1x_2x_3\neg$, $\neg\land x_1 ((((($ and $(x_{43}R^{32}_{111}\land (f^{1}_{990}))\cond)f^{90}_1 R^{2}_1R^{3132}_1 f^{0}_2 \land$. As you may see, these chains are nonsense. Well, to construct any chain we have the liberty of putting any symbol after another. So we need rules, so these silly chains are excluded and only the ones which we want to develope more theory with remain.
+Examples of chains are $x_1x_2x_3\neg$, $\neg\land x_1 ((((($ and $(x_{43}R^{32}_{111}\land (f^{1}_{990}))\cond)f^{90}_1 R^{2}_1R^{3132}_1 f^{0}_2 \land$. As you may see, these chains are nonsense. Well, to construct any chain we have the liberty of putting any symbol of $\mcL$ after another. So we need rules, so these silly chains are excluded and only the ones which we want to develope more theory with remain.
 
 \begin{dfn}
 	Next are given the definitions of \textit{term} and \textit{formula}.
 	\begin{enumerate}
 		\item Any variable is a term.
 		\item Any constant symbol is a term.
-		\item If $f^{m_i}_i$ is a function symbol and $t_1, \ldots, t_{m_i}$ are terms, then $f(t_1,\ldots,t_{m_i})$ is a term.
+		\item If $f^{m_i}_i$ is a function symbol and $t_1, \ldots, t_{m_i}$ are terms, then $f^{m_i}_i(t_1,\ldots,t_{m_i})$ is a term.
 		\item For a relation symbol $R_j^{n_j}$ and terms $t_1, \ldots, t_{n_j}$ the chain $R_j^{n_j}(t_1, \ldots, t_{n_j})$ is a formula. Moreover, it is an \textit{atomic formula}.
 		\item For a formula $\varphi$, $\neg \varphi$ is a formula.
 		\item For formulas $\varphi$ and $\psi$, $\varphi \cond \psi$ is a formula.
@@ -44,9 +44,9 @@ Examples of chains are $x_1x_2x_3\neg$, $\neg\land x_1 ((((($ and $(x_{43}R^{32}
 	\end{enumerate}
 \end{dfn}
 
-We won't prove unique readability, because we are not formalizing things yet, so, for formulas $\alpha$, $\beta$ and $\gamma$ we can form ambiguous formulas like $\alpha \cond \beta \cond \gamma$ where we have two possible readings. To avoid this misunderstanding, we place parenthesis where its appropiate.
+We won't prove unique readability, because we are not defining things in a formal enough way yet, and because there's no unique readability for this way of constructing formulas. So, for formulas $\alpha$, $\beta$ and $\gamma$ we can form ambiguous formulas like $\alpha \cond \beta \cond \gamma$ where we have two possible readings. To avoid this misunderstanding, we place parenthesis where its appropiate.
 
-Here are some examples for what this definition can and cannot do. I will omit indexes, assuming that the reader understands that this doesn't matter because its a justified abuse of notation.
+Here are some examples for what this definition can and cannot do. I will omit indexes indicating range, assuming that the reader understands that this doesn't matter because its a justified abuse of notation.
 
 \begin{ejem}
 	Let $\mcL_{f_x}$ be the formal language with one relator symbol of range 2, $=$, no constant symbols and an infinite amount of function symbols. Call this language the language of evaluations.
@@ -62,6 +62,35 @@ Here are some examples for what this definition can and cannot do. I will omit i
 To not lose generality the symbol $=$ isn't treated any special. However, we know this guy is representing the equality. So for an exception for it and any other known relation or function symbols, we write any privileged range 2 symbol $\mathscr{S}$ in a formula as $x \mathscr{S} y$ for terms $x$ and $y$.
 
 \begin{ejem}
+	Let $\mcL_{\text{日本語}}$ be the formal language consisting of constant symbols denoted as japanese nouns 猫, 魚, 数学$\ldots$, variables denoted by verbs 食べる, 見る, 勉強する, なる,$\ldots$ and binary relation symbols as grammatical particles が, を, に,$\ldots$. No function symbols. Call this, a deficient attempt to formalize the japanese language. Then, the following are formulas of $\mcL_{\text{日本語}}$:
+	\begin{enumerate}
+		\item が（猫、を（魚、食べる））
+		\item が（魚、を（猫、見る））
+		\item が（猫、を（数学、勉強する））
+		\item を（魚、が（猫、見る））
+		\item を（猫、食べる）
+		\item を（猫、食べる）
+		\item が（猫、を（猫、猫））
+		\item が（猫、に（の（魚、数学）なる））
+	\end{enumerate}
+	
+	In the usual dictionary japanese, a written form could be the next.
+
+	\begin{enumerate}
+		\item 猫が魚を食べる. The cat eats the fish.
+		\item 魚が猫を見る. The fish sees the cat.
+		\item 猫が数学を勉強する. The cat studies mathematics.
+		\item 魚を猫が見る. Fish is the one that cat sees.
+		\item 猫を食べる. I eat the cat.
+		\item 猫を食べる. He eats the cat. 
+		\item 猫が猫を猫. Cat is the cat that cat.
+		\item 猫が魚の数学になる. The cat became the fish of mathematics.
+	\end{enumerate}
+
+	As you can notice, not only absurd sentences can be formed and are formulas, but also a formula can model multiple phrases. This is because of the reliance on context that japanese language commonly uses. Not only this language, but also english, and some others. This should be obvious, but a formal language can't be fully translated to a natural language and viceversa.
+\end{ejem}
+
+\begin{ejem}
 	Let $\mcL_{A}$ be the formal language with constants $0$, function symbols of range 2: $+$, $\cdot$ and $\mathrm{S}$ and the relation symbol $=$. Call this language the formal language of arithmetic. Then, the following formulas are named the Robinson's arithmetic axioms. 
 	\begin{enumerate}
 		\item $\forall x (\neg \sucf{x} = 0)$
@@ -73,7 +102,7 @@ To not lose generality the symbol $=$ isn't treated any special. However, we kno
 		\item $x \cdot \sucf{y} = x \cdot y + y$
 	\end{enumerate}
 
-	Remember the \com{first order} part of the definition? If not, go back. If yes, then assume that we now, by some divine power, are allowed to introduce chains of the next kind: $\forall \varphi (\Psi)$. Here, $\varphi$ is any formula and $\Psi$ is a \com{second order} formula (the aforementioned chain is also one), that is, it may contain formulas as variables\footnote{Therefore, it quantifies over formulas of the first order language. We can take this further and permit new chains to quantify over second order formulas, creating a third order language, and so on. However, bringing new conflicts.}. Now, if we interpret $\varphi(x)$ as in stating a property (that I soon will define) then the following is the (second order) known principle of induction:
+	Remember the \com{first order} part of the definition? If not, go back. If yes, then assume that we now, by some divine power, are allowed to introduce chains of the next kind: $\forall \varphi (\Psi)$. Here, $\varphi$ is any formula and $\Psi$ is \com{second order} formula (the aforementioned chain is also one), that is, it may contain formulas as variables\footnote{Therefore, it quantifies over formulas of the first order language. We can take this further and permit new chains to quantify over second order formulas, creating a third order language, and so on. However, bringing new conflicts.}. Now, if we interpret $\varphi(x)$ as in stating a property (that I soon will define) then the following is the (second order) known principle of induction:
 \begin{enumerate}
 	\item[$8_2$.] $\forall \varphi ((\varphi(0) \land (\varphi (x) \cond \varphi(\sucf{x}))) \cond \forall x (\varphi(x))) $
 \end{enumerate}
@@ -82,29 +111,49 @@ If we drop the fancy act we get a schema for any property $\varphi$, still in th
 	\begin{enumerate}
 		\item[$8_1$.] $(\varphi(0) \land (\varphi (x) \cond \varphi(\sucf{x}))) \cond \forall x (\varphi(x)) $
 	\end{enumerate}
-	that then makes of this collection of formulas an infinite one (one formula for each property).
+	that then makes of this collection of formulas an infinite one (one formula for each property). So our first order formal language definition can't describe induction without running in either of these problems.
 \end{ejem}
 
 \begin{ejem} \label{ejem:etcs}
-	Let $\mcL_{C}$ be the formal language consisting of unary function symbols $\mathrm{dom}$ and $\mathrm{cod}$, a range 3 relation symbol $\circ$, the $=$ symbol . We shall call this the language of functions. To be up to the name, let the variables be functions, so they are denoted, for now, with $f,g,h,\ldots$.
-	The following are some \com{category theory axioms for sets} due to \cite{lawverecatset}. 
-Define the next chain via equivalence:
-	$$\obj{x} \equiv \dom{x}=x \land \cod{x}=x\;\footnote{Functions may be regarded as consisting of three things: domain, codomain, and correspondence. However, domain and codomain can be thought as identity functions, since they satisfy $\dom{1_A} = \cod{1_A}$ so any such function $x$ that behaves like this shall be considered an object, or, in the previous courses, a set.}$$
+	For categories, we consider arrows or functions as having a domain, codomain and its name. Here we'll try to design a formal language for variables that consists of three things. First, note that the identity, and in general any permutation, can represent a collection $X$. So, for any function $f : A \longrightarrow B$ we can stablish $A = \mathrm{id_A}$ and $B = \mathrm{id_B}$. So here, to only work with the same kind of variable, we write $f : \mathrm{id_A} \longrightarrow \mathrm{id_B}$. Abstractly, for arrows, an object will be determined by an arrow $a$ if we have $\dom{a}=a$ and $\cod{a}=a$. 
+	Let $\mcL_{C}$ be the formal language consisting of unary function symbols $\mathrm{dom}$ and $\mathrm{cod}$, a range 3 relation symbol $\circ$ and the $=$ symbol. We shall call this the language of functions. The variables are denoted, for now, with $f,g,h,\ldots$. We define $f = g \circ h \equiv \circ(f,g,h)$.
+
+	Then we have the following definition of category found in \cite{onesortedcategories}:
 	\begin{enumerate}
+		\item $\forall f (\dom{\dom{f}} = \dom{f} \land \dom{f} = \cod{\dom{f}})$
+		\item $\forall f (\cod{\cod{f}} = \cod{f} \land \dom{f} = \dom{\cod{f}})$
+		\item $\forall f ( \forall g (\dom{g} = \cod{f} \bicond \exists h (h = g \circ f)))$
+		\item $\forall (h \forall f( \forall g(h = g \circ f \cond (\dom{h} = \dom{f} \land \cod{h} = \cod{g}))))$
+		\item $\forall f ( f = f \circ \dom{f}) \land f = \cod{f} \circ f$
+		\item $\forall f(\forall g(\forall h( \forall k( \forall l( \forall \alpha(\forall \beta((k = g \circ f \land \alpha = h \circ k \land l = h \circ g \land \beta = l \circ f) \cond \alpha = \beta)))))))$ 
+	\end{enumerate}
+
+Interpreting these axioms, we can see that $\dom{f}$ and $\cod{f}$ are what we call objects. We shall then define:
+	$\obj{f} \equiv \dom{f}=f \land \cod{f}=f$.
+	
+The following are some \com{categorial axioms for sets} due to \cite{lawverecatset}.
+	\begin{enumerate}[label=\alph*.]
 		\item $\exists t (\obj{t} \land \forall a (\obj{a} \cond \exists f ( \dom{f} = a \land \cod{f} = t \land \forall g( (\dom{g} = a \land \cod{g} = t) \cond f = g))))$
 		\item $\exists i (\obj{i} \land \forall b (\obj{b} \cond \exists f ( \dom{f} = i \land \cod{f} = b \land \forall g( (\dom{g} = i \land \cod{g} = b) \cond f = g))))$
-		\item $\forall a ( \forall b ((\obj{a} \land \obj{b}) \cond \exists c (\exists \pi_1 (\exists \pi_2(
-			\obj{c} \land ((\dom{\pi_1} = c \land \cod{\pi_1}= a) \land (\dom{\pi_2} = c \land \cod{\pi_2} = b) \land
-			\forall x (\forall f (\forall g ((\dom{f} = x \land \cod{f} = a \land \dom{g} = x \land \cod{g} = b) \cond \exists h (\dom{h} = x \land \cod{h} = c \land \circ(f,\pi_1,h) \land \circ(g,\pi_2,h) \land \forall k ((\dom{k} = x \land \cod{k} = c \land \circ(f,\pi_1,k) \land \circ(g,\pi_2,k) \cond h = k))))))
+		\item $\forall a ( \forall b ((\obj{a} \land \obj{b}) \cond \exists c (\exists \pi_a (\exists \pi_b(
+			\obj{c} \land ((\dom{\pi_a} = c \land \cod{\pi_a}= a) \land (\dom{\pi_b} = c \land \cod{\pi_b} = b) \land
+			\forall x (\forall f (\forall g ((\dom{f} = x \land \cod{f} = a \land \dom{g} = x \land \cod{g} = b) \cond \exists h (\dom{h} = x \land \cod{h} = c \land \circ(f,\pi_a,h) \land \circ(g,\pi_b,h) \land \forall k ((\dom{k} = x \land \cod{k} = c \land \circ(f,\pi_a,k) \land \circ(g,\pi_b,k)) \cond h = k)))))
 			)
 			))))) $
 	\end{enumerate}
 
-	As you can see, our formation rules and conventions still are not enought to avoid constructing such monstruous chains. To simplify this a bit more, we can identify a pattern in all formulas. This pattern should be know to the reader and is usually abbreviated by the chain $\exists !$. However, this requires for us to, again, wonder into what properties are. So, for now, restrain yourself of any abuse of notation. The more compact form of these formulas should look like these:
-	\begin{enumerate}
+	As you can see, our formation rules and conventions are not enough to avoid constructing such monstruous chains. To simplify this a bit more, we can identify a pattern in all formulas. This pattern should be known to the reader and is usually abbreviated by the chain $\exists !$. For any \com{property} that presents in a formula as $\exists x (\varphi(x) \land \forall y(\varphi(y) \cond x = y))$ we abbreviate by $\exists ! x (\varphi(x))$. Then a more compact and elegant form is obtained by using this shorthand and defining the next chains:
+
+	$\mathrm{prodd}(a,b,\pi_a,\pi_b,c) \equiv \obj{c} \land \dom{\pi_a} = c \land \dom{\pi_b} = c \land \cod{\pi_a} = a \land \cod{\pi_b} = b$
+
+	$\mathrm{prodp}(a,b,\pi_a, \pi_b,c) \equiv \forall x (\forall f (\forall g (( \dom{f} = x \land \dom{g} = x \land \cod{f} = a \land \cod{g} = b)\; \cond \exists ! h( \dom{h} = x \land \cod{h} = c \land f = \pi_a \circ h \land g = \pi_b \circ h) )))$
+
+	\begin{enumerate}[label=\alph*.]
 		\item $\exists t (\obj{t} \land \forall a(\obj{a} \land \exists! f (\dom{f} = a \land \cod{f} = t))) $
+		\item $\exists i (\obj{i} \land \forall b(\obj{b} \land \exists! f (\dom{f} = i \land \cod{f} = b)))$
+		\item $\forall a (\forall b( (\obj{a} \land \obj{b}) \cond \exists c (\exists \pi_a (\exists \pi_b ( \mathrm{prodd}(a,b,\pi_a,\pi_b,c) \land \mathrm{prodp}(a,b,\pi_a,\pi_b,c) ))) ))$
 	\end{enumerate}
-	But it will not save you from the third one\footnote{If you haven't figured out what they are meant to interpret, 1. and 2. refer to terminal and initial objects, that is, objects such that for any morphism or arrow $f$ with codomain $t$ (domain $i$) such arrow is unique. The third one refers to the existence of products along with its universal property.}.
+If you haven't figured out what they are meant to interpret, 1. and 2. refer to terminal and initial objects, that is, objects such that for any morphism or arrow $f$ with codomain $t$ (domain $i$) such arrow is unique. The third one refers to the existence of products along with its universal property.
 
 \end{ejem}
 
@@ -115,22 +164,82 @@ Define the next chain via equivalence:
 		\item $\forall x (x + 0 = x)$
 		\item $\forall x ( \exists y (x + y = 0))$
 		\item $\forall x (\forall y (x + y = y + x))$
-		\item[$5_{s}$.] $\forall x (\forall y (f_r(x + y) = f_rx + f_ry)))$ 
-		\item[$6_{s}$.] $\forall x (f_{r+s}x = f_rx + f_sx) $
-		\item[$7_{s}$.] $\forall x (f_rf_sx = f_{rs}x)$
+		\item[5$_{s}$.] $\forall x (\forall y (f_r(x + y) = f_rx + f_ry)))$ 
+		\item[6$_{s}$.] $\forall x (f_{r+s}x = f_rx + f_sx) $
+		\item[7$_{s}$.] $\forall x (f_rf_sx = f_{rs}x)$
 	\end{enumerate}
 
 	Notice that formulas from 5 to 7 are schemes for any unary function symbols $f_r, f_s$, similar to the Robinson's arithmetic example.
 \end{ejem}
 
-Another examples can be thought in your head. One question that may come to the reader can be \com{why complicate things so much?} but I'll ignore that, and insted answer this one: ``why don't you use the relation $\in$ to state the axioms of module-like structures or the objects of morphisms in categories?" First, we don't know what sets are; second, the language just used here hasn't yet defined what \com{quantifying} is. I'll solve that right now. To quantify refers to determine a scope of objects that satisfy something. Our quantifiers refer to phrases like \com{there is}, \com{any one of these objects}, etc., but the generality of our language demands that we specify a domain or universe from which we take these objects. Now's your turn to think, for the languages $\mcL_C$ and $\mcL_{LM}$, can we distinguish what the quantifier is refering to? In our case, no. This is called unsorted, one-sorted or single-sorted logic, where the quantifiers range over one single domain. If we were to quantify over multiple domains we will get a many-sorted logic, or even encounter with the first order logic of dependent sorts. That sounds cool, but, for now, we will only work under this single-sorted logic that we are constructing.
+Another interesting examples are left for an exercise to the reader. One question that may come to anyone is \com{why complicate things so much?} The answer is just because, tehe~. A second one is \com{why don't you use multiple variables to represent different things?} That is because we don't know a precise way to interpret the quantifiers as having taking elements of multiple collections to assert something. Like in the Example \ref{ejem:etcs} we can't use viarables to represent both objects and arrows, because then, according to our rules, the formulas stated also hold for objects, so then objects satisfy associativity and there's a composition of objects. This here, requires more machinery to distinguish between multiple collections of variables. We call this abstract place, from where we take objects to quantify, the universe of discourse. A formal language with only one universe of discourse is called a \textit{single-sorted}, \textit{one-sorted} or \textit{unsorted} formal language. A formal language with multiple universes of discourse is called a \textit{many-sorted} formal language. To formalize categories we can use something called \textit{first order logic of dependent sorts} which requires that we talk about types. This is interesting and will be treated shortly further in this text, but, for now, let's assume one universe of discourse.
 
+The time has come. Define the following.
+\begin{dfn}
+	A \textit{free variable of a formula} $\varphi$ is a variable $x$ not quantified. That is, not in the scope of a quantifier $\forall x$ or $\exists x$. The next definition via recursion is given:
+	\begin{enumerate}
+		\item If $\varphi$ is an atomic formula, then the free variables of $\varphi$ are all its variables.
+		\item If $\varphi \equiv \neg \psi$ then the free variables of $\varphi$ are the free variables of $\psi$.
+		\item If $\varphi \equiv \psi_1 \land \psi_2$ then the free variables of $\varphi$ are the free variables of both $\psi_1$ and $\psi_2$.
+		\item If $\varphi \equiv \psi_1 \lor\psi_2$ then the free variables of $\varphi$ are the free variables of both $\psi_1$ and $\psi_2$.
+		\item If $\varphi \equiv \psi_1 \cond \psi_2$ then the free variables of $\varphi$ are the free variables of both $\psi_1$ and $\psi_2$.
+		\item If $\varphi \equiv \psi_1 \bicond \psi_2$ then the free variables of $\varphi$ are the free variables of both $\psi_1$ and $\psi_2$.
+		\item If $\varphi \equiv \forall x \psi$ then the free variables of $\varphi$ are the free variables of $\psi$ without $x$.
+		\item If $\varphi \equiv \exists x \psi$ then the free variables of $\varphi$ are the free variables of $\psi$ without $x$.
+	\end{enumerate}
+\end{dfn}
 
+\begin{dfn}
+	A \textit{bound} variable of a formula $\varphi$ is a quantified variable. Recursively:
+	\begin{enumerate}
+		\item If $\varphi$ is an atomic formula, it has no bound variables.
+		\item If $\varphi \equiv \neg \psi$ then its bound variables are the bound variables of $\psi$.
+		\item If $\varphi \equiv \psi_1 \land \psi_2$ then its bound variables are both the bound variables of $\psi_1$ and $\psi_2$.
+		\item If $\varphi \equiv \psi_1 \lor \psi_2$ then its bound variables are both the bound variables of $\psi_1$ and $\psi_2$.
+		\item If $\varphi \equiv \psi_1 \cond \psi_2$ then its bound variables are both the bound variables of $\psi_1$ and $\psi_2$.
+		\item If $\varphi \equiv \psi_1 \bicond \psi_2$ then its bound variables are both the bound variables of $\psi_1$ and $\psi_2$.
+		\item If $\varphi \equiv \forall x \psi$ then its bound variables are the bound variables of $\psi$ along with $x$.
+		\item If $\varphi \equiv \exists x \psi$ then its bound variables are the bound variables of $\psi$ along with $x$.
+	\end{enumerate}
+\end{dfn}
 
+\begin{ejem}
+	Taking formulas of the exmaples showed before, we identify free and bound variables.
+	\begin{enumerate}
+		\item $\forall x ( g(f(x), x) = h(x,y) )$ has $x$ as a bound variable and $y$ as a free one.
+		\item $(f(x) = k(x) \land k(x) = l(x)) \cond f(x) = l(x)$ has no bound variables.
+		\item 猫が魚の数学になる has the free variables なる.
+		\item $\forall x (\neg \sucf{x} = 0)$ has the bound variable $x$.
+		\item $x + 0 = x$ has no bound variables.
+		\item $(\varphi(0) \land (\varphi(x) \cond \varphi(\sucf{x}))) \cond \forall x (\varphi(x))$. Here $x$ is both a free and bound variable.
+		\item $\forall f(\dom{\dom{f}} = \dom{f} = \cod{\dom{f}})$ has the bound variable f.
+		\item $\exists h (h = g \circ f)$ has $g$ and $f$ as free variables and $h$ as a bound one.
+		\item $\forall x (x + 0 = x)$ has the bound variable $x$.
+	\end{enumerate}
+\end{ejem}
+
+You might have noticed by now, but here are the definitions of property and statement.
+
+\begin{dfn}
+	\begin{itemize}
+		\item A \textit{property of} $x$ is a formula with a free variable $x$. If $\varphi$ has a free variable $x$ then we write $\varphi(x)$. If multiple variables $x_1, \ldots, x_n$ occur free in a formula $\psi$ then we write $\psi(x_1, \ldots, x_n)$.
+		\item A \textit{statement} is a formula with no free variables.
+	\end{itemize}
+\end{dfn}
+
+Therefore, every formula given on $\mcL_{LM}$ and $\mcL_{C}$ were statements. This works just fine for what they were meant to represent, axioms. Now, that doesn't quite work for the formula $x + 0 = 0$, which is just saying something about 0, but not about any variable $x$.
+
+This concludes the syntactics of formal languages.
+
+Now, to the semantics. We designed formal languages according to certain things we had in mind. Not only that, certain structures. Statements like $\forall x (\exists y( x + y = 0))$ are accurately describing rings, modules, vector spaces, but they do not describe a property of natural numbers. This, will be our notion of validness. A statement is valid for a structure if it correctly expresses its properties. To formalize this, let us define the following.
+
+\begin{dfn}
+	For a formal language $\mcL$, a $\mcL$-\textit{structure} $\mathfrak{A}$ consists of a collection called a universe along with an interpretation of each type of symbol in $\mcL$. This is:
+
+\end{dfn}
 
 \subsection{Exercises}
 \begin{enumerate}
-	\item Design and describe a first order formal language for the system of real numbers.
 	\item Design and describe a first order formal language for a complete ordered field.
 	\item Design and describe a first order formal language for vector spaces.
 \end{enumerate}
