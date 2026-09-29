@@ -46,7 +46,9 @@ Examples of chains are $x_1x_2x_3\neg$, $\neg\land x_1 ((((($ and $(x_{43}R^{32}
 
 We won't prove unique readability, because we are not defining things in a formal enough way yet, and because there's no unique readability for this way of constructing formulas. So, for formulas $\alpha$, $\beta$ and $\gamma$ we can form ambiguous formulas like $\alpha \cond \beta \cond \gamma$ where we have two possible readings. To avoid this misunderstanding, we place parenthesis where its appropiate.
 
-Here are some examples for what this definition can and cannot do. I will omit indexes indicating range, assuming that the reader understands that this doesn't matter because its a justified abuse of notation.
+We interpret as usually. $\forall x$ as \com{for all $x$}, $\exists x$ as \com{an $x$ exists} and so on.
+
+Here are some examples for what this definition can and cannot express. I will omit indexes indicating range, assuming that the reader understands that this doesn't matter because its a justified abuse of notation.
 
 \begin{ejem}
 	Let $\mcL_{f_x}$ be the formal language with one relator symbol of range 2, $=$, no constant symbols and an infinite amount of function symbols. Call this language the language of evaluations.
@@ -57,49 +59,33 @@ Here are some examples for what this definition can and cannot do. I will omit i
 		\item $\exists x (\forall y( {=}(x , y)))$
 		\item ${=}(f(x), k(x)) \land {=}(k(x), l(x)) \cond {=}(f(x), l(x))$
 	\end{enumerate}
+
+	One can verify if a chain is a formula using the definition as follows:
+	\begin{enumerate}[label=s\arabic*.]
+		\item We have the chain $\forall x ({=}(g(f(x),x), h(x,y)))$.
+		\item For it to be a formula, ${=}(g(f(x),x), h(x,y))$ should be a formula.
+		\item Then both $g(f(x),x)$ and $h(x,y)$ should be terms.
+		\item So $f(x), x, y$ should be terms.
+		\item Finally, x, y are variables, therefore terms, and so the whole chain is a formula.
+	\end{enumerate}
+
+	You can also draw a tree for a chain using the formation rules.
+
+	*Some general tree*
 \end{ejem}
 
 To not lose generality the symbol $=$ isn't treated any special. However, we know this guy is representing the equality. So for an exception for it and any other known relation or function symbols, we write any privileged range 2 symbol $\mathscr{S}$ in a formula as $x \mathscr{S} y$ for terms $x$ and $y$.
 
 \begin{ejem}
-	Let $\mcL_{\text{日本語}}$ be the formal language consisting of constant symbols denoted as japanese nouns 猫, 魚, 数学$\ldots$, variables denoted by verbs 食べる, 見る, 勉強する, なる,$\ldots$ and binary relation symbols as grammatical particles が, を, に,$\ldots$. No function symbols. Call this, a deficient attempt to formalize the japanese language. Then, the following are formulas of $\mcL_{\text{日本語}}$:
-	\begin{enumerate}
-		\item が（猫、を（魚、食べる））
-		\item が（魚、を（猫、見る））
-		\item が（猫、を（数学、勉強する））
-		\item を（魚、が（猫、見る））
-		\item を（猫、食べる）
-		\item を（猫、食べる）
-		\item が（猫、を（猫、猫））
-		\item が（猫、に（の（魚、数学）なる））
-	\end{enumerate}
-	
-	In the usual dictionary japanese, a written form could be the next.
-
-	\begin{enumerate}
-		\item 猫が魚を食べる. The cat eats the fish.
-		\item 魚が猫を見る. The fish sees the cat.
-		\item 猫が数学を勉強する. The cat studies mathematics.
-		\item 魚を猫が見る. Fish is the one that cat sees.
-		\item 猫を食べる. I eat the cat.
-		\item 猫を食べる. He eats the cat. 
-		\item 猫が猫を猫. Cat is the cat that cat.
-		\item 猫が魚の数学になる. The cat became the fish of mathematics.
-	\end{enumerate}
-
-	As you can notice, not only absurd sentences can be formed and are formulas, but also a formula can model multiple phrases. This is because of the reliance on context that japanese language commonly uses. Not only this language, but also english, and some others. This should be obvious, but a formal language can't be fully translated to a natural language and viceversa.
-\end{ejem}
-
-\begin{ejem}
 	Let $\mcL_{A}$ be the formal language with constants $0$, function symbols of range 2: $+$, $\cdot$ and $\mathrm{S}$ and the relation symbol $=$. Call this language the formal language of arithmetic. Then, the following formulas are named the Robinson's arithmetic axioms. 
 	\begin{enumerate}
 		\item $\forall x (\neg \sucf{x} = 0)$
-		\item $\sucf{x} = \sucf{y} \cond x = y$
-		\item $y=0 \lor \exists x (\sucf{x} = y)$
-		\item $x + 0 = x$
-		\item $x + \sucf{y} = \sucf{x + y}$
-		\item $x \cdot 0 = 0$
-		\item $x \cdot \sucf{y} = x \cdot y + y$
+		\item $\forall x (\forall y (\sucf{x} = \sucf{y} \cond x = y))$
+		\item $\forall y (y=0 \lor \exists x (\sucf{x} = y))$
+		\item $\forall x (x + 0 = x)$
+		\item $\forall x (\forall y (x + \sucf{y} = \sucf{x + y}))$
+		\item $\forall x (x \cdot 0 = 0)$
+		\item $\forall x (x \cdot \sucf{y} = x \cdot y + y)$
 	\end{enumerate}
 
 	Remember the \com{first order} part of the definition? If not, go back. If yes, then assume that we now, by some divine power, are allowed to introduce chains of the next kind: $\forall \varphi (\Psi)$. Here, $\varphi$ is any formula and $\Psi$ is \com{second order} formula (the aforementioned chain is also one), that is, it may contain formulas as variables\footnote{Therefore, it quantifies over formulas of the first order language. We can take this further and permit new chains to quantify over second order formulas, creating a third order language, and so on. However, bringing new conflicts.}. Now, if we interpret $\varphi(x)$ as in stating a property (that I soon will define) then the following is the (second order) known principle of induction:
@@ -114,9 +100,55 @@ If we drop the fancy act we get a schema for any property $\varphi$, still in th
 	that then makes of this collection of formulas an infinite one (one formula for each property). So our first order formal language definition can't describe induction without running in either of these problems.
 \end{ejem}
 
+\begin{ejem}
+	Let $\mcL_{\text{日本語}}$ be the formal language consisting of constant symbols denoted as japanese nouns 猫(cat), 魚(fish), 数学(math), $\suugakumono$ (mathematician), $\ldots$, variables interpreted as \com{events} $e, e_n, \ldots$\footnote{This is called neo-Davidsonian event semantics. See \cite{neodavidsonian} if you are interested.}, unary relation symbols denoted by verbs 食べる(to eat), 見る(to see), 勉強する(to study), なる(to become), $\dearu$ (to be\footnote{This is used to state a fact. But we use it as the \com{to be} verb.}), $\ldots$ and binary relation symbols as grammatical particles が(agent), を(patient), に(target), で(context),$\ldots$. No function symbols. Call this, a deficient attempt to formalize the japanese language.
+
+	Then, the following are formulas of $\mcL_{\text{日本語}}$:
+	\begin{enumerate}
+		\item $\exists e( \text{食べる}(e) \land \text{が}(\text{猫}, e) \land \text{を}(\text{魚},e))$ 
+		\item $\exists e( \miru(e) \land \text{が}(\sakana, e) \land \text{を}(\neko,e))$ 
+		\item $\exists e ( \benkyousuru(e) \land \ga(\neko,e) \land \wo(\suugaku, e)) $
+	\end{enumerate}
+	
+	The first one is interpreted as: ``There is an event, to eat is related to the event, the agent of the event is a cat and the patient of the event is a fish". In dictionary japanese, a written form could be the next.
+
+	\begin{enumerate}[label=TL\arabic*.]
+		\item 猫が魚を食べる. The cat eats the fish.
+		\item 魚が猫を見る. The fish sees the cat.
+		\item 猫が数学を勉強する. The cat studies mathematics.
+	\end{enumerate}
+
+	Now, if we are considering on trying to make a universal assertion, then we would use the quantifier $\forall$ to express it. Say that we want to express \com{every cat is not a mathematician} in $\mcL_{\text{日本語}}$. We decompose it as \com{For any noun that is cat, cat is not mathematician}, but we find a problem, the quantifier requires a variable, and in this formal language, variables are events. Therefore we would state something for any event, then, \com{for any event that is cat $\ldots$}. Absurd. To solve this in a lazy way, assume that variables can be separated as nouns and events, i.e., there are formulas that express that a variable is a noun and a variable is an event, $\mathrm{No}(x)$ and $\mathrm{Ev}(x)$. Then, we can construct the formula
+	
+	\begin{enumerate}[label=\alph*.]
+		\item $\forall x (\forall e_1 ((\mathrm{No}(x) \land \mathrm{Ev}(e_1) \land \dearu(e_1) \land \ga(x, e_1) \land \text{で}(\neko, e_1)) \cond \neg \exists e_2 (\mathrm{Ev}(e_2) \land \dearu(e_2) \land \ga(x, e_2) \land \text{で}(\suugakumono, e_2))))$
+	\end{enumerate}
+
+	that translates to
+
+	\begin{enumerate}[label=TL\alph*.]
+		\item どの猫も数学者ではない. No cat is a mathematician.
+	\end{enumerate}
+
+	Next, consider the formula
+
+	\begin{enumerate}[label=\roman*.]
+		\item $\exists e (\mathrm{Ev}(e) \land \mathrm{No}(x) \land \naru(e) \land \ga(x, e) \land \wo(\sakana, e))$ 
+	\end{enumerate}
+	
+	which translates to any of the following
+
+	\begin{enumerate}[label=TL\roman*.]
+		\item 魚になる. I become fish. 
+		\item 魚になる. Cat becomes fish.
+		\item 魚になる. Become fish.
+	\end{enumerate}
+	As you can notice, not only absurd sentences can be formulas but also the complexity of our formal language greatly exceeds that of the natural one. This is because of the reliance on context that japanese language commonly uses. Not only this language, but also english, and some others. The usually prescind of important information that needs to be filled up in the formal expression.
+\end{ejem}
+
 \begin{ejem} \label{ejem:etcs}
 	For categories, we consider arrows or functions as having a domain, codomain and its name. Here we'll try to design a formal language for variables that consists of three things. First, note that the identity, and in general any permutation, can represent a collection $X$. So, for any function $f : A \longrightarrow B$ we can stablish $A = \mathrm{id_A}$ and $B = \mathrm{id_B}$. So here, to only work with the same kind of variable, we write $f : \mathrm{id_A} \longrightarrow \mathrm{id_B}$. Abstractly, for arrows, an object will be determined by an arrow $a$ if we have $\dom{a}=a$ and $\cod{a}=a$. 
-	Let $\mcL_{C}$ be the formal language consisting of unary function symbols $\mathrm{dom}$ and $\mathrm{cod}$, a range 3 relation symbol $\circ$ and the $=$ symbol. We shall call this the language of functions. The variables are denoted, for now, with $f,g,h,\ldots$. We define $f = g \circ h \equiv \circ(f,g,h)$.
+	Let $\mcL_{C}$ be the formal language consisting of unary function symbols $\mathrm{dom}$ and $\mathrm{cod}$, a range 3 relation symbol $\circ$ and the $=$ symbol. We shall call this the language of functions. The variables are denoted, for now, with $f,g,h,\ldots$. We put $f = g \circ h \equiv \circ(f,g,h)$.
 
 	Then we have the following definition of category found in \cite{onesortedcategories}:
 	\begin{enumerate}
@@ -142,7 +174,7 @@ The following are some \com{categorial axioms for sets} due to \cite{lawverecats
 			))))) $
 	\end{enumerate}
 
-	As you can see, our formation rules and conventions are not enough to avoid constructing such monstruous chains. To simplify this a bit more, we can identify a pattern in all formulas. This pattern should be known to the reader and is usually abbreviated by the chain $\exists !$. For any \com{property} that presents in a formula as $\exists x (\varphi(x) \land \forall y(\varphi(y) \cond x = y))$ we abbreviate by $\exists ! x (\varphi(x))$. Then a more compact and elegant form is obtained by using this shorthand and defining the next chains:
+	Our formation rules and conventions are not enough to avoid constructing such monstruous chains. To simplify this a bit more, we can identify a pattern in all formulas. This pattern should be known to the reader and is usually abbreviated by the chain $\exists !$. For any \com{property} that presents in a formula as $\exists x (\varphi(x) \land \forall y(\varphi(y) \cond x = y))$ we abbreviate by $\exists ! x (\varphi(x))$. Then a more compact and elegant form is obtained by using this shorthand and defining the next chains:
 
 	$\mathrm{prodd}(a,b,\pi_a,\pi_b,c) \equiv \obj{c} \land \dom{\pi_a} = c \land \dom{\pi_b} = c \land \cod{\pi_a} = a \land \cod{\pi_b} = b$
 
@@ -172,7 +204,7 @@ If you haven't figured out what they are meant to interpret, 1. and 2. refer to 
 	Notice that formulas from 5 to 7 are schemes for any unary function symbols $f_r, f_s$, similar to the Robinson's arithmetic example.
 \end{ejem}
 
-Another interesting examples are left for an exercise to the reader. One question that may come to anyone is \com{why complicate things so much?} The answer is just because, tehe~. A second one is \com{why don't you use multiple variables to represent different things?} That is because we don't know a precise way to interpret the quantifiers as having taking elements of multiple collections to assert something. Like in the Example \ref{ejem:etcs} we can't use viarables to represent both objects and arrows, because then, according to our rules, the formulas stated also hold for objects, so then objects satisfy associativity and there's a composition of objects. This here, requires more machinery to distinguish between multiple collections of variables. We call this abstract place, from where we take objects to quantify, the universe of discourse. A formal language with only one universe of discourse is called a \textit{single-sorted}, \textit{one-sorted} or \textit{unsorted} formal language. A formal language with multiple universes of discourse is called a \textit{many-sorted} formal language. To formalize categories we can use something called \textit{first order logic of dependent sorts} which requires that we talk about types. This is interesting and will be treated shortly further in this text, but, for now, let's assume one universe of discourse.
+Another interesting examples are left as an exercise to the reader. One question that may come to anyone is \com{why complicate things so much?} The answer is just because, tehe$\sim$. A second one is \com{why don't you use multiple variables to represent different things?} That is because we don't know a precise way to interpret the quantifiers as taking elements of multiple collections to assert something. Like in the Example \ref{ejem:etcs} we can't use viarables to represent both objects and arrows, because then, according to our rules, the formulas stated also hold for objects, so then objects satisfy associativity and there's a composition of objects. This here, requires more machinery to distinguish between multiple collections of variables. We call this abstract place, from where we take objects to quantify, the \textit{universe of discourse}. A formal language with only one universe of discourse is called a \textit{single-sorted}, \textit{one-sorted} or \textit{unsorted} formal language. A formal language with multiple universes of discourse is called a \textit{many-sorted} formal language. To formalize categories we can use something called \textit{first order logic of dependent sorts} which requires that we talk about types. This is interesting and will be treated shortly further in this text, but, for now, let's assume one universe of discourse.
 
 The time has come. Define the following.
 \begin{dfn}
@@ -203,43 +235,80 @@ The time has come. Define the following.
 	\end{enumerate}
 \end{dfn}
 
+And to be a bit more precise.
+
+\begin{dfn}
+	A \textit{subformula} $\psi$ of a formula $\varphi$ is defined inductivelt as:
+	\begin{enumerate}
+		\item If $\varphi$ is an atomic formula then $\varphi$ is its only subformula.
+		\item If $\varphi \equiv \neg \psi$ then its subformulas are $\neg \psi$ and the subformulas of $\psi$.
+		\item If $\varphi \equiv \psi_1 \land \psi_2$ then its subformulas are $\varphi$ and the subformulas of both $\psi_1$ and $\psi_2$.
+		\item If $\varphi \equiv \psi_1 \lor \psi_2$ then its subformulas are $\varphi$ and the subformulas of both $\psi_1$ and $\psi_2$.
+		\item If $\varphi \equiv \psi_1 \cond \psi_2$ then its subformulas are $\varphi$ and the subformulas of both $\psi_1$ and $\psi_2$.
+		\item If $\varphi \equiv \psi_1 \bicond \psi_2$ then its subformulas are $\varphi$ and the subformulas of both $\psi_1$ and $\psi_2$.
+		\item If $\varphi \equiv \forall x \psi$ then its subformulas are $\varphi$ and the subformulas of $\psi$.
+		\item If $\varphi \equiv \exists x \psi$ then its subformulas are $\varphi$ and the subformulas of $\psi$.
+	\end{enumerate}
+\end{dfn}
+
+
 \begin{ejem}
 	Taking formulas of the exmaples showed before, we identify free and bound variables.
-	\begin{enumerate}
-		\item $\forall x ( g(f(x), x) = h(x,y) )$ has $x$ as a bound variable and $y$ as a free one.
-		\item $(f(x) = k(x) \land k(x) = l(x)) \cond f(x) = l(x)$ has no bound variables.
-		\item 猫が魚の数学になる has the free variables なる.
-		\item $\forall x (\neg \sucf{x} = 0)$ has the bound variable $x$.
-		\item $x + 0 = x$ has no bound variables.
-		\item $(\varphi(0) \land (\varphi(x) \cond \varphi(\sucf{x}))) \cond \forall x (\varphi(x))$. Here $x$ is both a free and bound variable.
-		\item $\forall f(\dom{\dom{f}} = \dom{f} = \cod{\dom{f}})$ has the bound variable f.
-		\item $\exists h (h = g \circ f)$ has $g$ and $f$ as free variables and $h$ as a bound one.
-		\item $\forall x (x + 0 = x)$ has the bound variable $x$.
+	\begin{enumerate}[leftmargin=4em]
+		\item[E1, 1.] $\forall x ( g(f(x), x) = h(x,y) )$ has $x$ as a bound variable and $y$ as a free one.
+		\item[E1, 4.] $(f(x) = k(x) \land k(x) = l(x)) \cond f(x) = l(x)$ has no bound variables.
+		\item[E2, 1.] $\forall x (\neg \sucf{x} = 0)$ has the bound variable $x$.
+		\item[E3, 4.] The subformula $x + 0 = x$ has no bound variables. Whilst the formula has $x$.
+		\item[E3, TLiii.] 魚になる has the free variables なる and $x$.
+		\item[E3, 8$_2$.] $(\varphi(0) \land (\varphi(x) \cond \varphi(\sucf{x}))) \cond \forall x (\varphi(x))$. Here $x$ is both a free and bound variable.
+		\item[E4, 1.] $\forall f(\dom{\dom{f}} = \dom{f} = \cod{\dom{f}})$ has the bound variable f.
+		\item[E4, 3.] The subformula $\exists h (h = g \circ f)$ has $g$ and $f$ as free variables and $h$ as a bound one. The formula has no free variables.
+		\item[E5, 2.] $\forall x (x + 0 = x)$ has the bound variable $x$.
 	\end{enumerate}
 \end{ejem}
 
 You might have noticed by now, but here are the definitions of property and statement.
 
 \begin{dfn}
-	\begin{itemize}
-		\item A \textit{property of} $x$ is a formula with a free variable $x$. If $\varphi$ has a free variable $x$ then we write $\varphi(x)$. If multiple variables $x_1, \ldots, x_n$ occur free in a formula $\psi$ then we write $\psi(x_1, \ldots, x_n)$.
-		\item A \textit{statement} is a formula with no free variables.
-	\end{itemize}
+	A \textit{property of} $x$ is a formula with a free variable $x$. If $\varphi$ has a free variable $x$ then we write $\varphi(x)$. If multiple variables $x_1, \ldots, x_n$ occur free in a formula $\psi$ then we write $\psi(x_1, \ldots, x_n)$ and say that $\psi$ is a property of $x_1, \ldots, x_n$.
+
+	A \textit{statement} is a formula with no free variables.
 \end{dfn}
 
-Therefore, every formula given on $\mcL_{LM}$ and $\mcL_{C}$ were statements. This works just fine for what they were meant to represent, axioms. Now, that doesn't quite work for the formula $x + 0 = 0$, which is just saying something about 0, but not about any variable $x$.
+Therefore, every formula given on $\mcL_{LM}, \mcL_{A}$ and $\mcL_{C}$ were statements. This works just fine for what they were meant to represent, axioms. Now, that doesn't quite work for the formula $x + 0 = 0$, which is just saying something about 0 and some $x$, but not about any variable $x$.
 
 This concludes the syntactics of formal languages.
 
 Now, to the semantics. We designed formal languages according to certain things we had in mind. Not only that, certain structures. Statements like $\forall x (\exists y( x + y = 0))$ are accurately describing rings, modules, vector spaces, but they do not describe a property of natural numbers. This, will be our notion of validness. A statement is valid for a structure if it correctly expresses its properties. To formalize this, let us define the following.
 
 \begin{dfn}
-	For a formal language $\mcL$, a $\mcL$-\textit{structure} $\mathfrak{A}$ consists of a collection called a universe along with an interpretation of each type of symbol in $\mcL$. This is:
+	For a formal language $\mcL$, a $\mcL$-\textit{structure} $\mathfrak{A}$ consists of a collection $U$ called a universe along with an interpretation of each type of symbol in $\mcL$. This is:
+	\begin{enumerate}
+		\item The interpretation assigns an $m$-ary function in $U$ for each function symbol $f^{m}$.
+		\item It assigns an $n$-ary relation in $U$ to every relation symbol $R^{n}$.
+		\item It assigns an element of $U$ to any constant symbol.
+	\end{enumerate}
 
+	When we think of this definition and the universe as classes or sets, we then get a mathematical formalization of what a structure is.
 \end{dfn}
+
+The examples shown before are modeled after an structure, so there's a structure for each of them. Let's see this more precisely.
+
+\begin{ejem}
+	\begin{enumerate}
+		\item For $\mcL_A$, we choose the natural numbers as the universe. The structure $\mathfrak{N}$ is then described as following. We assign $S(n)$ to the function that outputs the succesor of a natural number $n$, described by $n + 1$. For $+$ and $\cdot$ we do the obvious. Same goes for constant $0$. Then, Robinson's axioms, that is, the statements constructed are intuitively true for the structure $\mathfrak{N}$ we have given.
+
+To make this more simple, let us denote the structure $\mathfrak{N}$ as $\mathfrak{N} = \langle \mathbb{N}, n \mapsto n+1, +, \cdot, 0 \rangle$ and the following structures.
+		\item For $\mcL_{\text{日本語}}$ we choose the japanese language as $\mathfrak{J} = \langle \mathrm{nouns}, \mathrm{verbs}, \ga, \nijp, \de, \wo \rangle$. Here, the structure is just as modeled. If we try with the english language, then we would use $\mathfrak{E} = \langle \mathrm{nouns}, \mathrm{verbs}, \mathrm{is the one ...}, \mathrm{towards}, \mathrm{by means of}, \mathrm{does} \rangle$. The examples given on this formal language are then translated to its structure. Statements are determined true or false intuitively depending on what it is referring to in the natural language.
+		\item For $\mcL_{C}$, if we use naive set theory, we have $\mathfrak{S} = \langle X^Y, D : X^Y \longrightarrow X^Y, C : X^Y \longrightarrow X^Y, \{ (f,g,h) \mid C(f) = D(g) \land h = f \circ g  \} \rangle$, where $D(f)$ is the identity on the domain of $f$ and $C(f)$ is the identity in the codomain of $f$. This structure intuitively satisfies the axioms given. Then it formally forms a one-sorted category.
+		\item For $\mcL_{LM}$ any known left-module suffices. Take, for example, real numbers and the ring $\mathbb{Z}$.
+	\end{enumerate}
+\end{ejem}
+
+
 
 \subsection{Exercises}
 \begin{enumerate}
-	\item Design and describe a first order formal language for a complete ordered field.
-	\item Design and describe a first order formal language for vector spaces.
+	\item Design and describe a first order formal language for a complete ordered field. Then, state the axioms.
+	\item Design and describe a first order formal language for vector spaces. Then state the axioms.
 \end{enumerate}
